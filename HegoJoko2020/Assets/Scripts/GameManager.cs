@@ -32,12 +32,12 @@ public class GameManager : MonoBehaviour
     _instance = this;
     DontDestroyOnLoad(this.gameObject);
   }
-  private void ChangePhase(Phase _newPhase)
+  private static void ChangePhase(Phase _newPhase)
   {
     _instance.p_currentPhase = _newPhase;
   }
 
-  private GameManager GetInstance()
+  private static GameManager GetInstance()
   {
     return _instance;
   }
