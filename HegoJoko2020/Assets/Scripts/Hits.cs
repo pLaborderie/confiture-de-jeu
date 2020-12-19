@@ -1,16 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
-public enum AllHits
-{
-    UpJab,
-    DownJab,
-    UpCross,
-    DownCross,
-    Uppercut
-}
 
 public class Hits : MonoBehaviour
 {

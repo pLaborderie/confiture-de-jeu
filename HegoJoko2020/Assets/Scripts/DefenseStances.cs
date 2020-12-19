@@ -1,15 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
-public enum AllDefenseStances
-{
-    UpBlock,
-    DownBlock,
-    UpDodge,
-    DownDodge
-}
 
 public class DefenseStances : MonoBehaviour
 {
