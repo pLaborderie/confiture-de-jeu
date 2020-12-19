@@ -17,9 +17,10 @@ public class DefenseStances : MonoBehaviour
 
     private Dictionary<AllDefenseStances, AllHits[]> hitBlocked;
     private Dictionary<AllDefenseStances, AllHits[]> hitDodged;
-    private Dictionary<AllDefenseStances, float> f_damageReduction;
+    private Dictionary<AllDefenseStances, float> damageReduction;
 
     private AllDefenseStances currentDefenseStance;
+    private GameManager gameManager;
 
     void Start()
     {
@@ -30,25 +31,27 @@ public class DefenseStances : MonoBehaviour
                 case AllDefenseStances.UpBlock:
                     hitBlocked.Add(allDefenseStances[i], new AllHits[] { AllHits.UpJab, AllHits.UpCross, AllHits.Uppercut });
                     hitDodged.Add(allDefenseStances[i], new AllHits[0]);
-                    f_damageReduction.Add(allDefenseStances[i], 10);
+                    damageReduction.Add(allDefenseStances[i], gameManager.DEFENSESTANCE_UPBLOCK_DAMAGEREDUCTION);
                     break;
                 case AllDefenseStances.DownBlock:
                     hitBlocked.Add(allDefenseStances[i], new AllHits[] { AllHits.DownJab, AllHits.DownCross });
                     hitDodged.Add(allDefenseStances[i], new AllHits[0]);
-                    f_damageReduction.Add(allDefenseStances[i], 10);
+                    damageReduction.Add(allDefenseStances[i], gameManager.DEFENSESTANCE_DOWNBLOCK_DAMAGEREDUCTION);
                     break;
                 case AllDefenseStances.UpDodge:
                     hitBlocked.Add(allDefenseStances[i], new AllHits[0]);
                     hitDodged.Add(allDefenseStances[i], new AllHits[] { AllHits.UpJab, AllHits.UpCross, AllHits.Uppercut });
-                    f_damageReduction.Add(allDefenseStances[i], 0);
+                    damageReduction.Add(allDefenseStances[i], gameManager.DEFENSESTANCE_UPDODGE_DAMAGEREDUCTION);
                     break;
                 case AllDefenseStances.DownDodge:
                     hitBlocked.Add(allDefenseStances[i], new AllHits[0]);
                     hitDodged.Add(allDefenseStances[i], new AllHits[] { AllHits.DownJab, AllHits.DownCross});
-                    f_damageReduction.Add(allDefenseStances[i], 0);
+                    damageReduction.Add(allDefenseStances[i], gameManager.DEFENSESTANCE_DOWNDODGE_DAMAGEREDUCTION);
                     break;
             }
         }
+
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void ReceiveHit(AllHits hitReceived)

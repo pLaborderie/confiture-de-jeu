@@ -18,7 +18,7 @@ public class Hits : MonoBehaviour
 
     private Dictionary<AllHits, int> maxUse;
     private Dictionary<AllHits, int> currentUse;
-    private Dictionary<AllHits, int> hitPower;
+    private Dictionary<AllHits, float> hitPower;
 
     private GameManager gameManager;
 
@@ -29,28 +29,28 @@ public class Hits : MonoBehaviour
             switch (allHits[i])
             {
                 case AllHits.UpJab:
-                    maxUse.Add(allHits[i],3);
-                    hitPower.Add(allHits[i], 10);
+                    maxUse.Add(allHits[i], gameManager.HIT_UPJAB_MAXUSE);
+                    hitPower.Add(allHits[i], gameManager.HIT_UPJAB_HITPOWER);
                     currentUse.Add(allHits[i], maxUse[allHits[i]]);
                     break;
                 case AllHits.DownJab:
-                    maxUse.Add(allHits[i], 3);
-                    hitPower.Add(allHits[i], 10);
+                    maxUse.Add(allHits[i], gameManager.HIT_DOWNJAB_MAXUSE);
+                    hitPower.Add(allHits[i], gameManager.HIT_DOWNJAB_HITPOWER);
                     currentUse.Add(allHits[i], maxUse[allHits[i]]);
                     break;
                 case AllHits.UpCross:
-                    maxUse.Add(allHits[i], 3);
-                    hitPower.Add(allHits[i], 20);
+                    maxUse.Add(allHits[i], gameManager.HIT_UPCROSS_MAXUSE);
+                    hitPower.Add(allHits[i], gameManager.HIT_UPCROSS_HITPOWER);
                     currentUse.Add(allHits[i], maxUse[allHits[i]]);
                     break;
                 case AllHits.DownCross:
-                    maxUse.Add(allHits[i], 3);
-                    hitPower.Add(allHits[i], 20);
+                    maxUse.Add(allHits[i], gameManager.HIT_DOWNCROSS_MAXUSE);
+                    hitPower.Add(allHits[i], gameManager.HIT_DOWNCROSS_HITPOWER);
                     currentUse.Add(allHits[i], maxUse[allHits[i]]);
                     break;
                 case AllHits.Uppercut:
-                    maxUse.Add(allHits[i], 3);
-                    hitPower.Add(allHits[i], 40);
+                    maxUse.Add(allHits[i], gameManager.HIT_UPPERCUT_MAXUSE);
+                    hitPower.Add(allHits[i], gameManager.HIT_DOWNCROSS_HITPOWER);
                     currentUse.Add(allHits[i], maxUse[allHits[i]]);
                     break;
             }
