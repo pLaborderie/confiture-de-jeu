@@ -4,72 +4,72 @@ using UnityEngine;
 
 public class Hits : MonoBehaviour
 {
-    public AllHits[] allHits;
+  public AllHits[] allHits;
 
-    private Dictionary<AllHits, int> maxUse = new Dictionary<AllHits, int>();
-    private Dictionary<AllHits, int> currentUse = new Dictionary<AllHits, int>();
-    private Dictionary<AllHits, float> hitPower = new Dictionary<AllHits, float>();
+  private Dictionary<AllHits, int> maxUse = new Dictionary<AllHits, int>();
+  private Dictionary<AllHits, int> currentUse = new Dictionary<AllHits, int>();
+  private Dictionary<AllHits, float> hitPower = new Dictionary<AllHits, float>();
 
-    public GameManager gameManager;
-
-    void Start()
+  public GameManager gameManager;
+  void Start()
+  {
+    for (int i = 0; i < allHits.Length; i++)
     {
-        for (int i = 0; i < allHits.Length; i++)
-        {
-            switch (allHits[i])
-            {
-                case AllHits.UpJab:
-                    maxUse.Add(allHits[i], gameManager.HIT_UPJAB_MAXUSE);
-                    hitPower.Add(allHits[i], gameManager.HIT_UPJAB_HITPOWER);
-                    currentUse.Add(allHits[i], maxUse[allHits[i]]);
-                    break;
-                case AllHits.DownJab:
-                    maxUse.Add(allHits[i], gameManager.HIT_DOWNJAB_MAXUSE);
-                    hitPower.Add(allHits[i], gameManager.HIT_DOWNJAB_HITPOWER);
-                    currentUse.Add(allHits[i], maxUse[allHits[i]]);
-                    break;
-                case AllHits.UpCross:
-                    maxUse.Add(allHits[i], gameManager.HIT_UPCROSS_MAXUSE);
-                    hitPower.Add(allHits[i], gameManager.HIT_UPCROSS_HITPOWER);
-                    currentUse.Add(allHits[i], maxUse[allHits[i]]);
-                    break;
-                case AllHits.DownCross:
-                    maxUse.Add(allHits[i], gameManager.HIT_DOWNCROSS_MAXUSE);
-                    hitPower.Add(allHits[i], gameManager.HIT_DOWNCROSS_HITPOWER);
-                    currentUse.Add(allHits[i], maxUse[allHits[i]]);
-                    break;
-                case AllHits.Uppercut:
-                    maxUse.Add(allHits[i], gameManager.HIT_UPPERCUT_MAXUSE);
-                    hitPower.Add(allHits[i], gameManager.HIT_DOWNCROSS_HITPOWER);
-                    currentUse.Add(allHits[i], maxUse[allHits[i]]);
-                    break;
-            }
-        }
+      switch (allHits[i])
+      {
+        case AllHits.UpJab:
+          maxUse.Add(allHits[i], gameManager.HIT_UPJAB_MAXUSE);
+          hitPower.Add(allHits[i], gameManager.HIT_UPJAB_HITPOWER);
+          currentUse.Add(allHits[i], maxUse[allHits[i]]);
+          break;
+        case AllHits.DownJab:
+          maxUse.Add(allHits[i], gameManager.HIT_DOWNJAB_MAXUSE);
+          hitPower.Add(allHits[i], gameManager.HIT_DOWNJAB_HITPOWER);
+          currentUse.Add(allHits[i], maxUse[allHits[i]]);
+          break;
+        case AllHits.UpCross:
+          maxUse.Add(allHits[i], gameManager.HIT_UPCROSS_MAXUSE);
+          hitPower.Add(allHits[i], gameManager.HIT_UPCROSS_HITPOWER);
+          currentUse.Add(allHits[i], maxUse[allHits[i]]);
+          break;
+        case AllHits.DownCross:
+          maxUse.Add(allHits[i], gameManager.HIT_DOWNCROSS_MAXUSE);
+          hitPower.Add(allHits[i], gameManager.HIT_DOWNCROSS_HITPOWER);
+          currentUse.Add(allHits[i], maxUse[allHits[i]]);
+          break;
+        case AllHits.Uppercut:
+          maxUse.Add(allHits[i], gameManager.HIT_UPPERCUT_MAXUSE);
+          hitPower.Add(allHits[i], gameManager.HIT_DOWNCROSS_HITPOWER);
+          currentUse.Add(allHits[i], maxUse[allHits[i]]);
+          break;
+      }
     }
+    gameObject.GetComponent<HitsButtonsManager>().GenerateHitsButtons(allHits);
+  }
 
-    public void DealHit(AllHits hit)
+  public void DealHit(AllHits hit)
+  {
+    Debug.Log("Using hit");
+    if (ArrayUtility.Contains<AllHits>(allHits, hit))
     {
-        if (ArrayUtility.Contains<AllHits>(allHits, hit))
-        {
-            if (currentUse[hit] > 0)
-            {
-                gameManager.GetOpponentOf(gameObject).GetComponent<DefenseStances>().ReceiveHit(hit);
-            }
-        }
-        else
-        {
-            Debug.Log("This fighter doesn't know how to perform this hit...");
-        }
+      if (currentUse[hit] > 0)
+      {
+        gameManager.GetOpponentOf(gameObject).GetComponent<DefenseStances>().ReceiveHit(hit);
+      }
     }
+    else
+    {
+      Debug.Log("This fighter doesn't know how to perform this hit...");
+    }
+  }
 
-    public float GetHitPower(AllHits hit)
-    {
-        return hitPower[hit];
-    }
+  public float GetHitPower(AllHits hit)
+  {
+    return hitPower[hit];
+  }
 
-    public void SendDamage()
-    {
-        DealHit(AllHits.UpJab);
-    }
+  public void SendDamage()
+  {
+    DealHit(AllHits.UpJab);
+  }
 }
-
