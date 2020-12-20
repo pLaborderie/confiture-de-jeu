@@ -87,15 +87,25 @@ public class CommandManager : MonoBehaviour
         DownDodge[0] = 4 / 9; DownDodge[1] = 3 / 9; DownDodge[2] = 4 / 9;
     }
 
+
+
     public void RefreshProbabilities(AllHits hit)
     {
-        Commands lastCommandUsed = (Commands)Enum.Parse(typeof(Commands), hit.ToString());
+        ComputeProbabilities((Commands)Enum.Parse(typeof(Commands), hit.ToString()));
+    }
 
+    public void RefreshProbabilities(AllDefenseStances defenseStances)
+    {
+        ComputeProbabilities((Commands)Enum.Parse(typeof(Commands), defenseStances.ToString()));
+    }
+
+    private void ComputeProbabilities(Commands lastCommandUsed)
+    {
         switch (lastCommandUsed.ToString())
         {
             case "UpJab":
                 // Ordre du tableau de tag : {valeur à baisser, valeur à augmenter légèrement, valeur à augmenter)
-                RefreshValues(new Tags[] {Tags.zoneUp,Tags.zoneDown}, CommandZone);
+                RefreshValues(new Tags[] { Tags.zoneUp, Tags.zoneDown }, CommandZone);
                 RefreshValues(new Tags[] { Tags.powerWeak, Tags.powerMedium, Tags.powerStrong }, CommandPower);
                 RefreshValues(new Tags[] { Tags.typeOffense, Tags.typeDefense }, CommandType);
                 break;
@@ -146,7 +156,7 @@ public class CommandManager : MonoBehaviour
     {
         foreach (KeyValuePair<Tags, float> entry in list)
         {
-            switch(tags.Length)
+            switch (tags.Length)
             {
                 case 1:
                     if (entry.Key == tags[0] && entry.Value > 1 / 9)
@@ -189,5 +199,31 @@ public class CommandManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public Commands[] GetCommandsForCurrentRound()
+    {
+        List<KeyValuePair<Commands, float>> sortedProbabilities = new List<KeyValuePair<Commands, float>>();
+
+        sortedProbabilities.Add(new KeyValuePair<Commands, float>(Commands.UpJab, UpJab[0] + UpJab[1] + UpJab[2]));
+        sortedProbabilities.Add(new KeyValuePair<Commands, float>(Commands.DownJab, DownJab[0] + DownJab[1] + DownJab[2]));
+        sortedProbabilities.Add(new KeyValuePair<Commands, float>(Commands.UpCross, UpCross[0] + UpCross[1] + UpCross[2]));
+        sortedProbabilities.Add(new KeyValuePair<Commands, float>(Commands.DownCross, DownCross[0] + DownCross[1] + DownCross[2]));
+        sortedProbabilities.Add(new KeyValuePair<Commands, float>(Commands.Uppercut, Uppercut[0] + Uppercut[1] + Uppercut[2]));
+        sortedProbabilities.Add(new KeyValuePair<Commands, float>(Commands.UpBlock, UpBlock[0] + UpBlock[1] + UpBlock[2]));
+        sortedProbabilities.Add(new KeyValuePair<Commands, float>(Commands.DownBlock, DownBlock[0] + DownBlock[1] + DownBlock[2]));
+        sortedProbabilities.Add(new KeyValuePair<Commands, float>(Commands.UpDodge, UpDodge[0] + UpDodge[1] + UpDodge[2]));
+        sortedProbabilities.Add(new KeyValuePair<Commands, float>(Commands.DownDodge, DownDodge[0] + DownDodge[1] + DownDodge[2]));
+
+        sortedProbabilities.Sort();
+        List<KeyValuePair<Commands, float>> finalList = sortedProbabilities.GetRange(0, 3);
+        Commands[] returnedCommands = new Commands[3];
+
+        for(int i = 0; i < finalList.Count; i++)
+        {
+            returnedCommands.SetValue(finalList[i].Key,i);
+        }
+
+        return returnedCommands;
     }
 }
