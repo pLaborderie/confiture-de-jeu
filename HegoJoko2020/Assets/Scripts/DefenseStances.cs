@@ -140,7 +140,7 @@ public class DefenseStances : MonoBehaviour
     {
         if (hitReceived.HasValue)
         {
-            if (currentDefenseStance.HasValue && ArrayUtility.Contains<AllHits>(hitDodged[currentDefenseStance.GetValueOrDefault()], hitReceived.GetValueOrDefault()))
+            if (currentDefenseStance.HasValue && Array.Exists(hitDodged[currentDefenseStance.GetValueOrDefault()], hit => hit == hitReceived.GetValueOrDefault()))
             {
                 switch (hitReceived)
                 {
@@ -162,7 +162,7 @@ public class DefenseStances : MonoBehaviour
                 }
                 gameManager.NextPhase();
             }
-            else if (currentDefenseStance.HasValue && ArrayUtility.Contains<AllHits>(hitBlocked[currentDefenseStance.GetValueOrDefault()], hitReceived.GetValueOrDefault()))
+            else if (currentDefenseStance.HasValue && Array.Exists(hitBlocked[currentDefenseStance.GetValueOrDefault()], hit => hit == hitReceived.GetValueOrDefault()))
             {
                 switch (hitReceived)
                 {

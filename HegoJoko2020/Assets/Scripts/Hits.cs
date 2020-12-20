@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ public class Hits : MonoBehaviour
     private Dictionary<AllHits, int> currentTimerAnimation = new Dictionary<AllHits, int>();
 
     private bool b_isCurrentDealt;
-    
+
     void Start()
     {
         for (int i = 0; i < allHits.Length; i++)
@@ -81,12 +82,12 @@ public class Hits : MonoBehaviour
             }
             else
             {
-                if(b_isCurrentDealt)
+                if (b_isCurrentDealt)
                 {
                     gameManager.GetOpponentOf(gameObject).GetComponent<DefenseStances>().ReceiveHit(selectedHit.GetValueOrDefault());
                     b_isCurrentDealt = false;
                     selectedHit = null;
-                } 
+                }
             }
         }
     }
@@ -121,7 +122,7 @@ public class Hits : MonoBehaviour
 
     public void DealHit()
     {
-        if (ArrayUtility.Contains<AllHits>(allHits, selectedHit.GetValueOrDefault()))
+        if (Array.Exists(allHits, hit => hit == selectedHit.GetValueOrDefault()))
         {
             if (currentUse[selectedHit.GetValueOrDefault()] > 0)
             {
