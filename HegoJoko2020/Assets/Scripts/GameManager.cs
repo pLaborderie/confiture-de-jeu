@@ -77,11 +77,14 @@ public class GameManager : MonoBehaviour
     public GameObject fighter1;
     public GameObject fighter2;
 
+    public GameObject KO;
+
     private void Awake()
     {
         if (_instance == null)
         {
             CreateInstance();
+            KO.gameObject.SetActive(false);
         }
         else
         {
