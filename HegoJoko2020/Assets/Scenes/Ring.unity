@@ -1328,7 +1328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &792154168
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1845,6 +1845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f_health: 100
   healthBar: {fileID: 994420288}
+  playablePhase: 1
 --- !u!114 &916450228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1947,7 +1948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &955878805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2137,7 +2138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &996865641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2578,6 +2579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f_health: 100
   healthBar: {fileID: 1154519018}
+  playablePhase: 0
 --- !u!4 &1343469500
 Transform:
   m_ObjectHideFlags: 0
@@ -3175,6 +3177,7 @@ MonoBehaviour:
   DEFENSESTANCE_DOWNBLOCK_DAMAGEREDUCTION: 5
   DEFENSESTANCE_UPDODGE_DAMAGEREDUCTION: 0
   DEFENSESTANCE_DOWNDODGE_DAMAGEREDUCTION: 0
+  p_currentPhase: 0
   fighter1: {fileID: 1343469495}
   fighter2: {fileID: 916450222}
 --- !u!4 &1617765495
@@ -3705,7 +3708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2023912887
 RectTransform:
   m_ObjectHideFlags: 0

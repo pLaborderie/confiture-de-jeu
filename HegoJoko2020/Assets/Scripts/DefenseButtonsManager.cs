@@ -23,4 +23,9 @@ public class DefenseButtonsManager : MonoBehaviour
   {
     gameObject.GetComponent<DefenseStances>().SetStance(stance);
   }
+
+  public void ToggleVisibility()
+  {
+    buttonLayout.SetActive(!buttonLayout.activeSelf);
+  }
 }
