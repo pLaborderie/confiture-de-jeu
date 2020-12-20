@@ -4,8 +4,9 @@ using UnityEngine.UI;
 public class FighterInfo : MonoBehaviour
 {
   public float f_health;
-  public Slider healthBar;
+	public Slider healthBar;
   public GameManager.Phase playablePhase;
+  public GameObject hitFX;
 
   void Update()
   {
@@ -18,27 +19,29 @@ public class FighterInfo : MonoBehaviour
     {
       f_health -= damageDealt;
 
-      if (animation == "hurt")
-      {
-        switch (hit)
-        {
-          case AllHits.UpJab:
-            animation = "upHurt";
-            break;
-          case AllHits.DownJab:
-            animation = "downHurt";
-            break;
-          case AllHits.UpCross:
-            animation = "upHurt";
-            break;
-          case AllHits.DownCross:
-            animation = "downHurt";
-            break;
-          case AllHits.Uppercut:
-            animation = "upHurt";
-            break;
-        }
-      }
+            if(animation == "hurt")
+            {
+                hitFX.GetComponent<Animator>().Play("hitFX");
+
+                switch (hit)
+                {
+                    case AllHits.UpJab:
+                        animation = "upHurt";
+                        break;
+                    case AllHits.DownJab:
+                        animation = "downHurt";
+                        break;
+                    case AllHits.UpCross:
+                        animation = "upHurt";
+                        break;
+                    case AllHits.DownCross:
+                        animation = "downHurt";
+                        break;
+                    case AllHits.Uppercut:
+                        animation = "upHurt";
+                        break;
+                }
+            }
 
       if (f_health > 0)
       {

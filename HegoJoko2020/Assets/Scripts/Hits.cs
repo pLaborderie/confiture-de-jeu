@@ -78,19 +78,18 @@ public class Hits : MonoBehaviour
 
   public void DealHit(AllHits hit)
   {
-    Debug.Log("Using hit");
-    if (ArrayUtility.Contains<AllHits>(allHits, hit) && !gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("idleKo"))
-    {
-      if (currentUse[hit] > 0)
-      {
-        gameManager.GetOpponentOf(gameObject).GetComponent<DefenseStances>().ReceiveHit(hit);
-        gameObject.GetComponent<Animator>().Play(hitAnimation[hit]);
-      }
-    }
-    else
-    {
-      Debug.Log("This fighter doesn't know how to perform this hit...");
-    }
+        if (ArrayUtility.Contains<AllHits>(allHits, hit) && !gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("idleKo"))
+        {
+            if (currentUse[hit] > 0)
+            {
+                gameManager.GetOpponentOf(gameObject).GetComponent<DefenseStances>().ReceiveHit(hit);
+                gameObject.GetComponent<Animator>().Play(hitAnimation[hit]);
+            }
+        }
+        else
+        {
+            Debug.Log("This fighter doesn't know how to perform this hit...");
+        }
   }
 
   public float GetHitPower(AllHits hit)
