@@ -77,7 +77,10 @@ public class GameManager : MonoBehaviour
     public GameObject fighter1;
     public GameObject fighter2;
 
+    public GameObject Light1;
+    public GameObject Light2;
     public GameObject KO;
+
 
     private void Awake()
     {
@@ -85,6 +88,7 @@ public class GameManager : MonoBehaviour
         {
             CreateInstance();
             KO.gameObject.SetActive(false);
+            HideFighterLight(Light2);            
         }
         else
         {
@@ -159,6 +163,14 @@ public class GameManager : MonoBehaviour
         _fighter.GetComponent<HitsButtonsManager>().SetVisibility(false);
         _fighter.GetComponent<DefenseButtonsManager>().SetVisibility(false);
     }
+    private void DisplayFighterLight(GameObject _light)
+    {
+        _light.gameObject.SetActive(true);
+    }
+    private void HideFighterLight(GameObject _light)
+    {
+        _light.gameObject.SetActive(false);
+    }
     private void PhaseTriggers()
     {
         Phase currentPhase = p_currentPhase;
@@ -166,10 +178,14 @@ public class GameManager : MonoBehaviour
         {
             case Phase.SelectFirstMove:
                 DisplayFighterButtons(fighter1);
+                HideFighterLight(Light2);
+                DisplayFighterLight(Light1);
                 break;
             case Phase.SelectSecondMove:
                 HideFighterButtons(fighter1);
                 DisplayFighterButtons(fighter2);
+                HideFighterLight(Light1);
+                DisplayFighterLight(Light2);
                 break;
             case Phase.ApplyMoves:
                 HideFighterButtons(fighter2);
