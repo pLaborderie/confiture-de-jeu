@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hits : MonoBehaviour
 {
   public AllHits[] allHits;
+  public AllHits? selectedHit;
 
   private Dictionary<AllHits, int> maxUse = new Dictionary<AllHits, int>();
   private Dictionary<AllHits, int> currentUse = new Dictionary<AllHits, int>();
@@ -14,43 +15,65 @@ public class Hits : MonoBehaviour
   public GameManager gameManager;
   void Start()
   {
-        for (int i = 0; i < allHits.Length; i++)
-        {
-            switch (allHits[i])
-            {
-                case AllHits.UpJab:
-                    maxUse.Add(allHits[i], gameManager.HIT_UPJAB_MAXUSE);
-                    hitPower.Add(allHits[i], gameManager.HIT_UPJAB_HITPOWER);
-                    currentUse.Add(allHits[i], maxUse[allHits[i]]);
-                    hitAnimation.Add(allHits[i], "upJab");
-                    break;
-                case AllHits.DownJab:
-                    maxUse.Add(allHits[i], gameManager.HIT_DOWNJAB_MAXUSE);
-                    hitPower.Add(allHits[i], gameManager.HIT_DOWNJAB_HITPOWER);
-                    currentUse.Add(allHits[i], maxUse[allHits[i]]);
-                    hitAnimation.Add(allHits[i], "downJab");
-                    break;
-                case AllHits.UpCross:
-                    maxUse.Add(allHits[i], gameManager.HIT_UPCROSS_MAXUSE);
-                    hitPower.Add(allHits[i], gameManager.HIT_UPCROSS_HITPOWER);
-                    currentUse.Add(allHits[i], maxUse[allHits[i]]);
-                    hitAnimation.Add(allHits[i], "upCross");
-                    break;
-                case AllHits.DownCross:
-                    maxUse.Add(allHits[i], gameManager.HIT_DOWNCROSS_MAXUSE);
-                    hitPower.Add(allHits[i], gameManager.HIT_DOWNCROSS_HITPOWER);
-                    currentUse.Add(allHits[i], maxUse[allHits[i]]);
-                    hitAnimation.Add(allHits[i], "downCross");
-                    break;
-                case AllHits.Uppercut:
-                    maxUse.Add(allHits[i], gameManager.HIT_UPPERCUT_MAXUSE);
-                    hitPower.Add(allHits[i], gameManager.HIT_DOWNCROSS_HITPOWER);
-                    currentUse.Add(allHits[i], maxUse[allHits[i]]);
-                    hitAnimation.Add(allHits[i], "uppercut");
-                    break;
-            }
-        }
-        gameObject.GetComponent<HitsButtonsManager>().GenerateHitsButtons(allHits);
+    for (int i = 0; i < allHits.Length; i++)
+    {
+      switch (allHits[i])
+      {
+        case AllHits.UpJab:
+          maxUse.Add(allHits[i], gameManager.HIT_UPJAB_MAXUSE);
+          hitPower.Add(allHits[i], gameManager.HIT_UPJAB_HITPOWER);
+          currentUse.Add(allHits[i], maxUse[allHits[i]]);
+          hitAnimation.Add(allHits[i], "upJab");
+          break;
+        case AllHits.DownJab:
+          maxUse.Add(allHits[i], gameManager.HIT_DOWNJAB_MAXUSE);
+          hitPower.Add(allHits[i], gameManager.HIT_DOWNJAB_HITPOWER);
+          currentUse.Add(allHits[i], maxUse[allHits[i]]);
+          hitAnimation.Add(allHits[i], "downJab");
+          break;
+        case AllHits.UpCross:
+          maxUse.Add(allHits[i], gameManager.HIT_UPCROSS_MAXUSE);
+          hitPower.Add(allHits[i], gameManager.HIT_UPCROSS_HITPOWER);
+          currentUse.Add(allHits[i], maxUse[allHits[i]]);
+          hitAnimation.Add(allHits[i], "upCross");
+          break;
+        case AllHits.DownCross:
+          maxUse.Add(allHits[i], gameManager.HIT_DOWNCROSS_MAXUSE);
+          hitPower.Add(allHits[i], gameManager.HIT_DOWNCROSS_HITPOWER);
+          currentUse.Add(allHits[i], maxUse[allHits[i]]);
+          hitAnimation.Add(allHits[i], "downCross");
+          break;
+        case AllHits.Uppercut:
+          maxUse.Add(allHits[i], gameManager.HIT_UPPERCUT_MAXUSE);
+          hitPower.Add(allHits[i], gameManager.HIT_DOWNCROSS_HITPOWER);
+          currentUse.Add(allHits[i], maxUse[allHits[i]]);
+          hitAnimation.Add(allHits[i], "uppercut");
+          break;
+      }
+    }
+    gameObject.GetComponent<HitsButtonsManager>().GenerateHitsButtons(allHits);
+  }
+
+  public void SelectHit(AllHits hit)
+  {
+    if (gameObject.GetComponent<FighterInfo>().playablePhase == gameManager.p_currentPhase)
+    {
+      selectedHit = hit;
+      gameManager.NextPhase();
+    }
+    else
+    {
+      Debug.Log("Cannot select hit outside of fighter phase");
+    }
+  }
+
+  public void ApplySelectedHit()
+  {
+    if (selectedHit != null)
+    {
+      DealHit((AllHits)selectedHit);
+      selectedHit = null;
+    }
   }
 
   public void DealHit(AllHits hit)

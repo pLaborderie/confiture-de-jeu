@@ -21,6 +21,10 @@ public class HitsButtonsManager : MonoBehaviour
   }
   private void HandleHit(AllHits hit)
   {
-    gameObject.GetComponent<Hits>().DealHit(hit);
+    gameObject.GetComponent<Hits>().SelectHit(hit);
+  }
+  public void ToggleVisibility()
+  {
+    buttonLayout.SetActive(!buttonLayout.activeSelf);
   }
 }
