@@ -12,8 +12,10 @@ public class FighterInfo : MonoBehaviour
     private const float MAX_STRENGTH = 1.5f;
     private const float MIN_STRENGTH = 0.8f;
     public float f_health;
+    public float f_startHealth;
     public float f_strength;
     public Slider healthBar;
+    public Text healthIndicator;
     public GameManager gameManager;
     public GameManager.Phase playablePhase;
     public GameObject hitFX;
@@ -26,7 +28,7 @@ public class FighterInfo : MonoBehaviour
     public AudioClip ReceiveUppercut;
     public GameObject KO;
     public String Scene;
- 
+
     private Dictionary<AllKoStances, string> koStanceAnimation = new Dictionary<AllKoStances, string>();
 
     void Start()
@@ -39,6 +41,7 @@ public class FighterInfo : MonoBehaviour
     void Update()
     {
         healthBar.value = f_health;
+        healthIndicator.text = GetHealthText();
     }
 
     public void TakeDamage(float damageDealt, AllHits hit)
@@ -96,17 +99,24 @@ public class FighterInfo : MonoBehaviour
     private void SetDefaultHealth(float _health)
     {
         f_health = _health;
+        f_startHealth = _health;
         healthBar.maxValue = _health;
+        healthIndicator.text = GetHealthText();
     }
 
-    public void loadEnd() {
+    public void loadEnd()
+    {
         SceneManager.LoadScene(Scene);
     }
 
- 
+
     IEnumerator MyCoroutine(float _time)
     {
         yield return new WaitForSeconds(_time);
         loadEnd();
+    }
+    private string GetHealthText()
+    {
+        return f_health + "/" + f_startHealth + "PV";
     }
 }
