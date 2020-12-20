@@ -12,6 +12,11 @@ public class FighterInfo : MonoBehaviour
     public GameObject hitFX;
     public SoundManager soundManager;
     public AudioClip KnockOut;
+    public AudioClip ReceiveUpJab;
+    public AudioClip ReceiveDownJab;
+    public AudioClip ReceiveUpCross;
+    public AudioClip ReceiveDownCross;
+    public AudioClip ReceiveUppercut;
 
 
     private Dictionary<AllKoStances, string> koStanceAnimation = new Dictionary<AllKoStances, string>();
@@ -37,22 +42,27 @@ public class FighterInfo : MonoBehaviour
             switch (hit)
             {
                 case AllHits.UpJab:
+                    soundManager.PlaySingle(ReceiveUpJab);
                     gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
                     soundManager.PlaySingle(KnockOut);
                     break;
                 case AllHits.DownJab:
+                    soundManager.PlaySingle(ReceiveDownJab);
                     gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.DownKo]);
                     soundManager.PlaySingle(KnockOut);
                     break;
                 case AllHits.UpCross:
+                    soundManager.PlaySingle(ReceiveUpCross);
                     gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
                     soundManager.PlaySingle(KnockOut);
                     break;
                 case AllHits.DownCross:
+                    soundManager.PlaySingle(ReceiveDownCross);
                     gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.DownKo]);
                     soundManager.PlaySingle(KnockOut);
                     break;
                 case AllHits.Uppercut:
+                    soundManager.PlaySingle(ReceiveUppercut);
                     gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
                     soundManager.PlaySingle(KnockOut);
                     break;

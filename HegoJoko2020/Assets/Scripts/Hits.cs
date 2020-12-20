@@ -18,6 +18,15 @@ public class Hits : MonoBehaviour
 
     private bool b_isCurrentDealt;
 
+
+    public SoundManager soundManager;
+    public AudioClip ReceiveUpJab;
+    public AudioClip ReceiveDownJab;
+    public AudioClip ReceiveUpCross;
+    public AudioClip ReceiveDownCross;
+    public AudioClip ReceiveUppercut;
+    private AudioClip hit;
+
     void Start()
     {
         for (int i = 0; i < allHits.Length; i++)
@@ -31,6 +40,7 @@ public class Hits : MonoBehaviour
                     hitAnimation.Add(allHits[i], "upJab");
                     initialTimerAnimation.Add(allHits[i], (int)Mathf.Ceil(gameManager.HIT_UPJAB_PERFORMFRAMEANIMATION / gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).speed));
                     currentTimerAnimation.Add(allHits[i], 0);
+                    hit = ReceiveUpJab;
                     break;
                 case AllHits.DownJab:
                     maxUse.Add(allHits[i], gameManager.HIT_DOWNJAB_MAXUSE);
@@ -39,6 +49,7 @@ public class Hits : MonoBehaviour
                     hitAnimation.Add(allHits[i], "downJab");
                     initialTimerAnimation.Add(allHits[i], (int)Mathf.Ceil(gameManager.HIT_DOWNJAB_PERFORMFRAMEANIMATION / gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).speed));
                     currentTimerAnimation.Add(allHits[i], 0);
+                    hit = ReceiveDownJab;
                     break;
                 case AllHits.UpCross:
                     maxUse.Add(allHits[i], gameManager.HIT_UPCROSS_MAXUSE);
@@ -47,6 +58,7 @@ public class Hits : MonoBehaviour
                     hitAnimation.Add(allHits[i], "upCross");
                     initialTimerAnimation.Add(allHits[i], (int)Mathf.Ceil(gameManager.HIT_UPCROSS_PERFORMFRAMEANIMATION / gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).speed));
                     currentTimerAnimation.Add(allHits[i], 0);
+                    hit = ReceiveUpCross;
                     break;
                 case AllHits.DownCross:
                     maxUse.Add(allHits[i], gameManager.HIT_DOWNCROSS_MAXUSE);
@@ -55,6 +67,7 @@ public class Hits : MonoBehaviour
                     hitAnimation.Add(allHits[i], "downCross");
                     initialTimerAnimation.Add(allHits[i], (int)Mathf.Ceil(gameManager.HIT_DOWNCROSS_PERFORMFRAMEANIMATION / gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).speed));
                     currentTimerAnimation.Add(allHits[i], 0);
+                    hit = ReceiveDownCross;
                     break;
                 case AllHits.Uppercut:
                     maxUse.Add(allHits[i], gameManager.HIT_UPPERCUT_MAXUSE);
@@ -63,10 +76,10 @@ public class Hits : MonoBehaviour
                     hitAnimation.Add(allHits[i], "uppercut");
                     initialTimerAnimation.Add(allHits[i], (int)Mathf.Ceil(gameManager.HIT_UPPERCUT_PERFORMFRAMEANIMATION / gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).speed));
                     currentTimerAnimation.Add(allHits[i], 0);
+                    hit = ReceiveUppercut;
                     break;
             }
         }
-
         selectedHit = null;
         b_isCurrentDealt = false;
         gameObject.GetComponent<HitsButtonsManager>().GenerateHitsButtons(allHits);
@@ -126,6 +139,7 @@ public class Hits : MonoBehaviour
         {
             if (currentUse[selectedHit.GetValueOrDefault()] > 0)
             {
+                soundManager.PlaySingle(hit);
                 gameObject.GetComponent<Animator>().Play(hitAnimation[selectedHit.GetValueOrDefault()]);
                 b_isCurrentDealt = true;
                 currentTimerAnimation[selectedHit.GetValueOrDefault()] = initialTimerAnimation[selectedHit.GetValueOrDefault()];

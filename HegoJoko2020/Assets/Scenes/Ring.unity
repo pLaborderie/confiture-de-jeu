@@ -1997,6 +1997,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allHits: 0000000001000000020000000300000004000000
   gameManager: {fileID: 1617765494}
+  soundManager: {fileID: 800747248}
+  ReceiveUpJab: {fileID: 8300000, guid: 3940a29e02ebdd64b9f95a91d0273810, type: 3}
+  ReceiveDownJab: {fileID: 8300000, guid: d848ca392c799e347889f6a8becf4b9d, type: 3}
+  ReceiveUpCross: {fileID: 8300000, guid: 36437fca363d60544b607fd0c76ef003, type: 3}
+  ReceiveDownCross: {fileID: 8300000, guid: df280970641d3c14bb624872c14b7da3, type: 3}
+  ReceiveUppercut: {fileID: 8300000, guid: 41532062dbdf0f94996e8e027f5d77c1, type: 3}
 --- !u!114 &916450226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2030,6 +2036,11 @@ MonoBehaviour:
   hitFX: {fileID: 2099036909}
   soundManager: {fileID: 800747248}
   KnockOut: {fileID: 8300000, guid: b8bcf625376e7fe41b9e8a5653b47f76, type: 3}
+  ReceiveUpJab: {fileID: 8300000, guid: 3940a29e02ebdd64b9f95a91d0273810, type: 3}
+  ReceiveDownJab: {fileID: 8300000, guid: d848ca392c799e347889f6a8becf4b9d, type: 3}
+  ReceiveUpCross: {fileID: 8300000, guid: 36437fca363d60544b607fd0c76ef003, type: 3}
+  ReceiveDownCross: {fileID: 8300000, guid: df280970641d3c14bb624872c14b7da3, type: 3}
+  ReceiveUppercut: {fileID: 8300000, guid: 41532062dbdf0f94996e8e027f5d77c1, type: 3}
 --- !u!114 &916450228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3130,6 +3141,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allHits: 0000000001000000020000000300000004000000
   gameManager: {fileID: 1617765494}
+  soundManager: {fileID: 800747248}
+  ReceiveUpJab: {fileID: 8300000, guid: 3940a29e02ebdd64b9f95a91d0273810, type: 3}
+  ReceiveDownJab: {fileID: 8300000, guid: d848ca392c799e347889f6a8becf4b9d, type: 3}
+  ReceiveUpCross: {fileID: 8300000, guid: 36437fca363d60544b607fd0c76ef003, type: 3}
+  ReceiveDownCross: {fileID: 8300000, guid: df280970641d3c14bb624872c14b7da3, type: 3}
+  ReceiveUppercut: {fileID: 8300000, guid: 41532062dbdf0f94996e8e027f5d77c1, type: 3}
 --- !u!114 &1343469498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3163,6 +3180,11 @@ MonoBehaviour:
   hitFX: {fileID: 168797040}
   soundManager: {fileID: 800747248}
   KnockOut: {fileID: 8300000, guid: b8bcf625376e7fe41b9e8a5653b47f76, type: 3}
+  ReceiveUpJab: {fileID: 0}
+  ReceiveDownJab: {fileID: 0}
+  ReceiveUpCross: {fileID: 0}
+  ReceiveDownCross: {fileID: 0}
+  ReceiveUppercut: {fileID: 0}
 --- !u!4 &1343469500
 Transform:
   m_ObjectHideFlags: 0
@@ -4008,7 +4030,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 95e584d18171e1244b16768e0526ea75, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.08
+  m_Volume: 0.415
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4191,7 +4213,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.08
+  m_Value: 0.415
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
