@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Hits : MonoBehaviour
@@ -153,6 +152,7 @@ public class Hits : MonoBehaviour
 
     public float GetHitPower(AllHits hit)
     {
-        return hitPower[hit];
+        float strength = gameObject.GetComponent<FighterInfo>().f_strength;
+        return hitPower[hit] * strength;
     }
 }
