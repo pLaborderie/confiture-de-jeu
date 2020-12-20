@@ -6,15 +6,15 @@ public class Hits : MonoBehaviour
 {
     public AllHits[] allHits;
 
-    private Dictionary<AllHits, int> maxUse;
-    private Dictionary<AllHits, int> currentUse;
-    private Dictionary<AllHits, float> hitPower;
+    private Dictionary<AllHits, int> maxUse = new Dictionary<AllHits, int>();
+    private Dictionary<AllHits, int> currentUse = new Dictionary<AllHits, int>();
+    private Dictionary<AllHits, float> hitPower = new Dictionary<AllHits, float>();
 
-    private GameManager gameManager;
+    public GameManager gameManager;
 
     void Start()
     {
-        for(int i = 0; i < allHits.Length; i++)
+        for (int i = 0; i < allHits.Length; i++)
         {
             switch (allHits[i])
             {
@@ -45,8 +45,6 @@ public class Hits : MonoBehaviour
                     break;
             }
         }
-
-        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void DealHit(AllHits hit)
@@ -63,4 +61,15 @@ public class Hits : MonoBehaviour
             Debug.Log("This fighter doesn't know how to perform this hit...");
         }
     }
+
+    public float GetHitPower(AllHits hit)
+    {
+        return hitPower[hit];
+    }
+
+    public void SendDamage()
+    {
+        DealHit(AllHits.UpJab);
+    }
 }
+

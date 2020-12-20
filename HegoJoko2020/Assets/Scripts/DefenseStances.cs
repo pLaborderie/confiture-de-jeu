@@ -6,12 +6,12 @@ public class DefenseStances : MonoBehaviour
 {
     public AllDefenseStances[] allDefenseStances;
 
-    private Dictionary<AllDefenseStances, AllHits[]> hitBlocked;
-    private Dictionary<AllDefenseStances, AllHits[]> hitDodged;
-    private Dictionary<AllDefenseStances, float> damageReduction;
+    private Dictionary<AllDefenseStances, AllHits[]> hitBlocked = new Dictionary<AllDefenseStances, AllHits[]>();
+    private Dictionary<AllDefenseStances, AllHits[]> hitDodged = new Dictionary<AllDefenseStances, AllHits[]>();
+    private Dictionary<AllDefenseStances, float> damageReduction = new Dictionary<AllDefenseStances, float>();
 
     private AllDefenseStances currentDefenseStance;
-    private GameManager gameManager;
+    public GameManager gameManager;
 
     void Start()
     {
@@ -41,8 +41,6 @@ public class DefenseStances : MonoBehaviour
                     break;
             }
         }
-
-        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void ReceiveHit(AllHits hitReceived)
@@ -53,11 +51,11 @@ public class DefenseStances : MonoBehaviour
         }
         else if (ArrayUtility.Contains<AllHits>(hitBlocked[currentDefenseStance], hitReceived))
         {
-            //gameObject.TakeDamage(hitReceived.f_hitPower - currentDefenseStance.f_damageReduction);
+            gameObject.GetComponent<FighterInfo>().TakeDamage(gameObject.GetComponent<Hits>().GetHitPower(hitReceived) - damageReduction[currentDefenseStance]);
         }
         else
         {
-            //gameObject.TakeDamage(hitReceived.f_hitPower);
+            gameObject.GetComponent<FighterInfo>().TakeDamage(gameObject.GetComponent<Hits>().GetHitPower(hitReceived));
         }
     }
 }
