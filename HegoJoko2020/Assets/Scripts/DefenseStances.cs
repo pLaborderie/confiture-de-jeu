@@ -203,32 +203,31 @@ public class DefenseStances : MonoBehaviour
                         case AllHits.UpJab:
                             gameObject.GetComponent<Animator>().Play(hurtStanceAnimation[AllHurtStances.UpHurt]);
                             hurtCurrentTimerAnimation[AllHurtStances.UpHurt] = hurtInitialTimerAnimation[AllHurtStances.UpHurt];
-                            hit = ReceiveUpJab;
+                            soundManager.PlaySingle(ReceiveUpJab);
                             break;
                         case AllHits.DownJab:
                             gameObject.GetComponent<Animator>().Play(hurtStanceAnimation[AllHurtStances.DownHurt]);
                             hurtCurrentTimerAnimation[AllHurtStances.DownHurt] = hurtInitialTimerAnimation[AllHurtStances.DownHurt];
-                            hit = ReceiveDownJab;
+                            soundManager.PlaySingle(ReceiveDownJab);
                             break;
                         case AllHits.UpCross:
                             gameObject.GetComponent<Animator>().Play(hurtStanceAnimation[AllHurtStances.UpHurt]);
                             hurtCurrentTimerAnimation[AllHurtStances.UpHurt] = hurtInitialTimerAnimation[AllHurtStances.UpHurt];
-                            hit = ReceiveUpCross;
+                            soundManager.PlaySingle(ReceiveUpCross);
                             break;
                         case AllHits.DownCross:
                             gameObject.GetComponent<Animator>().Play(hurtStanceAnimation[AllHurtStances.DownHurt]);
                             hurtCurrentTimerAnimation[AllHurtStances.DownHurt] = hurtInitialTimerAnimation[AllHurtStances.DownHurt];
-                            hit = ReceiveDownCross;
+                            soundManager.PlaySingle(ReceiveDownCross);
                             break;
                         case AllHits.Uppercut:
                             gameObject.GetComponent<Animator>().Play(hurtStanceAnimation[AllHurtStances.UpHurt]);
                             soundManager.PlaySingle(ReceiveUppercut);
                             hurtCurrentTimerAnimation[AllHurtStances.UpHurt] = hurtInitialTimerAnimation[AllHurtStances.UpHurt];
-                            hit = ReceiveUppercut;
+                            soundManager.PlaySingle(ReceiveUppercut);
                             break;
                     }
                 }
-                soundManager.PlaySingle(hit);
                 currentHitReceived = hitReceived.GetValueOrDefault();
                 b_isCurrentReceived = true;
             }
@@ -240,22 +239,21 @@ public class DefenseStances : MonoBehaviour
             switch (hitReceived)
             {
                 case AllHits.UpJab:
-                    hit = ReceiveUpJab;
+                    soundManager.PlaySingle(ReceiveUpJab);
                     break;
                 case AllHits.DownJab:
-                    hit = ReceiveDownJab;
+                    soundManager.PlaySingle(ReceiveDownJab);
                     break;
                 case AllHits.UpCross:
-                    hit = ReceiveUpCross;
+                    soundManager.PlaySingle(ReceiveUpCross);
                     break;
                 case AllHits.DownCross:
-                    hit = ReceiveDownCross;
+                    soundManager.PlaySingle(ReceiveDownCross);
                     break;
                 case AllHits.Uppercut:
-                    hit = ReceiveUppercut;
+                    soundManager.PlaySingle(ReceiveUppercut);
                     break;
             }
-            soundManager.PlaySingle(hit);
             gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[currentDefenseStance.GetValueOrDefault()]);
 
             if (gameManager.p_currentPhase == GameManager.Phase.ApplyMoves)
