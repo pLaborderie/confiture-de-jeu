@@ -7,6 +7,7 @@ public class FighterInfo : MonoBehaviour
 {
     public float f_health;
 	public Slider healthBar;
+    public GameObject hitFX;
 
     void Update()
     {
@@ -21,6 +22,8 @@ public class FighterInfo : MonoBehaviour
 
             if(animation == "hurt")
             {
+                hitFX.GetComponent<Animator>().Play("hitFX");
+
                 switch (hit)
                 {
                     case AllHits.UpJab:

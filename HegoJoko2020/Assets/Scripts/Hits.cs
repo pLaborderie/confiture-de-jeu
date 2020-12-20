@@ -55,7 +55,6 @@ public class Hits : MonoBehaviour
 
   public void DealHit(AllHits hit)
   {
-        Debug.Log("Using hit");
         if (ArrayUtility.Contains<AllHits>(allHits, hit) && !gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("idleKo"))
         {
             if (currentUse[hit] > 0)
