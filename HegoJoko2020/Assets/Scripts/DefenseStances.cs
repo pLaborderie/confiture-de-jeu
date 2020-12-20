@@ -82,7 +82,6 @@ public class DefenseStances : MonoBehaviour
           break;
         case AllHits.DownJab:
           gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.DownDodge]);
-          soundManager.PlaySingle(ReceiveDodge);
           break;
         case AllHits.UpCross:
           gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
@@ -90,7 +89,6 @@ public class DefenseStances : MonoBehaviour
           break;
         case AllHits.DownCross:
           gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.DownDodge]);
-          soundManager.PlaySingle(ReceiveDodge);
           break;
         case AllHits.Uppercut:
           gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
