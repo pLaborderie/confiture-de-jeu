@@ -238,3 +238,4 @@ public class DefenseStances : MonoBehaviour
             gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[currentDefenseStance.GetValueOrDefault()]);
         }
     }
+}
