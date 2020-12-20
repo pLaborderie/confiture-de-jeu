@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FighterInfo : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class FighterInfo : MonoBehaviour
     public AudioClip ReceiveDownCross;
     public AudioClip ReceiveUppercut;
     public GameObject KO;
+    public String Scene;
  
     private Dictionary<AllKoStances, string> koStanceAnimation = new Dictionary<AllKoStances, string>();
 
@@ -75,6 +78,7 @@ public class FighterInfo : MonoBehaviour
             }
 
             KO.gameObject.SetActive(true);
+            StartCoroutine(MyCoroutine(3));
         }
         if (gameManager.p_currentPhase == GameManager.Phase.ApplyMoves)
         {
@@ -93,5 +97,16 @@ public class FighterInfo : MonoBehaviour
     {
         f_health = _health;
         healthBar.maxValue = _health;
+    }
+
+    public void loadEnd() {
+        SceneManager.LoadScene(Scene);
+    }
+
+ 
+    IEnumerator MyCoroutine(float _time)
+    {
+        yield return new WaitForSeconds(_time);
+        loadEnd();
     }
 }
