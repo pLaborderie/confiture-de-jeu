@@ -13,7 +13,6 @@ public class FighterInfo : MonoBehaviour
     public SoundManager soundManager;
     public AudioClip KnockOut;
 
-
     private Dictionary<AllKoStances, string> koStanceAnimation = new Dictionary<AllKoStances, string>();
 
     void Start()
