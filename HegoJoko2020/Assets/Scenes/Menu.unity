@@ -205,7 +205,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1223800431}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: ExitGameBtn
         m_Mode: 1
@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 314440569}
   - component: {fileID: 314440568}
   - component: {fileID: 314440567}
+  - component: {fileID: 314440570}
   m_Layer: 5
   m_Name: NewGame
   m_TagString: Untagged
@@ -337,7 +338,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1223800431}
+      - m_Target: {fileID: 314440570}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: NewGameBtn
         m_Mode: 5
@@ -387,6 +388,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314440565}
   m_CullTransparentMesh: 0
+--- !u!114 &314440570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314440565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa4db0697e597444a8019bf0f89ff66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &690414374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,7 +1090,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1223800430}
-  - component: {fileID: 1223800431}
   m_Layer: 0
   m_Name: _GM_Start&Stop
   m_TagString: Untagged
@@ -1099,19 +1111,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1223800431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1223800429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfa4db0697e597444a8019bf0f89ff66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseFunction: {fileID: 0}
 --- !u!1 &2045797663
 GameObject:
   m_ObjectHideFlags: 0
