@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Outro.unity
     guid: 8b9f7c405c47cef4b96207ad424966ad
+  - enabled: 1
+    path: Assets/Scenes/OutroJ1.unity
+    guid: 431c2e40f5dff034fa4743e9416111a0
+  - enabled: 1
+    path: Assets/Scenes/OutroJ2.unity
+    guid: 8c4363c8527d41743b2904f8de602aea
   m_configObjects: {}
