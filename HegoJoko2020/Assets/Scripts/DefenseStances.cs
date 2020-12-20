@@ -235,7 +235,27 @@ public class DefenseStances : MonoBehaviour
         }
         else if (currentDefenseStance.HasValue)
         {
+            switch (hitReceived)
+            {
+                case AllHits.UpJab:
+                    hit = ReceiveUpJab;
+                    break;
+                case AllHits.DownJab:
+                    hit = ReceiveDownJab;
+                    break;
+                case AllHits.UpCross:
+                    hit = ReceiveUpCross;
+                    break;
+                case AllHits.DownCross:
+                    hit = ReceiveDownCross;
+                    break;
+                case AllHits.Uppercut:
+                    hit = ReceiveUppercut;
+                    break;
+            }
+            soundManager.PlaySingle(hit);
             gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[currentDefenseStance.GetValueOrDefault()]);
+            
         }
     }
 }
