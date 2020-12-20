@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum AllHits
 {
@@ -82,19 +83,22 @@ public class GameManager : MonoBehaviour
     public GameObject Light2;
     public GameObject KO;
 
-
     private void Awake()
     {
+        CreateInstance(); 
+        KO.gameObject.SetActive(false);
+        HideFighterLight(Light2);  
+
+/*
         if (_instance == null)
         {
-            CreateInstance();
-            KO.gameObject.SetActive(false);
-            HideFighterLight(Light2);   
+            CreateInstance(); 
         }
         else
         {
             Destroy(this);
         }
+*/
     }
 
     private void CreateInstance()
