@@ -4,87 +4,78 @@ using UnityEngine.UI;
 public class FighterInfo : MonoBehaviour
 {
   public float f_health;
-	public Slider healthBar;
+  public Slider healthBar;
   public GameManager.Phase playablePhase;
   public GameObject hitFX;
 
-  void Update()
+    private bool b_isHitting;
+
+    void Start()
+    {
+        b_isHitting = false;
+    }
+
+    void Update()
   {
     healthBar.value = f_health;
   }
 
   public void TakeDamage(float damageDealt, AllHits hit, string animation)
   {
-    if (!gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("idleKo"))
+        f_health -= (damageDealt > f_health ? f_health : damageDealt);
+        hitFX.GetComponent<Animator>().Play("hitFX");
+
+    if (animation == "hurt" && !b_isHitting)
     {
-      f_health -= damageDealt;
+       switch (hit)
+       {
+            case AllHits.UpJab:
+                animation = "upHurt";
+                break;
+            case AllHits.DownJab:
+                animation = "downHurt";
+                break;
+            case AllHits.UpCross:
+                animation = "upHurt";
+                break;
+            case AllHits.DownCross:
+               animation = "downHurt";
+               break;
+            case AllHits.Uppercut:
+               animation = "upHurt";
+               break;
+       }
 
-            if(animation == "hurt")
-            {
-                hitFX.GetComponent<Animator>().Play("hitFX");
+         gameObject.GetComponent<Animator>().Play(animation);
+     }
 
+      if (f_health == 0)
+      {
                 switch (hit)
                 {
                     case AllHits.UpJab:
-                        animation = "upHurt";
+                        animation = "upKo";
                         break;
                     case AllHits.DownJab:
-                        animation = "downHurt";
+                        animation = "downKo";
                         break;
                     case AllHits.UpCross:
-                        animation = "upHurt";
+                        animation = "upKo";
                         break;
                     case AllHits.DownCross:
-                        animation = "downHurt";
+                        animation = "downKo";
                         break;
                     case AllHits.Uppercut:
-                        animation = "upHurt";
+                        animation = "upKo";
                         break;
                 }
-            }
 
-      if (f_health > 0)
-      {
-        switch (hit)
-        {
-          case AllHits.UpJab:
             gameObject.GetComponent<Animator>().Play(animation);
-            break;
-          case AllHits.DownJab:
-            gameObject.GetComponent<Animator>().Play(animation);
-            break;
-          case AllHits.UpCross:
-            gameObject.GetComponent<Animator>().Play(animation);
-            break;
-          case AllHits.DownCross:
-            gameObject.GetComponent<Animator>().Play(animation);
-            break;
-          case AllHits.Uppercut:
-            gameObject.GetComponent<Animator>().Play(animation);
-            break;
-        }
       }
-      else
-      {
-        switch (hit)
-        {
-          case AllHits.UpJab:
-            gameObject.GetComponent<Animator>().Play("upKo");
-            break;
-          case AllHits.DownJab:
-            gameObject.GetComponent<Animator>().Play("downKo");
-            break;
-          case AllHits.UpCross:
-            gameObject.GetComponent<Animator>().Play("upKo");
-            break;
-          case AllHits.DownCross:
-            gameObject.GetComponent<Animator>().Play("downKo");
-            break;
-          case AllHits.Uppercut:
-            gameObject.GetComponent<Animator>().Play("upKo");
-            break;
-        }
-      }
-    }
   }
+
+    public void SetIsHitting(bool b_value)
+    {
+        b_isHitting = b_value;
+    }
 }

@@ -45,7 +45,7 @@ public class Hits : MonoBehaviour
           break;
         case AllHits.Uppercut:
           maxUse.Add(allHits[i], gameManager.HIT_UPPERCUT_MAXUSE);
-          hitPower.Add(allHits[i], gameManager.HIT_DOWNCROSS_HITPOWER);
+          hitPower.Add(allHits[i], gameManager.HIT_UPPERCUT_HITPOWER);
           currentUse.Add(allHits[i], maxUse[allHits[i]]);
           hitAnimation.Add(allHits[i], "uppercut");
           break;
@@ -78,12 +78,13 @@ public class Hits : MonoBehaviour
 
   public void DealHit(AllHits hit)
   {
-        if (ArrayUtility.Contains<AllHits>(allHits, hit) && !gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("idleKo"))
+        if (ArrayUtility.Contains<AllHits>(allHits, hit))
         {
             if (currentUse[hit] > 0)
             {
-                gameManager.GetOpponentOf(gameObject).GetComponent<DefenseStances>().ReceiveHit(hit);
+                gameObject.GetComponent<FighterInfo>().SetIsHitting(true);
                 gameObject.GetComponent<Animator>().Play(hitAnimation[hit]);
+                gameManager.GetOpponentOf(gameObject).GetComponent<DefenseStances>().ReceiveHit(hit);
             }
         }
         else

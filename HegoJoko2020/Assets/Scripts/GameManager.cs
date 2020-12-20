@@ -18,22 +18,22 @@ public enum AllDefenseStances
 
 public class GameManager : MonoBehaviour
 {
-  public int HIT_UPJAB_MAXUSE = 3;
-  public int HIT_DOWNJAB_MAXUSE = 3;
-  public int HIT_UPCROSS_MAXUSE = 3;
-  public int HIT_DOWNCROSS_MAXUSE = 3;
-  public int HIT_UPPERCUT_MAXUSE = 3;
+  public int HIT_UPJAB_MAXUSE;
+  public int HIT_DOWNJAB_MAXUSE;
+  public int HIT_UPCROSS_MAXUSE;
+  public int HIT_DOWNCROSS_MAXUSE;
+  public int HIT_UPPERCUT_MAXUSE;
 
-  public float HIT_UPJAB_HITPOWER = 10;
-  public float HIT_DOWNJAB_HITPOWER = 10;
-  public float HIT_UPCROSS_HITPOWER = 10;
-  public float HIT_DOWNCROSS_HITPOWER = 10;
-  public float HIT_UPPERCUT_HITPOWER = 30;
+  public float HIT_UPJAB_HITPOWER;
+  public float HIT_DOWNJAB_HITPOWER;
+  public float HIT_UPCROSS_HITPOWER;
+  public float HIT_DOWNCROSS_HITPOWER;
+  public float HIT_UPPERCUT_HITPOWER;
 
-  public float DEFENSESTANCE_UPBLOCK_DAMAGEREDUCTION = 5;
-  public float DEFENSESTANCE_DOWNBLOCK_DAMAGEREDUCTION = 5;
-  public float DEFENSESTANCE_UPDODGE_DAMAGEREDUCTION = 0;
-  public float DEFENSESTANCE_DOWNDODGE_DAMAGEREDUCTION = 0;
+  public float DEFENSESTANCE_UPBLOCK_DAMAGEREDUCTION;
+  public float DEFENSESTANCE_DOWNBLOCK_DAMAGEREDUCTION;
+  public float DEFENSESTANCE_UPDODGE_DAMAGEREDUCTION;
+  public float DEFENSESTANCE_DOWNDODGE_DAMAGEREDUCTION;
 
   public enum Phase
   {
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
     }
   }
 
-  private void CreateInstance()
+    private void CreateInstance()
   {
     _instance = this;
     DontDestroyOnLoad(this.gameObject);
@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
       float fighter2Health = fighter2.GetComponent<FighterInfo>().f_health;
       if (fighter1Health <= 0 && fighter2Health <= 0)
       {
+        ForceDoubleKO();
         p_currentPhase = Phase.DoubleKnockOut;
       }
       else if (fighter1Health <= 0)
@@ -117,8 +118,8 @@ public class GameManager : MonoBehaviour
         p_currentPhase = Phase.SelectFirstMove;
       }
     }
+
     PhaseTriggers();
-    Debug.Log(p_currentPhase);
   }
   private void ToggleFighterButtons(GameObject _fighter)
   {
@@ -131,7 +132,9 @@ public class GameManager : MonoBehaviour
     switch (currentPhase)
     {
       case Phase.SelectFirstMove:
-        ToggleFighterButtons(fighter1);
+                fighter1.GetComponent<FighterInfo>().SetIsHitting(false);
+                fighter2.GetComponent<FighterInfo>().SetIsHitting(false);
+                ToggleFighterButtons(fighter1);
         break;
       case Phase.SelectSecondMove:
         ToggleFighterButtons(fighter1);
@@ -147,4 +150,10 @@ public class GameManager : MonoBehaviour
         break;
     }
   }
+
+  private void ForceDoubleKO()
+    {
+        fighter1.GetComponent<FighterInfo>().TakeDamage(0, AllHits.UpJab, "hurt");
+        fighter2.GetComponent<FighterInfo>().TakeDamage(0, AllHits.UpJab, "hurt");
+    }
 }

@@ -21,7 +21,7 @@ public class DefenseButtonsManager : MonoBehaviour
   }
   private void HandleDefend(AllDefenseStances stance)
   {
-    gameObject.GetComponent<DefenseStances>().SetStance(stance);
+    gameObject.GetComponent<DefenseStances>().SelectStance(stance);
   }
 
   public void ToggleVisibility()

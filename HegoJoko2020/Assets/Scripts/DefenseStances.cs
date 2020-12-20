@@ -50,11 +50,10 @@ public class DefenseStances : MonoBehaviour
     gameObject.GetComponent<DefenseButtonsManager>().GenerateDefenseButtons(allDefenseStances);
   }
 
-  public void SetStance(AllDefenseStances stance)
+  public void SelectStance(AllDefenseStances stance)
   {
     if (gameObject.GetComponent<FighterInfo>().playablePhase == gameManager.p_currentPhase)
     {
-      Debug.Log("New stance: " + Enum.GetName(typeof(AllDefenseStances), stance));
       currentDefenseStance = stance;
       gameManager.NextPhase();
     }
@@ -66,7 +65,7 @@ public class DefenseStances : MonoBehaviour
 
   public void ReceiveHit(AllHits hitReceived)
   {
-    if (currentDefenseStance.HasValue && ArrayUtility.Contains<AllHits>(hitDodged[currentDefenseStance.GetValueOrDefault()], hitReceived) && gameObject.GetComponent<FighterInfo>().f_health > 0)
+    if (currentDefenseStance.HasValue && ArrayUtility.Contains<AllHits>(hitDodged[currentDefenseStance.GetValueOrDefault()], hitReceived))
     {
       switch (hitReceived)
       {
@@ -87,9 +86,28 @@ public class DefenseStances : MonoBehaviour
           break;
       }
     }
-    else if (currentDefenseStance.HasValue && ArrayUtility.Contains<AllHits>(hitBlocked[currentDefenseStance.GetValueOrDefault()], hitReceived) && gameObject.GetComponent<FighterInfo>().f_health > 0)
+    else if (currentDefenseStance.HasValue && ArrayUtility.Contains<AllHits>(hitBlocked[currentDefenseStance.GetValueOrDefault()], hitReceived))
     {
-      gameObject.GetComponent<FighterInfo>().TakeDamage(gameObject.GetComponent<Hits>().GetHitPower(hitReceived) - damageReduction[currentDefenseStance.GetValueOrDefault()], hitReceived, defenseStanceAnimation[currentDefenseStance.GetValueOrDefault()]);
+            switch (hitReceived)
+            {
+                case AllHits.UpJab:
+                    gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpBlock]);
+                    break;
+                case AllHits.DownJab:
+                    gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.DownBlock]);
+                    break;
+                case AllHits.UpCross:
+                    gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpBlock]);
+                    break;
+                case AllHits.DownCross:
+                    gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.DownBlock]);
+                    break;
+                case AllHits.Uppercut:
+                    gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpBlock]);
+                    break;
+            }
+
+            gameObject.GetComponent<FighterInfo>().TakeDamage(gameObject.GetComponent<Hits>().GetHitPower(hitReceived) - damageReduction[currentDefenseStance.GetValueOrDefault()], hitReceived, defenseStanceAnimation[currentDefenseStance.GetValueOrDefault()]);
     }
     else
     {
