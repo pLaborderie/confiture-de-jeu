@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class FighterInfo : MonoBehaviour
@@ -15,84 +16,44 @@ public class FighterInfo : MonoBehaviour
   public AudioClip ReceiveUppercut;
   public AudioClip KnockOut;
 
-    private bool b_isHitting;
+    private Dictionary<AllKoStances, string> koStanceAnimation = new Dictionary<AllKoStances, string>();
 
     void Start()
     {
-        b_isHitting = false;
+        koStanceAnimation.Add(AllKoStances.UpKo, "upKo");
+        koStanceAnimation.Add(AllKoStances.DownKo, "downKo");
     }
 
     void Update()
-  {
-    healthBar.value = f_health;
-  }
+    {
+        healthBar.value = f_health;
+    }
 
-  public void TakeDamage(float damageDealt, AllHits hit, string animation)
-  {
+    public void TakeDamage(float damageDealt, AllHits hit)
+    {
         f_health -= (damageDealt > f_health ? f_health : damageDealt);
         hitFX.GetComponent<Animator>().Play("hitFX");
 
-    if (animation == "hurt" && !b_isHitting)
-    {
-       switch (hit)
-       {
-            case AllHits.UpJab:
-                animation = "upHurt";
-                soundManager.PlaySingle(ReceiveUpJab);
-                break;
-            case AllHits.DownJab:
-                animation = "downHurt";
-                soundManager.PlaySingle(ReceiveDownJab);
-                break;
-            case AllHits.UpCross:
-                animation = "upHurt";
-                soundManager.PlaySingle(ReceiveUpCross);
-                break;
-            case AllHits.DownCross:
-               animation = "downHurt";
-               soundManager.PlaySingle(ReceiveDownCross);
-               break;
-            case AllHits.Uppercut:
-               animation = "upHurt";
-               soundManager.PlaySingle(ReceiveUppercut);
-               break;
-       }
-
-         gameObject.GetComponent<Animator>().Play(animation);
-     }
-
-      if (f_health == 0)
-      {
-                switch (hit)
-                {
-                    case AllHits.UpJab:
-                        animation = "upKo";
-                        soundManager.PlaySingle(KnockOut);
-                        break;
-                    case AllHits.DownJab:
-                        animation = "downKo";
-                        soundManager.PlaySingle(KnockOut);
-                        break;
-                    case AllHits.UpCross:
-                        animation = "upKo";
-                        soundManager.PlaySingle(KnockOut);
-                        break;
-                    case AllHits.DownCross:
-                        animation = "downKo";
-                        soundManager.PlaySingle(KnockOut);
-                        break;
-                    case AllHits.Uppercut:
-                        animation = "upKo";
-                        soundManager.PlaySingle(KnockOut);
-                        break;
-                }
-
-            gameObject.GetComponent<Animator>().Play(animation);
-      }
-  }
-
-    public void SetIsHitting(bool b_value)
-    {
-        b_isHitting = b_value;
+        if (f_health == 0)
+        {
+            switch (hit)
+            {
+                case AllHits.UpJab:
+                    gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
+                    break;
+                case AllHits.DownJab:
+                    gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.DownKo]);
+                    break;
+                case AllHits.UpCross:
+                    gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
+                    break;
+                case AllHits.DownCross:
+                    gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.DownKo]);
+                    break;
+                case AllHits.Uppercut:
+                    gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
+                    break;
+            }
+        }
     }
 }
