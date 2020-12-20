@@ -46,6 +46,18 @@ public class CommandManager : MonoBehaviour
 
     void Start()
     {
+        // C'est dans ces variables qu'on stock les probas. Le [0] correspond à la valeur de zone,, le [1] à la valeur de force et le [2] à la valeur type.
+        UpJab[0] = 5f / 9f; UpJab[1] = 4f / 9f; UpJab[2] = 5f / 9f;
+        DownJab[0] = 4f / 9f; DownJab[1] = 2f / 9f; DownJab[2] = 5f / 9f;
+        UpCross[0] = 5f / 9f; UpCross[1] = 2f / 9f; UpCross[2] = 5f / 9f;
+        DownCross[0] = 4f / 9f; DownCross[1] = 4f / 9f; DownCross[2] = 5f / 9f;
+        Uppercut[0] = 5f / 9f; Uppercut[1] = 3f / 9f; Uppercut[2] = 5f / 9f;
+        UpBlock[0] = 5f / 9f; UpBlock[1] = 4f / 9f; UpBlock[2] = 4f / 9f;
+        DownBlock[0] = 4f / 9f; DownBlock[1] = 4f / 9f; DownBlock[2] = 4f / 9f;
+        UpDodge[0] = 5f / 9f; UpDodge[1] = 3f / 9f; UpDodge[2] = 4f / 9f;
+        DownDodge[0] = 4f / 9f; DownDodge[1] = 3f / 9f; DownDodge[2] = 4f / 9f;
+
+        // La command zone représente la zone d'action des coups : haut ou bas
         CommandZone.Add(new KeyValuePair<Tags, float>(Tags.zoneUp, UpJab[0]));
         CommandZone.Add(new KeyValuePair<Tags, float>(Tags.zoneDown, DownJab[0]));
         CommandZone.Add(new KeyValuePair<Tags, float>(Tags.zoneUp, UpCross[0]));
@@ -56,6 +68,7 @@ public class CommandManager : MonoBehaviour
         CommandZone.Add(new KeyValuePair<Tags, float>(Tags.zoneUp, UpDodge[0]));
         CommandZone.Add(new KeyValuePair<Tags, float>(Tags.zoneDown, DownDodge[0]));
 
+        // La commande power représente la puissance d'action des coups : faible, moyen ou fort
         CommandPower.Add(new KeyValuePair<Tags, float>(Tags.powerWeak, UpJab[1]));
         CommandPower.Add(new KeyValuePair<Tags, float>(Tags.powerWeak, DownJab[1]));
         CommandPower.Add(new KeyValuePair<Tags, float>(Tags.powerMedium, UpCross[1]));
@@ -66,6 +79,7 @@ public class CommandManager : MonoBehaviour
         CommandPower.Add(new KeyValuePair<Tags, float>(Tags.powerStrong, UpDodge[1]));
         CommandPower.Add(new KeyValuePair<Tags, float>(Tags.powerStrong, DownDodge[1]));
 
+        // La commande type représente le type d'action des coups : offensif ou défensif
         CommandType.Add(new KeyValuePair<Tags, float>(Tags.typeOffense, UpJab[2]));
         CommandType.Add(new KeyValuePair<Tags, float>(Tags.typeOffense, DownJab[2]));
         CommandType.Add(new KeyValuePair<Tags, float>(Tags.typeOffense, UpCross[2]));
@@ -75,19 +89,7 @@ public class CommandManager : MonoBehaviour
         CommandType.Add(new KeyValuePair<Tags, float>(Tags.typeDefense, DownBlock[2]));
         CommandType.Add(new KeyValuePair<Tags, float>(Tags.typeDefense, UpDodge[2]));
         CommandType.Add(new KeyValuePair<Tags, float>(Tags.typeDefense, DownDodge[2]));
-
-        UpJab[0] = 5 / 9; UpJab[1] = 4 / 9; UpJab[2] = 5 / 9;
-        DownJab[0] = 4 / 9; DownJab[1] = 2 / 9; DownJab[2] = 5 / 9;
-        UpCross[0] = 5 / 9; UpCross[1] = 2 / 9; UpCross[2] = 5 / 9;
-        DownCross[0] = 4 / 9; DownCross[1] = 4 / 9; DownCross[2] = 5 / 9;
-        Uppercut[0] = 5 / 9; Uppercut[1] = 3 / 9; Uppercut[2] = 5 / 9;
-        UpBlock[0] = 5 / 9; UpBlock[1] = 4 / 9; UpBlock[2] = 4 / 9;
-        DownBlock[0] = 4 / 9; DownBlock[1] = 4 / 9; DownBlock[2] = 4 / 9;
-        UpDodge[0] = 5 / 9; UpDodge[1] = 3 / 9; UpDodge[2] = 4 / 9;
-        DownDodge[0] = 4 / 9; DownDodge[1] = 3 / 9; DownDodge[2] = 4 / 9;
     }
-
-
 
     public void RefreshProbabilities(AllHits hit)
     {
@@ -101,6 +103,7 @@ public class CommandManager : MonoBehaviour
 
     private void ComputeProbabilities(Commands lastCommandUsed)
     {
+        // C'est ici qu'on actualise les valeurs de proba en fonction du dernier hit ou stance utilisé par le joueur.
         switch (lastCommandUsed.ToString())
         {
             case "UpJab":
@@ -152,59 +155,69 @@ public class CommandManager : MonoBehaviour
         }
     }
 
+    private void ReaffectVariables()
+    {
+        // Il faut réaffecter les variables UpJab[0], UpJab[1], ..., DownDodge[1], DownDodge[2] pour qu'ils aient les valeurs présentes dans les listes Command Zone, Power et Type
+        // Sinon, elles ne sont pas actualisées pour pouvoir faire les calculs qui permettront de générer les commandes d'action des joueurs (méthode GetCommandsForCurrentRound) 
+    }
+
     private void RefreshValues(Tags[] tags, List<KeyValuePair<Tags, float>> list)
     {
+        // On attribut les écarts de valeur ici. On crée une liste temporaire sinon Untiy se fâche très rouge si on modifie une liste dans un foreach.
+
+        List<KeyValuePair<Tags, float>> temp = new List<KeyValuePair<Tags, float>>();
+
         foreach (KeyValuePair<Tags, float> entry in list)
         {
             switch (tags.Length)
             {
                 case 1:
-                    if (entry.Key == tags[0] && entry.Value > 1 / 9)
+                    if (entry.Key == tags[0] && entry.Value > 1f / 9f)
                     {
-                        KeyValuePair<Tags, float> newKeyValuePair = new KeyValuePair<Tags, float>(tags[0], entry.Value - 1 / 9);
-                        list[list.FindIndex(a => a.Key == tags[0] && a.Value == entry.Value)] = newKeyValuePair;
+                        temp.Add(new KeyValuePair<Tags, float>(tags[0], entry.Value - 1f / 9f));
                     }
                     break;
                 case 2:
-                    if (entry.Key == tags[0] && entry.Value > 1 / 9)
+                    if (entry.Key == tags[0] && entry.Value > 1f / 9f)
                     {
-                        KeyValuePair<Tags, float> newKeyValuePair = new KeyValuePair<Tags, float>(tags[0], entry.Value - 1 / 9);
-                        list[list.FindIndex(a => a.Key == tags[0] && a.Value == entry.Value)] = newKeyValuePair;
+                        temp.Add(new KeyValuePair<Tags, float>(tags[0], entry.Value - 1f / 9f));
                     }
 
-                    if (entry.Key == tags[1] && entry.Value < 1)
+                    if (entry.Key == tags[1] && entry.Value < 1f)
                     {
-                        KeyValuePair<Tags, float> newKeyValuePair = new KeyValuePair<Tags, float>(tags[1], entry.Value + 1 / 9);
-                        list[list.FindIndex(a => a.Key == tags[1] && a.Value == entry.Value)] = newKeyValuePair;
+                        temp.Add(new KeyValuePair<Tags, float>(tags[0], entry.Value + 1f / 9f));
                     }
                     break;
                 case 3:
-                    if (entry.Key == tags[0] && entry.Value > 1 / 9)
+                    if (entry.Key == tags[0] && entry.Value > 1f / 9f)
                     {
-                        KeyValuePair<Tags, float> newKeyValuePair = new KeyValuePair<Tags, float>(tags[0], entry.Value - 1 / 9);
-                        list[list.FindIndex(a => a.Key == tags[0] && a.Value == entry.Value)] = newKeyValuePair;
+                        temp.Add(new KeyValuePair<Tags, float>(tags[0], entry.Value - 1f / 9f));
                     }
 
-                    if (entry.Key == tags[1] && entry.Value < 1)
+                    if (entry.Key == tags[1] && entry.Value < 1f)
                     {
-                        KeyValuePair<Tags, float> newKeyValuePair = new KeyValuePair<Tags, float>(tags[1], entry.Value + 1 / 18);
-                        list[list.FindIndex(a => a.Key == tags[1] && a.Value == entry.Value)] = newKeyValuePair;
+                        temp.Add(new KeyValuePair<Tags, float>(tags[0], entry.Value + 1f / 18f));
                     }
 
-                    if (entry.Key == tags[2] && entry.Value < 1)
+                    if (entry.Key == tags[2] && entry.Value < 1f)
                     {
-                        KeyValuePair<Tags, float> newKeyValuePair = new KeyValuePair<Tags, float>(tags[1], entry.Value + 1 / 9);
-                        list[list.FindIndex(a => a.Key == tags[1] && a.Value == entry.Value)] = newKeyValuePair;
+                        temp.Add(new KeyValuePair<Tags, float>(tags[0], entry.Value + 1f / 9f));
                     }
                     break;
             }
         }
+
+        list = temp;
     }
+
+
 
     public Commands[] GetCommandsForCurrentRound()
     {
+        // On appelle cette fonction pour recevoir les 3 commandes avec les plus gros taux de probabilité d'apparition. On gère pas le random bonus qui permet de ne pas être super
+        // régulier sur les moves qui viennent.
         List<KeyValuePair<Commands, float>> sortedProbabilities = new List<KeyValuePair<Commands, float>>();
-
+        
         sortedProbabilities.Add(new KeyValuePair<Commands, float>(Commands.UpJab, UpJab[0] + UpJab[1] + UpJab[2]));
         sortedProbabilities.Add(new KeyValuePair<Commands, float>(Commands.DownJab, DownJab[0] + DownJab[1] + DownJab[2]));
         sortedProbabilities.Add(new KeyValuePair<Commands, float>(Commands.UpCross, UpCross[0] + UpCross[1] + UpCross[2]));
@@ -215,7 +228,7 @@ public class CommandManager : MonoBehaviour
         sortedProbabilities.Add(new KeyValuePair<Commands, float>(Commands.UpDodge, UpDodge[0] + UpDodge[1] + UpDodge[2]));
         sortedProbabilities.Add(new KeyValuePair<Commands, float>(Commands.DownDodge, DownDodge[0] + DownDodge[1] + DownDodge[2]));
 
-        sortedProbabilities.Sort();
+        sortedProbabilities.Sort((x, y) => x.Value.CompareTo(y.Value));
         List<KeyValuePair<Commands, float>> finalList = sortedProbabilities.GetRange(0, 3);
         Commands[] returnedCommands = new Commands[3];
 
@@ -223,7 +236,7 @@ public class CommandManager : MonoBehaviour
         {
             returnedCommands.SetValue(finalList[i].Key,i);
         }
-
+        
         return returnedCommands;
     }
 }

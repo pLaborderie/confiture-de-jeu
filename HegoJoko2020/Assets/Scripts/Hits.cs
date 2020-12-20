@@ -96,6 +96,8 @@ public class Hits : MonoBehaviour
         if (gameObject.GetComponent<FighterInfo>().playablePhase == gameManager.p_currentPhase)
         {
             selectedHit = hit;
+            Debug.Log("Refresh hits");
+            GetComponent<CommandManager>().RefreshProbabilities(hit);
             gameManager.NextPhase();
         }
         else

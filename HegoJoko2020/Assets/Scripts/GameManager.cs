@@ -93,9 +93,12 @@ public class GameManager : MonoBehaviour
     {
         _instance = this;
         DontDestroyOnLoad(this.gameObject);
-        PhaseTriggers();
     }
 
+    void Start()
+    {
+        PhaseTriggers();
+    }
     private static GameManager GetInstance()
     {
         return _instance;
@@ -163,10 +166,14 @@ public class GameManager : MonoBehaviour
         {
             case Phase.SelectFirstMove:
                 DisplayFighterButtons(fighter1);
+                Debug.Log("JOUEUR 1");
+                Debug.Log(fighter1.GetComponent<CommandManager>().GetCommandsForCurrentRound()[0]);
                 break;
             case Phase.SelectSecondMove:
                 HideFighterButtons(fighter1);
                 DisplayFighterButtons(fighter2);
+                Debug.Log("JOUEUR 2");
+                Debug.Log(fighter2.GetComponent<CommandManager>().GetCommandsForCurrentRound()[0]);
                 break;
             case Phase.ApplyMoves:
                 HideFighterButtons(fighter2);
