@@ -7,7 +7,6 @@ public class FightButtonsManager : MonoBehaviour
 
     public void SetVisibility(bool b_visibility)
     {
-        Debug.Log("Setting visibility to " + b_visibility);
         buttonLayout.SetActive(b_visibility);
     }
     public void ToggleVisibility()

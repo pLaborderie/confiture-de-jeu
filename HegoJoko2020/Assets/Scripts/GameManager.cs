@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public enum AllHits
 {
     UpJab,
@@ -77,16 +79,26 @@ public class GameManager : MonoBehaviour
     public GameObject fighter1;
     public GameObject fighter2;
 
+    public GameObject Light1;
+    public GameObject Light2;
+    public GameObject KO;
+
     private void Awake()
     {
+        CreateInstance(); 
+        KO.gameObject.SetActive(false);
+        HideFighterLight(Light2);  
+
+/*
         if (_instance == null)
         {
-            CreateInstance();
+            CreateInstance(); 
         }
         else
         {
             Destroy(this);
         }
+*/
     }
 
     private void CreateInstance()
@@ -159,6 +171,14 @@ public class GameManager : MonoBehaviour
         _fighter.GetComponent<HitsButtonsManager>().SetVisibility(false);
         _fighter.GetComponent<DefenseButtonsManager>().SetVisibility(false);
     }
+    private void DisplayFighterLight(GameObject _light)
+    {
+        _light.gameObject.SetActive(true);
+    }
+    private void HideFighterLight(GameObject _light)
+    {
+        _light.gameObject.SetActive(false);
+    }
     private void PhaseTriggers()
     {
         Phase currentPhase = p_currentPhase;
@@ -168,12 +188,16 @@ public class GameManager : MonoBehaviour
                 DisplayFighterButtons(fighter1);
                 Debug.Log("JOUEUR 1");
                 Debug.Log(fighter1.GetComponent<CommandManager>().GetCommandsForCurrentRound()[0]);
+                HideFighterLight(Light2);
+                DisplayFighterLight(Light1);
                 break;
             case Phase.SelectSecondMove:
                 HideFighterButtons(fighter1);
                 DisplayFighterButtons(fighter2);
                 Debug.Log("JOUEUR 2");
                 Debug.Log(fighter2.GetComponent<CommandManager>().GetCommandsForCurrentRound()[0]);
+                HideFighterLight(Light1);
+                DisplayFighterLight(Light2);
                 break;
             case Phase.ApplyMoves:
                 HideFighterButtons(fighter2);

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEditor;
@@ -142,7 +142,7 @@ public class DefenseStances : MonoBehaviour
     {
         if (hitReceived.HasValue)
         {
-            if (currentDefenseStance.HasValue && ArrayUtility.Contains<AllHits>(hitDodged[currentDefenseStance.GetValueOrDefault()], hitReceived.GetValueOrDefault()))
+            if (currentDefenseStance.HasValue && Array.Exists(hitDodged[currentDefenseStance.GetValueOrDefault()], hit => hit == hitReceived.GetValueOrDefault()))
             {
                 switch (hitReceived)
                 {
@@ -164,7 +164,7 @@ public class DefenseStances : MonoBehaviour
                 }
                 gameManager.NextPhase();
             }
-            else if (currentDefenseStance.HasValue && ArrayUtility.Contains<AllHits>(hitBlocked[currentDefenseStance.GetValueOrDefault()], hitReceived.GetValueOrDefault()))
+            else if (currentDefenseStance.HasValue && Array.Exists(hitBlocked[currentDefenseStance.GetValueOrDefault()], hit => hit == hitReceived.GetValueOrDefault()))
             {
                 switch (hitReceived)
                 {
@@ -237,7 +237,31 @@ public class DefenseStances : MonoBehaviour
         }
         else if (currentDefenseStance.HasValue)
         {
+            switch (hitReceived)
+            {
+                case AllHits.UpJab:
+                    hit = ReceiveUpJab;
+                    break;
+                case AllHits.DownJab:
+                    hit = ReceiveDownJab;
+                    break;
+                case AllHits.UpCross:
+                    hit = ReceiveUpCross;
+                    break;
+                case AllHits.DownCross:
+                    hit = ReceiveDownCross;
+                    break;
+                case AllHits.Uppercut:
+                    hit = ReceiveUppercut;
+                    break;
+            }
+            soundManager.PlaySingle(hit);
             gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[currentDefenseStance.GetValueOrDefault()]);
+
+            if (gameManager.p_currentPhase == GameManager.Phase.ApplyMoves)
+            {
+                gameManager.NextPhase();
+            }
         }
     }
 }
