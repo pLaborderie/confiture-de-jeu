@@ -1104,7 +1104,7 @@ MonoBehaviour:
   efxSource: {fileID: 800747251}
   musicSource: {fileID: 800747250}
   ambianceSource: {fileID: 800747249}
-  lowPitchRange: 0.95
+  lowPitchRange: 0.94
   highPitchRange: 1.05
 --- !u!82 &800747249
 AudioSource:
