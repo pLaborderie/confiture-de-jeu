@@ -4,17 +4,18 @@ using UnityEngine.UI;
 
 public class FighterInfo : MonoBehaviour
 {
-  public float f_health;
-  public Slider healthBar;
-  public GameManager.Phase playablePhase;
-  public GameObject hitFX;
-  public SoundManager soundManager;
-  public AudioClip ReceiveUpJab;
-  public AudioClip ReceiveDownJab;
-  public AudioClip ReceiveUpCross;
-  public AudioClip ReceiveDownCross;
-  public AudioClip ReceiveUppercut;
-  public AudioClip KnockOut;
+    public float f_health;
+    public Slider healthBar;
+    public GameManager gameManager;
+    public GameManager.Phase playablePhase;
+    public GameObject hitFX;
+    public SoundManager soundManager;
+    public AudioClip ReceiveUpJab;
+    public AudioClip ReceiveDownJab;
+    public AudioClip ReceiveUpCross;
+    public AudioClip ReceiveDownCross;
+    public AudioClip ReceiveUppercut;
+    public AudioClip KnockOut;
 
     private Dictionary<AllKoStances, string> koStanceAnimation = new Dictionary<AllKoStances, string>();
 
@@ -54,6 +55,10 @@ public class FighterInfo : MonoBehaviour
                     gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
                     break;
             }
+        }
+        if (gameManager.p_currentPhase == GameManager.Phase.ApplyMoves)
+        {
+            gameManager.NextPhase();
         }
     }
 }
