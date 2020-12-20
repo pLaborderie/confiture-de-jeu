@@ -1,11 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FighterInfo : MonoBehaviour
 {
-
+    private const float MAX_HEALTH = 150f;
+    private const float MIN_HEALTH = 80f;
+    private const float MAX_STRENGTH = 1.5f;
+    private const float MIN_STRENGTH = 0.8f;
     public float f_health;
+    public float f_strength;
     public Slider healthBar;
     public GameManager gameManager;
     public GameManager.Phase playablePhase;
@@ -25,6 +30,7 @@ public class FighterInfo : MonoBehaviour
     {
         koStanceAnimation.Add(AllKoStances.UpKo, "upKo");
         koStanceAnimation.Add(AllKoStances.DownKo, "downKo");
+        CreateRandomStats();
     }
 
     void Update()
@@ -74,5 +80,18 @@ public class FighterInfo : MonoBehaviour
         {
             gameManager.NextPhase();
         }
+    }
+    private void CreateRandomStats()
+    {
+        float newHealth = UnityEngine.Random.Range(MIN_HEALTH, MAX_HEALTH);
+        SetDefaultHealth((float)Math.Round(newHealth));
+        float newStrength = UnityEngine.Random.Range(MIN_STRENGTH, MAX_STRENGTH);
+        f_strength = (float)Math.Round(newStrength, 2);
+    }
+
+    private void SetDefaultHealth(float _health)
+    {
+        f_health = _health;
+        healthBar.maxValue = _health;
     }
 }
