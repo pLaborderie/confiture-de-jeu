@@ -7,6 +7,8 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
+    public GameObject fighter1;
+    public GameObject fighter2;
 
     public void Update() {
         if(Input.GetKeyDown(KeyCode.Escape)) {
@@ -18,13 +20,29 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    private void HideFighterButtons(GameObject _fighter)
+    {
+        _fighter.GetComponent<HitsButtonsManager>().SetVisibility(false);
+        _fighter.GetComponent<DefenseButtonsManager>().SetVisibility(false);
+    }
+
+    private void DisplayFighterButtons(GameObject _fighter)
+    {
+        _fighter.GetComponent<HitsButtonsManager>().SetVisibility(true);
+        _fighter.GetComponent<DefenseButtonsManager>().SetVisibility(true);
+    }
+
     public void Resume() {
+        DisplayFighterButtons(fighter1);
+        DisplayFighterButtons(fighter2);
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
     public void Pause() {
+        HideFighterButtons(fighter1);
+        HideFighterButtons(fighter2);
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
