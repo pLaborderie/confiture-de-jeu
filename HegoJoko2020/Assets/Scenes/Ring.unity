@@ -1978,6 +1978,11 @@ MonoBehaviour:
   gameManager: {fileID: 1617765494}
   soundManager: {fileID: 800747248}
   ReceiveDodge: {fileID: 8300000, guid: 49338603821ebc34c8763abec706e418, type: 3}
+  ReceiveUpJab: {fileID: 8300000, guid: 3940a29e02ebdd64b9f95a91d0273810, type: 3}
+  ReceiveDownJab: {fileID: 8300000, guid: d848ca392c799e347889f6a8becf4b9d, type: 3}
+  ReceiveUpCross: {fileID: 8300000, guid: 36437fca363d60544b607fd0c76ef003, type: 3}
+  ReceiveDownCross: {fileID: 8300000, guid: df280970641d3c14bb624872c14b7da3, type: 3}
+  ReceiveUppercut: {fileID: 8300000, guid: 41532062dbdf0f94996e8e027f5d77c1, type: 3}
 --- !u!114 &916450225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2024,11 +2029,6 @@ MonoBehaviour:
   playablePhase: 1
   hitFX: {fileID: 2099036909}
   soundManager: {fileID: 800747248}
-  ReceiveUpJab: {fileID: 8300000, guid: 3940a29e02ebdd64b9f95a91d0273810, type: 3}
-  ReceiveDownJab: {fileID: 8300000, guid: d848ca392c799e347889f6a8becf4b9d, type: 3}
-  ReceiveUpCross: {fileID: 8300000, guid: 36437fca363d60544b607fd0c76ef003, type: 3}
-  ReceiveDownCross: {fileID: 8300000, guid: df280970641d3c14bb624872c14b7da3, type: 3}
-  ReceiveUppercut: {fileID: 8300000, guid: 41532062dbdf0f94996e8e027f5d77c1, type: 3}
   KnockOut: {fileID: 8300000, guid: b8bcf625376e7fe41b9e8a5653b47f76, type: 3}
 --- !u!114 &916450228
 MonoBehaviour:
@@ -3111,6 +3111,11 @@ MonoBehaviour:
   gameManager: {fileID: 1617765494}
   soundManager: {fileID: 800747248}
   ReceiveDodge: {fileID: 8300000, guid: 49338603821ebc34c8763abec706e418, type: 3}
+  ReceiveUpJab: {fileID: 8300000, guid: 3940a29e02ebdd64b9f95a91d0273810, type: 3}
+  ReceiveDownJab: {fileID: 8300000, guid: d848ca392c799e347889f6a8becf4b9d, type: 3}
+  ReceiveUpCross: {fileID: 8300000, guid: 36437fca363d60544b607fd0c76ef003, type: 3}
+  ReceiveDownCross: {fileID: 8300000, guid: df280970641d3c14bb624872c14b7da3, type: 3}
+  ReceiveUppercut: {fileID: 8300000, guid: 41532062dbdf0f94996e8e027f5d77c1, type: 3}
 --- !u!114 &1343469497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3157,11 +3162,6 @@ MonoBehaviour:
   playablePhase: 0
   hitFX: {fileID: 168797040}
   soundManager: {fileID: 800747248}
-  ReceiveUpJab: {fileID: 8300000, guid: 3940a29e02ebdd64b9f95a91d0273810, type: 3}
-  ReceiveDownJab: {fileID: 8300000, guid: d848ca392c799e347889f6a8becf4b9d, type: 3}
-  ReceiveUpCross: {fileID: 8300000, guid: 36437fca363d60544b607fd0c76ef003, type: 3}
-  ReceiveDownCross: {fileID: 8300000, guid: df280970641d3c14bb624872c14b7da3, type: 3}
-  ReceiveUppercut: {fileID: 8300000, guid: 41532062dbdf0f94996e8e027f5d77c1, type: 3}
   KnockOut: {fileID: 8300000, guid: b8bcf625376e7fe41b9e8a5653b47f76, type: 3}
 --- !u!4 &1343469500
 Transform:
@@ -3972,7 +3972,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617765491}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

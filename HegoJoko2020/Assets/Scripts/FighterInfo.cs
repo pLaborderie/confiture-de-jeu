@@ -4,18 +4,15 @@ using UnityEngine.UI;
 
 public class FighterInfo : MonoBehaviour
 {
+
     public float f_health;
     public Slider healthBar;
     public GameManager gameManager;
     public GameManager.Phase playablePhase;
     public GameObject hitFX;
     public SoundManager soundManager;
-    public AudioClip ReceiveUpJab;
-    public AudioClip ReceiveDownJab;
-    public AudioClip ReceiveUpCross;
-    public AudioClip ReceiveDownCross;
-    public AudioClip ReceiveUppercut;
     public AudioClip KnockOut;
+
 
     private Dictionary<AllKoStances, string> koStanceAnimation = new Dictionary<AllKoStances, string>();
 
@@ -41,18 +38,23 @@ public class FighterInfo : MonoBehaviour
             {
                 case AllHits.UpJab:
                     gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
+                    soundManager.PlaySingle(KnockOut);
                     break;
                 case AllHits.DownJab:
                     gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.DownKo]);
+                    soundManager.PlaySingle(KnockOut);
                     break;
                 case AllHits.UpCross:
                     gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
+                    soundManager.PlaySingle(KnockOut);
                     break;
                 case AllHits.DownCross:
                     gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.DownKo]);
+                    soundManager.PlaySingle(KnockOut);
                     break;
                 case AllHits.Uppercut:
                     gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
+                    soundManager.PlaySingle(KnockOut);
                     break;
             }
         }
