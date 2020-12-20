@@ -17,7 +17,7 @@ public class FighterInfo : MonoBehaviour
     public AudioClip ReceiveUpCross;
     public AudioClip ReceiveDownCross;
     public AudioClip ReceiveUppercut;
-
+    public GameObject KO;
 
     private Dictionary<AllKoStances, string> koStanceAnimation = new Dictionary<AllKoStances, string>();
 
@@ -67,6 +67,8 @@ public class FighterInfo : MonoBehaviour
                     soundManager.PlaySingle(KnockOut);
                     break;
             }
+
+            KO.gameObject.SetActive(true);
         }
         if (gameManager.p_currentPhase == GameManager.Phase.ApplyMoves)
         {
