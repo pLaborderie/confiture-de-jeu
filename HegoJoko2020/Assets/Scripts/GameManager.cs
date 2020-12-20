@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
         {
             CreateInstance();
             KO.gameObject.SetActive(false);
-            HideFighterLight(Light2);            
+            HideFighterLight(Light2);   
         }
         else
         {
