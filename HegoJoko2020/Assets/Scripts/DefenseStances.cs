@@ -173,24 +173,29 @@ public class DefenseStances : MonoBehaviour
     {
       if (currentDefenseStance.HasValue && ArrayUtility.Contains<AllHits>(hitDodged[currentDefenseStance.GetValueOrDefault()], hitReceived.GetValueOrDefault()))
       {
+
         switch (hitReceived)
         {
-          case AllHits.UpJab:
-            gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
-            break;
-          case AllHits.DownJab:
-            gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.DownDodge]);
-            break;
-          case AllHits.UpCross:
-            gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
-            break;
-          case AllHits.DownCross:
-            gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.DownDodge]);
-            break;
-          case AllHits.Uppercut:
-            gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
-            break;
+        case AllHits.UpJab:
+          gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
+          soundManager.PlaySingle(ReceiveDodge);
+          break;
+        case AllHits.DownJab:
+          gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.DownDodge]);
+          break;
+        case AllHits.UpCross:
+          gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
+          soundManager.PlaySingle(ReceiveDodge);
+          break;
+        case AllHits.DownCross:
+          gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.DownDodge]);
+          break;
+        case AllHits.Uppercut:
+          gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
+          soundManager.PlaySingle(ReceiveDodge);
+          break;
         }
+
       }
       else if (currentDefenseStance.HasValue && ArrayUtility.Contains<AllHits>(hitBlocked[currentDefenseStance.GetValueOrDefault()], hitReceived.GetValueOrDefault()))
       {
