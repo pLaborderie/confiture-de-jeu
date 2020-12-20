@@ -146,10 +146,15 @@ public class GameManager : MonoBehaviour
 
         PhaseTriggers();
     }
-    private void ToggleFighterButtons(GameObject _fighter)
+    private void DisplayFighterButtons(GameObject _fighter)
     {
-        _fighter.GetComponent<HitsButtonsManager>().ToggleVisibility();
-        _fighter.GetComponent<DefenseButtonsManager>().ToggleVisibility();
+        _fighter.GetComponent<HitsButtonsManager>().SetVisibility(true);
+        _fighter.GetComponent<DefenseButtonsManager>().SetVisibility(true);
+    }
+    private void HideFighterButtons(GameObject _fighter)
+    {
+        _fighter.GetComponent<HitsButtonsManager>().SetVisibility(false);
+        _fighter.GetComponent<DefenseButtonsManager>().SetVisibility(false);
     }
     private void PhaseTriggers()
     {
@@ -157,14 +162,14 @@ public class GameManager : MonoBehaviour
         switch (currentPhase)
         {
             case Phase.SelectFirstMove:
-                ToggleFighterButtons(fighter1);
+                DisplayFighterButtons(fighter1);
                 break;
             case Phase.SelectSecondMove:
-                ToggleFighterButtons(fighter1);
-                ToggleFighterButtons(fighter2);
+                HideFighterButtons(fighter1);
+                DisplayFighterButtons(fighter2);
                 break;
             case Phase.ApplyMoves:
-                ToggleFighterButtons(fighter2);
+                HideFighterButtons(fighter2);
                 fighter1.GetComponent<Hits>().ApplySelectedHit();
                 fighter2.GetComponent<Hits>().ApplySelectedHit();
                 break;
