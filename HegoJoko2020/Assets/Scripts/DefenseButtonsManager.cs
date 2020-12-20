@@ -2,10 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DefenseButtonsManager : MonoBehaviour
+public class DefenseButtonsManager : FightButtonsManager
 {
-    public GameObject buttonPrefab;
-    public GameObject buttonLayout;
     public void GenerateDefenseButtons(AllDefenseStances[] allDefenseStances)
     {
         foreach (AllDefenseStances stance in allDefenseStances)
@@ -16,17 +14,14 @@ public class DefenseButtonsManager : MonoBehaviour
             // Add listener to deal damage when clicked
             button.GetComponent<Button>().onClick.AddListener(() => HandleDefend(stance));
             // Change text to hit name
-            button.transform.GetChild(0).GetComponent<Text>().text = Enum.GetName(typeof(AllDefenseStances), stance);
+            Text btnText = button.transform.GetChild(0).GetComponent<Text>();
+            btnText.text = Enum.GetName(typeof(AllDefenseStances), stance);
+            btnText.color = Color.white;
         }
     }
     private void HandleDefend(AllDefenseStances stance)
     {
         gameObject.GetComponent<DefenseStances>().SelectStance(stance);
         gameObject.GetComponent<Hits>().selectedHit = null;
-    }
-
-    public void ToggleVisibility()
-    {
-        buttonLayout.SetActive(!buttonLayout.activeSelf);
     }
 }
