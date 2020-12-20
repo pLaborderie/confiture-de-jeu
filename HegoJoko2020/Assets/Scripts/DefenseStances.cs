@@ -154,6 +154,7 @@ public class DefenseStances : MonoBehaviour
                         gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
                         break;
                 }
+                gameManager.NextPhase();
             }
             else if (currentDefenseStance.HasValue && ArrayUtility.Contains<AllHits>(hitBlocked[currentDefenseStance.GetValueOrDefault()], hitReceived.GetValueOrDefault()))
             {
