@@ -703,7 +703,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Konck OUT
+  m_Text: Knock OUT
 --- !u!222 &1102164616
 CanvasRenderer:
   m_ObjectHideFlags: 0

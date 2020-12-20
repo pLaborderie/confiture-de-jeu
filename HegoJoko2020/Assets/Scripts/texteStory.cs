@@ -8,7 +8,7 @@ public class texteStory : MonoBehaviour
 
     private Text uiText;
 
-    private float showSpeed = 0.05f;
+    private float showSpeed = 0.025f;
 
     private string showText, uiTextCopy;
 
