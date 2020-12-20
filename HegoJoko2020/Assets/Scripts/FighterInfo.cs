@@ -18,7 +18,7 @@ public class FighterInfo : MonoBehaviour
     public AudioClip ReceiveDownCross;
     public AudioClip ReceiveUppercut;
     public GameObject KO;
-
+ 
     private Dictionary<AllKoStances, string> koStanceAnimation = new Dictionary<AllKoStances, string>();
 
     void Start()
