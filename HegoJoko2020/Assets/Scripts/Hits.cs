@@ -153,6 +153,6 @@ public class Hits : MonoBehaviour
     public float GetHitPower(AllHits hit)
     {
         float strength = gameObject.GetComponent<FighterInfo>().f_strength;
-        return hitPower[hit] * strength;
+        return (float)Math.Round(hitPower[hit] * strength);
     }
 }
