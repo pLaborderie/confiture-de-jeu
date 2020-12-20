@@ -1707,6 +1707,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuUI: {fileID: 1606311606}
+  fighter1: {fileID: 1343469495}
+  fighter2: {fileID: 916450222}
 --- !u!1 &628999655
 GameObject:
   m_ObjectHideFlags: 0
