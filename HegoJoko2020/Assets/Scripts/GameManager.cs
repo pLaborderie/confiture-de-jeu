@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
   {
     _instance = this;
     DontDestroyOnLoad(this.gameObject);
+    PhaseTriggers();
   }
 
   private static GameManager GetInstance()
@@ -119,12 +120,25 @@ public class GameManager : MonoBehaviour
     PhaseTriggers();
     Debug.Log(p_currentPhase);
   }
+  private void ToggleFighterButtons(GameObject _fighter)
+  {
+    _fighter.GetComponent<HitsButtonsManager>().ToggleVisibility();
+    _fighter.GetComponent<DefenseButtonsManager>().ToggleVisibility();
+  }
   private void PhaseTriggers()
   {
     Phase currentPhase = p_currentPhase;
     switch (currentPhase)
     {
+      case Phase.SelectFirstMove:
+        ToggleFighterButtons(fighter1);
+        break;
+      case Phase.SelectSecondMove:
+        ToggleFighterButtons(fighter1);
+        ToggleFighterButtons(fighter2);
+        break;
       case Phase.ApplyMoves:
+        ToggleFighterButtons(fighter2);
         fighter1.GetComponent<Hits>().ApplySelectedHit();
         fighter2.GetComponent<Hits>().ApplySelectedHit();
         NextPhase();
