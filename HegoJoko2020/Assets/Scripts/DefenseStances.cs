@@ -10,7 +10,7 @@ public class DefenseStances : MonoBehaviour
   private Dictionary<AllDefenseStances, AllHits[]> hitBlocked = new Dictionary<AllDefenseStances, AllHits[]>();
   private Dictionary<AllDefenseStances, AllHits[]> hitDodged = new Dictionary<AllDefenseStances, AllHits[]>();
   private Dictionary<AllDefenseStances, float> damageReduction = new Dictionary<AllDefenseStances, float>();
-  private Dictionary<AllDefenseStances, string> animation = new Dictionary<AllDefenseStances, string>();
+  private Dictionary<AllDefenseStances, string> defenseStanceAnimation = new Dictionary<AllDefenseStances, string>();
 
     private AllDefenseStances currentDefenseStance;
   public GameManager gameManager;
@@ -25,25 +25,25 @@ public class DefenseStances : MonoBehaviour
           hitBlocked.Add(allDefenseStances[i], new AllHits[] { AllHits.UpJab, AllHits.UpCross, AllHits.Uppercut });
           hitDodged.Add(allDefenseStances[i], new AllHits[0]);
           damageReduction.Add(allDefenseStances[i], gameManager.DEFENSESTANCE_UPBLOCK_DAMAGEREDUCTION);
-                    animation.Add(allDefenseStances[i], "upBlock");
+                    defenseStanceAnimation.Add(allDefenseStances[i], "upBlock");
           break;
         case AllDefenseStances.DownBlock:
           hitBlocked.Add(allDefenseStances[i], new AllHits[] { AllHits.DownJab, AllHits.DownCross });
           hitDodged.Add(allDefenseStances[i], new AllHits[0]);
           damageReduction.Add(allDefenseStances[i], gameManager.DEFENSESTANCE_DOWNBLOCK_DAMAGEREDUCTION);
-                    animation.Add(allDefenseStances[i], "downBlock");
+                    defenseStanceAnimation.Add(allDefenseStances[i], "downBlock");
                     break;
         case AllDefenseStances.UpDodge:
           hitBlocked.Add(allDefenseStances[i], new AllHits[0]);
           hitDodged.Add(allDefenseStances[i], new AllHits[] { AllHits.UpJab, AllHits.UpCross, AllHits.Uppercut });
           damageReduction.Add(allDefenseStances[i], gameManager.DEFENSESTANCE_UPDODGE_DAMAGEREDUCTION);
-                    animation.Add(allDefenseStances[i], "upDodge");
+                    defenseStanceAnimation.Add(allDefenseStances[i], "upDodge");
                     break;
         case AllDefenseStances.DownDodge:
           hitBlocked.Add(allDefenseStances[i], new AllHits[0]);
           hitDodged.Add(allDefenseStances[i], new AllHits[] { AllHits.DownJab, AllHits.DownCross });
           damageReduction.Add(allDefenseStances[i], gameManager.DEFENSESTANCE_DOWNDODGE_DAMAGEREDUCTION);
-                    animation.Add(allDefenseStances[i], "downDodge");
+                    defenseStanceAnimation.Add(allDefenseStances[i], "downDodge");
                     break;
       }
     }
@@ -58,54 +58,34 @@ public class DefenseStances : MonoBehaviour
 
   public void ReceiveHit(AllHits hitReceived)
   {
-    if (ArrayUtility.Contains<AllHits>(hitDodged[currentDefenseStance], hitReceived) && !gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("idleKo"))
+    if (ArrayUtility.Contains<AllHits>(hitDodged[currentDefenseStance], hitReceived) && gameObject.GetComponent<FighterInfo>().f_health > 0)
     {
-            // Il faut dodge le coup
             switch (hitReceived)
             {
                 case AllHits.UpJab:
-                    gameObject.GetComponent<Animator>().Play(animation[AllDefenseStances.UpDodge]);
+                    gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
                     break;
                 case AllHits.DownJab:
-                    gameObject.GetComponent<Animator>().Play(animation[AllDefenseStances.DownDodge]);
+                    gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.DownDodge]);
                     break;
                 case AllHits.UpCross:
-                    gameObject.GetComponent<Animator>().Play(animation[AllDefenseStances.UpDodge]);
+                    gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
                     break;
                 case AllHits.DownCross:
-                    gameObject.GetComponent<Animator>().Play(animation[AllDefenseStances.DownDodge]);
+                    gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.DownDodge]);
                     break;
                 case AllHits.Uppercut:
-                    gameObject.GetComponent<Animator>().Play(animation[AllDefenseStances.UpDodge]);
+                    gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
                     break;
             }
         }
-    else if (ArrayUtility.Contains<AllHits>(hitBlocked[currentDefenseStance], hitReceived) && !gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("idleKo"))
+    else if (ArrayUtility.Contains<AllHits>(hitBlocked[currentDefenseStance], hitReceived) && gameObject.GetComponent<FighterInfo>().f_health > 0)
     {
-            gameObject.GetComponent<FighterInfo>().TakeDamage(gameObject.GetComponent<Hits>().GetHitPower(hitReceived) - damageReduction[currentDefenseStance]);
-
-            switch(hitReceived)
-            {
-                case AllHits.UpJab:
-                    gameObject.GetComponent<Animator>().Play(animation[AllDefenseStances.UpBlock]);
-                    break;
-                case AllHits.DownJab:
-                    gameObject.GetComponent<Animator>().Play(animation[AllDefenseStances.DownBlock]);
-                    break;
-                case AllHits.UpCross:
-                    gameObject.GetComponent<Animator>().Play(animation[AllDefenseStances.UpBlock]);
-                    break;
-                case AllHits.DownCross:
-                    gameObject.GetComponent<Animator>().Play(animation[AllDefenseStances.DownBlock]);
-                    break;
-                case AllHits.Uppercut:
-                    gameObject.GetComponent<Animator>().Play(animation[AllDefenseStances.UpBlock]);
-                    break;
-            }
+            gameObject.GetComponent<FighterInfo>().TakeDamage(gameObject.GetComponent<Hits>().GetHitPower(hitReceived) - damageReduction[currentDefenseStance], hitReceived, defenseStanceAnimation[currentDefenseStance]);  
         }
     else
     {
-        gameObject.GetComponent<FighterInfo>().TakeDamage(gameObject.GetComponent<Hits>().GetHitPower(hitReceived), true, hitReceived);
+        gameObject.GetComponent<FighterInfo>().TakeDamage(gameObject.GetComponent<Hits>().GetHitPower(hitReceived), hitReceived, "hurt");
      }
   }
 }
