@@ -13,6 +13,7 @@ public class FighterInfo : MonoBehaviour
   public AudioClip ReceiveUpCross;
   public AudioClip ReceiveDownCross;
   public AudioClip ReceiveUppercut;
+  public AudioClip KnockOut;
 
     private bool b_isHitting;
 
@@ -66,18 +67,23 @@ public class FighterInfo : MonoBehaviour
                 {
                     case AllHits.UpJab:
                         animation = "upKo";
+                        soundManager.PlaySingle(KnockOut);
                         break;
                     case AllHits.DownJab:
                         animation = "downKo";
+                        soundManager.PlaySingle(KnockOut);
                         break;
                     case AllHits.UpCross:
                         animation = "upKo";
+                        soundManager.PlaySingle(KnockOut);
                         break;
                     case AllHits.DownCross:
                         animation = "downKo";
+                        soundManager.PlaySingle(KnockOut);
                         break;
                     case AllHits.Uppercut:
                         animation = "upKo";
+                        soundManager.PlaySingle(KnockOut);
                         break;
                 }
 

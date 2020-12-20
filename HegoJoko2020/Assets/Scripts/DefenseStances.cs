@@ -17,6 +17,9 @@ public class DefenseStances : MonoBehaviour
   private AllDefenseStances? currentDefenseStance;
   public GameManager gameManager;
 
+  public SoundManager soundManager;
+  public AudioClip ReceiveDodge;
+
 
 
     void Start()
@@ -75,19 +78,23 @@ public class DefenseStances : MonoBehaviour
       {
         case AllHits.UpJab:
           gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
-
+          soundManager.PlaySingle(ReceiveDodge);
           break;
         case AllHits.DownJab:
           gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.DownDodge]);
+          soundManager.PlaySingle(ReceiveDodge);
           break;
         case AllHits.UpCross:
           gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
+          soundManager.PlaySingle(ReceiveDodge);
           break;
         case AllHits.DownCross:
           gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.DownDodge]);
+          soundManager.PlaySingle(ReceiveDodge);
           break;
         case AllHits.Uppercut:
           gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
+          soundManager.PlaySingle(ReceiveDodge);
           break;
       }
     }
