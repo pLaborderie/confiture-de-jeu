@@ -1021,15 +1021,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "C'est le grand soir ! Vous \xEAtes ici pour gagner ! Ou perdre tiens..
-    Au fait non vous pouvez ni perdre ni gagner ! Parce que c'est vous qui d\xE9cidez
-    de tout ! Il para\xEEtrait que vous avez oubli\xE9 malencontreusement une malette
-    dans chacun des vestiaires des combattants.... Et \xE9tonnament ils ont tout
-    les deux accept\xE9 de se coucher au m\xEAme moment !\n\nPour se faire ? Rien
-    de plus simple ! Il faut varier entre les attaques et les d\xE9fenses qui te
-    sont propos\xE9es ! Tout cela pour mettre KO les deux combattants en m\xEAme
-    temps ! Elle est pas belle la vie quand tu d\xE9cides de ce qui peut arriver
-    ?"
+  m_Text: "\"Let's get ready to rumble\"\n\nC'est le grand soir ! Vous \xEAtes ici
+    pour gagner ! Ou perdre tiens.. Au fait non vous pouvez ni perdre ni gagner !
+    Parce que c'est vous qui d\xE9cidez de tout ! Il para\xEEtrait que vous avez
+    oubli\xE9 malencontreusement une malette dans chacun des vestiaires des combattants....
+    Et \xE9tonnament ils ont tout les deux accept\xE9 de se coucher au m\xEAme moment
+    !\n\nPour se faire ? Rien de plus simple ! Il faut varier entre les attaques
+    et les d\xE9fenses qui te sont propos\xE9es ! Tout cela pour mettre KO les deux
+    combattants en m\xEAme temps ! Elle est pas belle la vie quand tu d\xE9cides
+    de ce qui peut arriver ?\n\n"
 --- !u!222 &2033107428
 CanvasRenderer:
   m_ObjectHideFlags: 0
