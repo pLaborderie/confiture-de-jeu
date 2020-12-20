@@ -3,10 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    public PauseMenu pauseFunction;
-
-    public void NewGameBtn(string newGameLevel) {
-        SceneManager.LoadScene(newGameLevel);
+    public void NewGameBtn(string scene) {
+        SceneManager.LoadScene(scene);
     }
 
     public void ExitGameBtn() {
