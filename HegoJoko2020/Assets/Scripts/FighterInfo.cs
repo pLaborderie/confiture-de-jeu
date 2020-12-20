@@ -8,13 +8,6 @@ public class FighterInfo : MonoBehaviour
   public Slider healthBar;
   public GameManager.Phase playablePhase;
   public GameObject hitFX;
-  public SoundManager soundManager;
-  public AudioClip ReceiveUpJab;
-  public AudioClip ReceiveDownJab;
-  public AudioClip ReceiveUpCross;
-  public AudioClip ReceiveDownCross;
-  public AudioClip ReceiveUppercut;
-  public AudioClip KnockOut;
 
     private Dictionary<AllKoStances, string> koStanceAnimation = new Dictionary<AllKoStances, string>();
 
