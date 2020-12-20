@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEditor;
@@ -236,6 +236,10 @@ public class DefenseStances : MonoBehaviour
         else if (currentDefenseStance.HasValue)
         {
             gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[currentDefenseStance.GetValueOrDefault()]);
+            if (gameManager.p_currentPhase == GameManager.Phase.ApplyMoves)
+            {
+                gameManager.NextPhase();
+            }
         }
     }
 }
