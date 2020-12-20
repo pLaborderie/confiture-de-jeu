@@ -2358,9 +2358,7 @@ MonoBehaviour:
   ReceiveUpCross: {fileID: 8300000, guid: 36437fca363d60544b607fd0c76ef003, type: 3}
   ReceiveDownCross: {fileID: 8300000, guid: df280970641d3c14bb624872c14b7da3, type: 3}
   ReceiveUppercut: {fileID: 8300000, guid: 41532062dbdf0f94996e8e027f5d77c1, type: 3}
-  KO: {fileID: 304117660}
-  Scene: Outro
-  Name: P2
+  b_hasTakenHit: 0
 --- !u!114 &916450228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3748,9 +3746,7 @@ MonoBehaviour:
   ReceiveUpCross: {fileID: 8300000, guid: 36437fca363d60544b607fd0c76ef003, type: 3}
   ReceiveDownCross: {fileID: 8300000, guid: df280970641d3c14bb624872c14b7da3, type: 3}
   ReceiveUppercut: {fileID: 8300000, guid: 41532062dbdf0f94996e8e027f5d77c1, type: 3}
-  KO: {fileID: 304117660}
-  Scene: Outro
-  Name: P1
+  b_hasTakenHit: 0
 --- !u!4 &1343469500
 Transform:
   m_ObjectHideFlags: 0
@@ -4637,6 +4633,7 @@ MonoBehaviour:
   Light1: {fileID: 1842965321}
   Light2: {fileID: 739982776}
   KO: {fileID: 304117660}
+  Time: 3
 --- !u!4 &1617765495
 Transform:
   m_ObjectHideFlags: 0
