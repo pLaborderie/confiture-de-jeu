@@ -167,7 +167,6 @@ public class GameManager : MonoBehaviour
                 ToggleFighterButtons(fighter2);
                 fighter1.GetComponent<Hits>().ApplySelectedHit();
                 fighter2.GetComponent<Hits>().ApplySelectedHit();
-                NextPhase();
                 break;
             default:
                 break;

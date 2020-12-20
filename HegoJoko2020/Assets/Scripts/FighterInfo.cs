@@ -4,12 +4,7 @@ using UnityEngine.UI;
 
 public class FighterInfo : MonoBehaviour
 {
-<<<<<<< Updated upstream
-  public float f_health;
-  public Slider healthBar;
-  public GameManager.Phase playablePhase;
-  public GameObject hitFX;
-=======
+
     public float f_health;
     public Slider healthBar;
     public GameManager gameManager;
@@ -17,7 +12,7 @@ public class FighterInfo : MonoBehaviour
     public GameObject hitFX;
     public SoundManager soundManager;
     public AudioClip KnockOut;
->>>>>>> Stashed changes
+
 
     private Dictionary<AllKoStances, string> koStanceAnimation = new Dictionary<AllKoStances, string>();
 
@@ -62,6 +57,10 @@ public class FighterInfo : MonoBehaviour
                     soundManager.PlaySingle(KnockOut);
                     break;
             }
+        }
+        if (gameManager.p_currentPhase == GameManager.Phase.ApplyMoves)
+        {
+            gameManager.NextPhase();
         }
     }
 }
