@@ -7,6 +7,12 @@ public class FighterInfo : MonoBehaviour
   public Slider healthBar;
   public GameManager.Phase playablePhase;
   public GameObject hitFX;
+  public SoundManager soundManager;
+  public AudioClip ReceiveUpJab;
+  public AudioClip ReceiveDownJab;
+  public AudioClip ReceiveUpCross;
+  public AudioClip ReceiveDownCross;
+  public AudioClip ReceiveUppercut;
 
     private bool b_isHitting;
 
@@ -31,18 +37,23 @@ public class FighterInfo : MonoBehaviour
        {
             case AllHits.UpJab:
                 animation = "upHurt";
+                soundManager.PlaySingle(ReceiveUpJab);
                 break;
             case AllHits.DownJab:
                 animation = "downHurt";
+                soundManager.PlaySingle(ReceiveDownJab);
                 break;
             case AllHits.UpCross:
                 animation = "upHurt";
+                soundManager.PlaySingle(ReceiveUpCross);
                 break;
             case AllHits.DownCross:
                animation = "downHurt";
+               soundManager.PlaySingle(ReceiveDownCross);
                break;
             case AllHits.Uppercut:
                animation = "upHurt";
+               soundManager.PlaySingle(ReceiveUppercut);
                break;
        }
 

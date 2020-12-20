@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DefenseStances : MonoBehaviour
 {
@@ -15,7 +17,9 @@ public class DefenseStances : MonoBehaviour
   private AllDefenseStances? currentDefenseStance;
   public GameManager gameManager;
 
-  void Start()
+
+
+    void Start()
   {
     for (int i = 0; i < allDefenseStances.Length; i++)
     {
@@ -71,6 +75,7 @@ public class DefenseStances : MonoBehaviour
       {
         case AllHits.UpJab:
           gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
+
           break;
         case AllHits.DownJab:
           gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.DownDodge]);
