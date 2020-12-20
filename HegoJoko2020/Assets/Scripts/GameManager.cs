@@ -159,19 +159,16 @@ public class GameManager : MonoBehaviour
             if (fighter1Health <= 0 && fighter2Health <= 0)
             {
                 p_currentPhase = Phase.DoubleKnockOut;
-                Debug.Log("Double");
                 StartCoroutine(loadEnd(Time, ""));
             }
             else if (fighter1Health <= 0)
             {
                 p_currentPhase = Phase.FirstBoxerKnockedOut;
-                Debug.Log("J1");
                 StartCoroutine(loadEnd(Time, "J1"));
             }
             else if (fighter2Health <= 0)
             {
                 p_currentPhase = Phase.SecondBoxerKnockedOut;
-                Debug.Log("J2");
                 StartCoroutine(loadEnd(Time, "J2"));
             }
             else
