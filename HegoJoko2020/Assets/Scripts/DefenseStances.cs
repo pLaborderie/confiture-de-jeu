@@ -89,6 +89,7 @@ public class DefenseStances : MonoBehaviour
 
     private void Update()
     {
+        GameObject opponent = gameManager.GetOpponentOf(gameObject);
         for (int i = 0; i < allDefenseStances.Length; i++)
         {
             if (defenseCurrentTimerAnimation[allDefenseStances[i]] > 0)
@@ -99,12 +100,12 @@ public class DefenseStances : MonoBehaviour
             {
                 if (b_isBlockingDamage)
                 {
-                    gameObject.GetComponent<FighterInfo>().TakeDamage(gameObject.GetComponent<Hits>().GetHitPower(currentHitReceived.GetValueOrDefault()) - damageReduction[currentDefenseStance.GetValueOrDefault()], currentHitReceived.GetValueOrDefault());
+                    gameObject.GetComponent<FighterInfo>().TakeDamage(opponent.GetComponent<Hits>().GetHitPower(currentHitReceived.GetValueOrDefault()) - damageReduction[currentDefenseStance.GetValueOrDefault()], currentHitReceived.GetValueOrDefault());
                     b_isBlockingDamage = false;
                 }
                 else
                 {
-                    gameObject.GetComponent<FighterInfo>().TakeDamage(gameObject.GetComponent<Hits>().GetHitPower(currentHitReceived.GetValueOrDefault()), currentHitReceived.GetValueOrDefault());
+                    gameObject.GetComponent<FighterInfo>().TakeDamage(opponent.GetComponent<Hits>().GetHitPower(currentHitReceived.GetValueOrDefault()), currentHitReceived.GetValueOrDefault());
                 }
 
                 b_isCurrentReceived = false;
@@ -117,7 +118,7 @@ public class DefenseStances : MonoBehaviour
         }
         else if (b_isCurrentReceived)
         {
-            gameObject.GetComponent<FighterInfo>().TakeDamage(gameObject.GetComponent<Hits>().GetHitPower(currentHitReceived.GetValueOrDefault()), currentHitReceived.GetValueOrDefault());
+            gameObject.GetComponent<FighterInfo>().TakeDamage(opponent.GetComponent<Hits>().GetHitPower(currentHitReceived.GetValueOrDefault()), currentHitReceived.GetValueOrDefault());
             b_isCurrentReceived = false;
         }
 
