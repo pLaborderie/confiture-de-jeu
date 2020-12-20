@@ -110,6 +110,13 @@ public class Hits : MonoBehaviour
         {
             DealHit();
         }
+        else
+        {
+            if (gameObject.GetComponent<Hits>().gameManager.GetOpponentOf(gameObject).GetComponent<Hits>().selectedHit == null)
+            {
+                gameManager.GetOpponentOf(gameObject).GetComponent<DefenseStances>().ReceiveHit(null);
+            }
+        }
     }
 
     public void DealHit()

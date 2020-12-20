@@ -128,7 +128,7 @@ public class DefenseStances : MonoBehaviour
 
     public void ReceiveHit(AllHits? hitReceived)
     {
-        if(hitReceived.HasValue)
+        if (hitReceived.HasValue)
         {
             if (currentDefenseStance.HasValue && ArrayUtility.Contains<AllHits>(hitDodged[currentDefenseStance.GetValueOrDefault()], hitReceived.GetValueOrDefault()))
             {
@@ -209,12 +209,16 @@ public class DefenseStances : MonoBehaviour
                             break;
                     }
                 }
-                
+
                 currentHitReceived = hitReceived.GetValueOrDefault();
                 b_isCurrentReceived = true;
             }
 
             currentDefenseStance = null;
         }
-    }  
+        else if (currentDefenseStance.HasValue)
+        {
+            gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[currentDefenseStance.GetValueOrDefault()]);
+        }
+    }
 }

@@ -128,7 +128,6 @@ public class GameManager : MonoBehaviour
             float fighter2Health = fighter2.GetComponent<FighterInfo>().f_health;
             if (fighter1Health <= 0 && fighter2Health <= 0)
             {
-                ForceDoubleKO();
                 p_currentPhase = Phase.DoubleKnockOut;
             }
             else if (fighter1Health <= 0)
@@ -173,11 +172,5 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    private void ForceDoubleKO()
-    {
-        fighter1.GetComponent<FighterInfo>().TakeDamage(0, AllHits.UpJab);
-        fighter2.GetComponent<FighterInfo>().TakeDamage(0, AllHits.UpJab);
     }
 }
