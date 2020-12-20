@@ -2360,6 +2360,7 @@ MonoBehaviour:
   ReceiveUppercut: {fileID: 8300000, guid: 41532062dbdf0f94996e8e027f5d77c1, type: 3}
   KO: {fileID: 304117660}
   Scene: Outro
+  Name: P2
 --- !u!114 &916450228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3749,6 +3750,7 @@ MonoBehaviour:
   ReceiveUppercut: {fileID: 8300000, guid: 41532062dbdf0f94996e8e027f5d77c1, type: 3}
   KO: {fileID: 304117660}
   Scene: Outro
+  Name: P1
 --- !u!4 &1343469500
 Transform:
   m_ObjectHideFlags: 0
