@@ -35,7 +35,6 @@ public class SoundManager : MonoBehaviour
     public void SaveVolumeValues(Slider _slider)
     {
         PlayerPrefs.SetFloat(_slider.name, _slider.value);
-        Debug.Log(_slider.name + " : " + PlayerPrefs.GetFloat(_slider.name));
     }
 
     public void SetVolumeValues()
