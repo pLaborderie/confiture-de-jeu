@@ -1795,18 +1795,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   citationsWin:
-  - "Je crois que vous avez oubli\xE9 quelques billets quand vous avez rempli cette
-    mallette !"
-  - "Hum\u2026 Un concurrent semble avoir mis plus d\u2019argent sur le tapis ! Un
-    de vos joueurs ne s\u2019est pas couch\xE9 !"
-  - "Un petit malin a accept\xE9 les billets mais les victoires comptent plus que
-    tout, vous vous \xEAtes fait avoir !"
-  - "Visiblement, m\xEAme avec de l\u2019argent, si le talent n\u2019est pas l\xE0,
-    il se fait mettre KO rapidement dis donc.."
-  - "Vous n\u2019auriez pas d\xFB \xE9changer votre mallette avec celle de votre
-    fille\u2026 Je ne suis pas certain que les bonbons soient une bonne motivation
-    pour se coucher !"
-  - "J'ai horreur de perdre, \xE7a me fait faire des otites !"
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   citationsLoose:
   - "Je crois que vous avez oubli\xE9 quelques billets quand vous avez rempli cette
     mallette !"
@@ -1819,6 +1813,7 @@ MonoBehaviour:
   - "Vous n\u2019auriez pas d\xFB \xE9changer votre mallette avec celle de votre
     fille\u2026 Je ne suis pas certain que les bonbons soient une bonne motivation
     pour se coucher !"
+  - "J'ai horreur de perdre, \xE7a me fait faire des otites !"
   ZoneTexte: {fileID: 2119234208}
   win: 0
 --- !u!1 &1058322721
@@ -2703,7 +2698,6 @@ GameObject:
   - component: {fileID: 1643065657}
   - component: {fileID: 1643065660}
   - component: {fileID: 1643065659}
-  - component: {fileID: 1643065658}
   m_Layer: 5
   m_Name: 'Loose '
   m_TagString: Untagged
@@ -2727,21 +2721,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4, y: 100}
+  m_AnchoredPosition: {x: -4, y: 80}
   m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1643065658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643065656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cac0eacb55b3f6438c569a94e483050, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1643065659
 MonoBehaviour:
   m_ObjectHideFlags: 0

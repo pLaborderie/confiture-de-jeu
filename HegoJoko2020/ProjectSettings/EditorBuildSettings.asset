@@ -15,12 +15,24 @@ EditorBuildSettings:
     path: Assets/Scenes/Ring.unity
     guid: ab1eb22b1a61ecb4c8ff87db9c4320cf
   - enabled: 1
-    path: Assets/Scenes/Outro.unity
-    guid: 8b9f7c405c47cef4b96207ad424966ad
-  - enabled: 1
     path: Assets/Scenes/OutroJ1.unity
-    guid: 431c2e40f5dff034fa4743e9416111a0
+    guid: a6f047376a0caee4db3ff1c99cf9db69
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Outro.unity
+    guid: 24e06493b969b2e4aa99c3abb6fef6df
   - enabled: 1
     path: Assets/Scenes/OutroJ2.unity
-    guid: 8c4363c8527d41743b2904f8de602aea
+    guid: a9bee436004a69545b14fa637d7eb852
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/BackgroundScene.unity
+    guid: 0d75cdae88b360248a2d1d55b15d8113
   m_configObjects: {}

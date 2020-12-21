@@ -1835,17 +1835,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   citationsWin:
-  - "En boxe, vous cr\xE9ez une strat\xE9gie pour battre chaque nouvel adversaire,
-    c\u2019est comme les \xE9checs."
-  - Pour gagner, il faut accepter de perdre.
-  - "Il n'y a qu'une r\xE9ponse \xE0 la d\xE9faite, et c'est la victoire"
-  - "La d\xE9faite est un pont vers la victoire."
+  - "Pourquoi \xEAtre aussi corrompu ? Education de m*** ! Aucun honneur ! Aucune
+    dignit\xE9 ! Bon\u2026 vous avez gagn\xE9 mais quand m\xEAme !"
+  - "Et bah voil\xE0 c\u2019est pas compliqu\xE9 d\u2019y arriver quand on met les
+    moyens !"
+  - "Vous avez d\xE9pens\xE9 beaucoup mais cette combine vous rapportera gros !"
+  - "Le prochain match est dans quelques instants ! J\u2019esp\xE8re que votre petit
+    truc marchera encore !"
+  - "Un double KO ? Non\u2026 Je suis certain que c\u2019est une pure.. co\xEFncidence
+    !"
   citationsLoose:
-  - "En boxe, vous cr\xE9ez une strat\xE9gie pour battre chaque nouvel adversaire,
-    c\u2019est comme les \xE9checs."
-  - Pour gagner, il faut accepter de perdre.
-  - "Il n'y a qu'une r\xE9ponse \xE0 la d\xE9faite, et c'est la victoire"
-  - "La d\xE9faite est un pont vers la victoire."
+  - "Je crois que vous avez oubli\xE9 quelques billets quand vous avez rempli cette
+    mallette !"
+  - "Hum\u2026 Un concurrent semble avoir mis plus d\u2019argent sur le tapis ! Un
+    de vos joueurs ne s\u2019est pas couch\xE9 !"
+  - "Un petit malin a accept\xE9 les billets mais les victoires comptent plus que
+    tout, vous vous \xEAtes fait avoir !"
+  - "Visiblement, m\xEAme avec de l\u2019argent, si le talent n\u2019est pas l\xE0,
+    il se fait mettre KO rapidement dis donc.."
+  - "Vous n\u2019auriez pas d\xFB \xE9changer votre mallette avec celle de votre
+    fille\u2026 Je ne suis pas certain que les bonbons soient une bonne motivation
+    pour se coucher !"
+  - "J'ai horreur de perdre, \xE7a me fait faire des otites !"
   ZoneTexte: {fileID: 2119234208}
   win: 1
 --- !u!1 &1052190140
@@ -1934,7 +1945,6 @@ GameObject:
   - component: {fileID: 1088305198}
   - component: {fileID: 1088305201}
   - component: {fileID: 1088305200}
-  - component: {fileID: 1088305199}
   m_Layer: 5
   m_Name: Win
   m_TagString: Untagged
@@ -1958,21 +1968,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4, y: 100}
+  m_AnchoredPosition: {x: -4, y: 80}
   m_SizeDelta: {x: 800, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1088305199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1088305197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cac0eacb55b3f6438c569a94e483050, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1088305200
 MonoBehaviour:
   m_ObjectHideFlags: 0
