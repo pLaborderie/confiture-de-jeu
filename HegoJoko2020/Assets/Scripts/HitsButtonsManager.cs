@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System;
 using System.Collections;
+using Lean.Gui;
 
 public class HitsButtonsManager : FightButtonsManager
 {
@@ -15,7 +16,7 @@ public class HitsButtonsManager : FightButtonsManager
             GameObject button = (GameObject)Instantiate(buttonPrefab);
             button.transform.SetParent(buttonLayout.transform);
             // Add listener to deal damage when clicked
-            button.GetComponent<Button>().onClick.AddListener(() => HandleHit(hit));
+            button.GetComponent<LeanButton>().OnClick.AddListener(() => HandleHit(hit));
             // Change text to hit name
             // Coroutine needed to wait for fighter stats to be randomized
             StartCoroutine(SetButtonText(button, hit));
@@ -27,7 +28,7 @@ public class HitsButtonsManager : FightButtonsManager
         while (hitDmg == 0)
         {
             hitDmg = gameObject.GetComponent<Hits>().GetHitPower(_hit);
-            Text btnText = _button.transform.GetChild(0).GetComponent<Text>();
+            Text btnText = _button.GetComponentInChildren<Text>();
             btnText.text = Enum.GetName(typeof(AllHits), _hit) + " - " + hitDmg + " PV";
             btnText.color = Color.white;
             yield return new WaitForFixedUpdate();

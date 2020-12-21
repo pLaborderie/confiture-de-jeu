@@ -2551,7 +2551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d6ef832fe794447b0850a088917efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 1650732304704246500, guid: ad2153f3fbee38f4fadcfe8a686f0fe2, type: 3}
+  buttonPrefab: {fileID: 8599606150656675927, guid: 078581f28aef1d346b02c98f8a0a05f5, type: 3}
   buttonLayout: {fileID: 1048824022}
 --- !u!114 &916450227
 MonoBehaviour:
@@ -2600,7 +2600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1697cd47c9a6941bc5b472bb45f60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 8353725770639579446, guid: e8e3ff36bbfd1c247aef2460d6186938, type: 3}
+  buttonPrefab: {fileID: 8599606150656675927, guid: 6c4772c59599b3b4a84d410cba23897a, type: 3}
   buttonLayout: {fileID: 916097151}
 --- !u!95 &916450229
 Animator:
@@ -3959,7 +3959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d6ef832fe794447b0850a088917efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 1650732304704246500, guid: ad2153f3fbee38f4fadcfe8a686f0fe2, type: 3}
+  buttonPrefab: {fileID: 8599606150656675927, guid: 078581f28aef1d346b02c98f8a0a05f5, type: 3}
   buttonLayout: {fileID: 955878804}
 --- !u!114 &1343469499
 MonoBehaviour:
@@ -4025,7 +4025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1697cd47c9a6941bc5b472bb45f60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 8353725770639579446, guid: e8e3ff36bbfd1c247aef2460d6186938, type: 3}
+  buttonPrefab: {fileID: 8599606150656675927, guid: 6c4772c59599b3b4a84d410cba23897a, type: 3}
   buttonLayout: {fileID: 792154167}
 --- !u!95 &1343469502
 Animator:
@@ -4868,19 +4868,8 @@ MonoBehaviour:
   HIT_UPCROSS_HITPOWER: 20
   HIT_DOWNCROSS_HITPOWER: 20
   HIT_UPPERCUT_HITPOWER: 40
-  HIT_UPJAB_PERFORMFRAMEANIMATION: 15
-  HIT_DOWNJAB_PERFORMFRAMEANIMATION: 15
-  HIT_UPCROSS_PERFORMFRAMEANIMATION: 15
-  HIT_DOWNCROSS_PERFORMFRAMEANIMATION: 15
-  HIT_UPPERCUT_PERFORMFRAMEANIMATION: 15
   DEFENSESTANCE_UPBLOCK_DAMAGEREDUCTION: 10
   DEFENSESTANCE_DOWNBLOCK_DAMAGEREDUCTION: 10
-  DEFENSESTANCE_UPBLOCK_PERFORMFRAMEANIMATION: 0
-  DEFENSESTANCE_DOWNBLOCK_PERFORMFRAMEANIMATION: 0
-  DEFENSESTANCE_UPDODGE_PERFORMFRAMEANIMATION: 0
-  DEFENSESTANCE_DOWNDODGE_PERFORMFRAMEANIMATION: 0
-  HURTSTANCE_UPHURT_PERFORMFRAMEANIMATION: 0
-  HURTSTANCE_DOWNHURT_PERFORMFRAMEANIMATION: 0
   p_currentPhase: 0
   fighter1: {fileID: 1343469495}
   fighter2: {fileID: 916450222}
