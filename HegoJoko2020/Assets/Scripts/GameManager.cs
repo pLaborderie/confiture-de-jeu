@@ -151,14 +151,14 @@ public class GameManager : MonoBehaviour
         PhaseTriggers();
     }
 
-    private void DisplayFighterButtons(GameObject _fighter)
+    public void DisplayFighterButtons(GameObject _fighter)
     {
         UpdateFighterCommands(_fighter);
         _fighter.GetComponent<HitsButtonsManager>().SetVisibility(true);
         _fighter.GetComponent<DefenseButtonsManager>().SetVisibility(true);
     }
 
-    private void HideFighterButtons(GameObject _fighter)
+    public void HideFighterButtons(GameObject _fighter)
     {
         _fighter.GetComponent<HitsButtonsManager>().SetVisibility(false);
         _fighter.GetComponent<DefenseButtonsManager>().SetVisibility(false);

@@ -1918,8 +1918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuUI: {fileID: 1606311606}
-  fighter1: {fileID: 1343469495}
-  fighter2: {fileID: 916450222}
+  gameManager: {fileID: 1617765494}
 --- !u!1 &628999655
 GameObject:
   m_ObjectHideFlags: 0
