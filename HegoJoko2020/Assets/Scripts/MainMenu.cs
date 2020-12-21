@@ -1,6 +1,4 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,13 +13,16 @@ public class MainMenu : MonoBehaviour
     private bool b_isAFighterAlreadySelected;
 
 
-    public void Awake() {
+    public void Awake()
+    {
         CloseAllPanels();
         b_isAFighterAlreadySelected = false;
     }
 
-    public void Update() {
-        if(Input.GetKeyDown(KeyCode.Escape)) {
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
             CloseAllPanels();
         }
     }
@@ -72,7 +73,7 @@ public class MainMenu : MonoBehaviour
 
     public void SelectFighter(int numFighter)
     {
-        PlayerPrefs.SetInt("NbFighter"+(b_isAFighterAlreadySelected ? 2.ToString() : 1.ToString()), numFighter);
+        PlayerPrefs.SetInt("NbFighter" + (b_isAFighterAlreadySelected ? 2.ToString() : 1.ToString()), numFighter);
 
         if (b_isAFighterAlreadySelected)
         {
