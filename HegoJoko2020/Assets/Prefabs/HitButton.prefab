@@ -315,7 +315,7 @@ MonoBehaviour:
   Data:
     Duration: 0
     Target: {fileID: 8300000, guid: 622df6012652bdb498c7ec99b1b8a532, type: 3}
-    Volume: 1
+    Volume: 0
 --- !u!114 &8599606150862433887
 MonoBehaviour:
   m_ObjectHideFlags: 0

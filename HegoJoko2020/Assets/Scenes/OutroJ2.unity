@@ -963,9 +963,9 @@ MonoBehaviour:
   efxSource: {fileID: 1522341111}
   musicSource: {fileID: 924703872}
   ambianceSource: {fileID: 924703872}
-  SliderVP: {fileID: 0}
-  SliderES: {fileID: 0}
-  SliderA: {fileID: 0}
+  SliderVP: {fileID: 129678764}
+  SliderES: {fileID: 462543469}
+  SliderA: {fileID: 140210551}
   lowPitchRange: 0.95
   highPitchRange: 1.05
 --- !u!4 &357371797
