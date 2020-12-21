@@ -552,7 +552,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 480, y: 180}
+  m_SizeDelta: {x: 640, y: 560}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &150547423
 MonoBehaviour:
@@ -587,8 +587,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Nous remercions premi\xE8rement le BDE Hego Berria pour l'organisation
-    de cet \xE9v\xE8nement !\nAinsi que Monsieurs et Mesdames les Jurys."
+  m_Text: "L'\xE9quipe \"Confiture de jeu\"\ncompos\xE9e de :\n- Antoine Champault\n-
+    Alexandre Qu\xE9r\xE9\n- Enzo Moulian\n- Paul Laborderie\n\nVous pr\xE9sente
+    son jeu : \n\"Double Knock Out\"\n\nR\xE9alis\xE9 lors de la GameJam \"Hego Joko\"\ndu
+    19 au 21 D\xE9cembre 2020.\n\nNous remercions le BDE \"Hego Berria\" \nainsi
+    que les jur\xE9s !"
 --- !u!222 &150547424
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1085,8 +1088,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Les combattants ne sont couchent jamais sans se battre ! Visez le double
-    KO.
+  m_Text: "Les combattants ne sont couchent jamais sans se battre ! \nVisez le double
+    KO."
 --- !u!222 &236836516
 CanvasRenderer:
   m_ObjectHideFlags: 0
