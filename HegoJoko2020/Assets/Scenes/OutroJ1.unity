@@ -2943,7 +2943,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: " Il n'y a qu'une r\xE9ponse \xE0 la d\xE9faite, et c'est la victoire."
+  m_Text: "Hum.. Il semblerait qu'un des deux joueurs ait choisi de sauver son honneur..
+    \n\n\nC'est un \xE9chec !\n\n"
 --- !u!222 &2119234209
 CanvasRenderer:
   m_ObjectHideFlags: 0
