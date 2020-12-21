@@ -18,6 +18,7 @@ public class FighterInfo : MonoBehaviour
     public GameManager gameManager;
     public GameManager.Phase playablePhase;
     public GameObject hitFX;
+    public GameObject healFX;
     public SoundManager soundManager;
     public AudioClip KnockOut;
     public AudioClip ReceiveUpJab;
@@ -27,6 +28,7 @@ public class FighterInfo : MonoBehaviour
     public AudioClip ReceiveUppercut;
     public bool b_hasTakenHit;
     public RuntimeAnimatorController[] fightersAnimations = new RuntimeAnimatorController[6];
+    public int n_nbTimeInARowToPerformDefensiveStance;
 
     private Dictionary<AllKoStances, string> koStanceAnimation = new Dictionary<AllKoStances, string>();
 
@@ -49,6 +51,7 @@ public class FighterInfo : MonoBehaviour
         }
         
         b_hasTakenHit = false;
+        n_nbTimeInARowToPerformDefensiveStance = 0;
         koStanceAnimation.Add(AllKoStances.UpKo, "upKo");
         koStanceAnimation.Add(AllKoStances.DownKo, "downKo");
         CreateRandomStats();
