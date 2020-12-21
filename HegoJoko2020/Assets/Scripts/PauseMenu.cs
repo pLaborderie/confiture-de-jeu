@@ -36,6 +36,8 @@ public class PauseMenu : MonoBehaviour
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        DisplayFighterButtons(fighter1);
+        DisplayFighterButtons(fighter2);
     }
 
     public void Pause() {
