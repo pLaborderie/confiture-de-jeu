@@ -89,8 +89,10 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        if(fighter1 != null && fighter2 != null) {
-            if(fighter1.GetComponent<FighterInfo>().b_hasTakenHit && fighter2.GetComponent<FighterInfo>().b_hasTakenHit) {
+        if (fighter1 != null && fighter2 != null)
+        {
+            if (fighter1.GetComponent<FighterInfo>().b_hasTakenHit || fighter2.GetComponent<FighterInfo>().b_hasTakenHit)
+            {
                 fighter1.GetComponent<FighterInfo>().b_hasTakenHit = false;
                 fighter2.GetComponent<FighterInfo>().b_hasTakenHit = false;
                 NextPhase();
@@ -234,6 +236,7 @@ public class GameManager : MonoBehaviour
     private void PhaseTriggers()
     {
         Phase currentPhase = p_currentPhase;
+        Debug.Log(currentPhase);
         switch (currentPhase)
         {
             case Phase.SelectFirstMove:

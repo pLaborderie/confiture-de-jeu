@@ -2025,7 +2025,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 7
-  m_Spacing: 0
+  m_Spacing: 5
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -2372,7 +2372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1697cd47c9a6941bc5b472bb45f60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 1650732304704246500, guid: 0b313622157d7bf4189850483bbfd98c, type: 3}
+  buttonPrefab: {fileID: 8353725770639579446, guid: e8e3ff36bbfd1c247aef2460d6186938, type: 3}
   buttonLayout: {fileID: 2023912886}
 --- !u!95 &916450229
 Animator:
@@ -2568,7 +2568,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 7
-  m_Spacing: 0
+  m_Spacing: 5
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -2759,7 +2759,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 7
-  m_Spacing: 0
+  m_Spacing: 5
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -3790,7 +3790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1697cd47c9a6941bc5b472bb45f60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 1650732304704246500, guid: 0b313622157d7bf4189850483bbfd98c, type: 3}
+  buttonPrefab: {fileID: 8353725770639579446, guid: e8e3ff36bbfd1c247aef2460d6186938, type: 3}
   buttonLayout: {fileID: 792154167}
 --- !u!95 &1343469502
 Animator:
@@ -5585,7 +5585,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 7
-  m_Spacing: 0
+  m_Spacing: 5
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
