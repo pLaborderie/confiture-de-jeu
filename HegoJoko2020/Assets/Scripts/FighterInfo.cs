@@ -32,7 +32,7 @@ public class FighterInfo : MonoBehaviour
 
     void Start()
     {
-        if(PlayerPrefs.GetInt("NbFighter1") != null)
+        if(PlayerPrefs.GetInt("NbFighter1") > 0 && PlayerPrefs.GetInt("NbFighter1") <= 6)
         {
             if (gameManager.GetOpponentOf(gameManager.GetOpponentOf(gameObject)) == gameManager.fighter1)
             {
@@ -47,7 +47,6 @@ public class FighterInfo : MonoBehaviour
         {
             GetComponent<Animator>().runtimeAnimatorController = fightersAnimations[1];
         }
-        
         
         b_hasTakenHit = false;
         koStanceAnimation.Add(AllKoStances.UpKo, "upKo");

@@ -723,6 +723,7 @@ GameObject:
   m_Component:
   - component: {fileID: 272638338}
   - component: {fileID: 272638337}
+  - component: {fileID: 272638339}
   m_Layer: 0
   m_Name: J1
   m_TagString: Untagged
@@ -795,6 +796,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &272638339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272638336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17cc19d2ddc72d4984907eff9fa4a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fightersSprites:
+  - {fileID: 21300000, guid: 4665d99b84c45db41a9341756a2fef99, type: 3}
+  - {fileID: 21300000, guid: 10d351dd82097b04f851511c81acc2b5, type: 3}
+  - {fileID: 21300000, guid: eb80d65f4ffaf51498811bb86606054d, type: 3}
+  - {fileID: 21300000, guid: b6bd752e48002a340a5307537d856379, type: 3}
+  - {fileID: 21300000, guid: ab91dda99e9813142b5a80ee5133b950, type: 3}
+  - {fileID: 21300000, guid: c0f39ede21963b84cab3ed6e985de3f2, type: 3}
+  koSprites:
+  - {fileID: -8241683630289044089, guid: 06507f47255312e4eb8bb63d4567751b, type: 3}
+  - {fileID: 6702578775529328975, guid: be861dddb4bcc8e4f95323e511145dd7, type: 3}
+  - {fileID: 6114179363990804281, guid: 891d939a91f462849a56d3c472f0dfc8, type: 3}
+  - {fileID: -3950205897617719702, guid: 77145a5b93016fd48ba7bd3458a5b25d, type: 3}
+  - {fileID: 1192389981972868467, guid: 73adefedbbd604644b550276cc4f519b, type: 3}
+  - {fileID: -8151833171391784630, guid: 690e8a98af7ad854a8830668d07bb428, type: 3}
+  defaultSprite: {fileID: 21300000, guid: 4665d99b84c45db41a9341756a2fef99, type: 3}
+  defaultKoSprite: {fileID: -8241683630289044089, guid: 06507f47255312e4eb8bb63d4567751b, type: 3}
+  b_isKo: 1
 --- !u!1 &418188417
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,6 +835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 418188419}
   - component: {fileID: 418188418}
+  - component: {fileID: 418188420}
   m_Layer: 0
   m_Name: J2
   m_TagString: Untagged
@@ -877,6 +908,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!114 &418188420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418188417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17cc19d2ddc72d4984907eff9fa4a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fightersSprites:
+  - {fileID: 21300000, guid: 4665d99b84c45db41a9341756a2fef99, type: 3}
+  - {fileID: 21300000, guid: 10d351dd82097b04f851511c81acc2b5, type: 3}
+  - {fileID: 21300000, guid: eb80d65f4ffaf51498811bb86606054d, type: 3}
+  - {fileID: 21300000, guid: b6bd752e48002a340a5307537d856379, type: 3}
+  - {fileID: 21300000, guid: ab91dda99e9813142b5a80ee5133b950, type: 3}
+  - {fileID: 21300000, guid: c0f39ede21963b84cab3ed6e985de3f2, type: 3}
+  koSprites:
+  - {fileID: -8241683630289044089, guid: 06507f47255312e4eb8bb63d4567751b, type: 3}
+  - {fileID: 6702578775529328975, guid: be861dddb4bcc8e4f95323e511145dd7, type: 3}
+  - {fileID: 6114179363990804281, guid: 891d939a91f462849a56d3c472f0dfc8, type: 3}
+  - {fileID: -3950205897617719702, guid: 77145a5b93016fd48ba7bd3458a5b25d, type: 3}
+  - {fileID: 1192389981972868467, guid: 73adefedbbd604644b550276cc4f519b, type: 3}
+  - {fileID: -8151833171391784630, guid: 690e8a98af7ad854a8830668d07bb428, type: 3}
+  defaultSprite: {fileID: 21300000, guid: 10d351dd82097b04f851511c81acc2b5, type: 3}
+  defaultKoSprite: {fileID: 6702578775529328975, guid: be861dddb4bcc8e4f95323e511145dd7, type: 3}
+  b_isKo: 1
 --- !u!1 &798468636
 GameObject:
   m_ObjectHideFlags: 0
