@@ -1,4 +1,5 @@
 ﻿using System;
+using Lean.Gui;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,9 +14,9 @@ public class DefenseButtonsManager : FightButtonsManager
             GameObject button = (GameObject)Instantiate(buttonPrefab);
             button.transform.SetParent(buttonLayout.transform);
             // Add listener to deal damage when clicked
-            button.GetComponent<Button>().onClick.AddListener(() => HandleDefend(stance));
+            button.GetComponent<LeanButton>().OnClick.AddListener(() => HandleDefend(stance));
             // Change text to hit name
-            Text btnText = button.transform.GetChild(0).GetComponent<Text>();
+            Text btnText = button.GetComponentInChildren<Text>();
             btnText.text = Enum.GetName(typeof(AllDefenseStances), stance);
             btnText.color = Color.white;
         }
@@ -24,5 +25,6 @@ public class DefenseButtonsManager : FightButtonsManager
     {
         gameObject.GetComponent<DefenseStances>().SelectStance(stance);
         gameObject.GetComponent<Hits>().selectedHit = null;
+        gameObject.GetComponent<FighterInfo>().n_nbTimeInARowToPerformDefensiveStance++;
     }
 }

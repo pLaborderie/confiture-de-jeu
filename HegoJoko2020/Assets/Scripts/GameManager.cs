@@ -203,21 +203,16 @@ public class GameManager : MonoBehaviour
     private void PhaseTriggers()
     {
         Phase currentPhase = p_currentPhase;
-        Debug.Log(currentPhase);
         switch (currentPhase)
         {
             case Phase.SelectFirstMove:
                 DisplayFighterButtons(fighter1);
-                Debug.Log("JOUEUR 1");
-                Debug.Log(fighter1.GetComponent<CommandManager>().GetCommandsForCurrentRound()[0]);
                 HideFighterLight(Light2);
                 DisplayFighterLight(Light1);
                 break;
             case Phase.SelectSecondMove:
                 HideFighterButtons(fighter1);
                 DisplayFighterButtons(fighter2);
-                Debug.Log("JOUEUR 2");
-                Debug.Log(fighter2.GetComponent<CommandManager>().GetCommandsForCurrentRound()[0]);
                 HideFighterLight(Light1);
                 DisplayFighterLight(Light2);
                 break;
