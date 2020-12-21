@@ -335,7 +335,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1238, y: 582.9995}
+  m_SizeDelta: {x: 1000, y: 582.9995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &593910048
 MonoBehaviour:
@@ -1021,15 +1021,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\"Let's get ready to rumble\"\n\nC'est le grand soir ! Vous \xEAtes ici
-    pour gagner ! Ou perdre tiens.. Au fait non vous pouvez ni perdre ni gagner !
-    Parce que c'est vous qui d\xE9cidez de tout ! Il para\xEEtrait que vous avez
-    oubli\xE9 malencontreusement une malette dans chacun des vestiaires des combattants....
-    Et \xE9tonnament ils ont tout les deux accept\xE9 de se coucher au m\xEAme moment
-    !\n\nPour se faire ? Rien de plus simple ! Il faut varier entre les attaques
-    et les d\xE9fenses qui te sont propos\xE9es ! Tout cela pour mettre KO les deux
-    combattants en m\xEAme temps ! Elle est pas belle la vie quand tu d\xE9cides
-    de ce qui peut arriver ?\n\n"
+  m_Text: "\"LET'S GET READY TO RUMBLE !\"\r\n\r\nC'est LE grand soir ! Vous \xEAtes
+    ici pour gagner.. perdre.. gagner ?\r\n\rNi l'un ni l'autre \xE0 vrai dire !
+    Puisque vous d\xE9cidez de tout !\r\n\r\nApparemment vous avez \"oubli\xE9\"
+    une mallette dans chacun des vestiaires des combattants... Normal, la c\xF4te
+    pour un double KO peut rapporter tr\xE8s gros.\r Et \xE9tonnamment ils ont tous
+    les deux accept\xE9s de se coucher au m\xEAme moment !\r\n\r\nPour ce faire ?
+    Rien de plus simple ! Il faut varier entre les attaques et les d\xE9fenses qui
+    te sont propos\xE9es !\r Tout cela pour mettre KO les deux combattants en m\xEAme
+    temps ! Elle n'est pas belle la vie quand c'est toi qui d\xE9cide ?"
 --- !u!222 &2033107428
 CanvasRenderer:
   m_ObjectHideFlags: 0

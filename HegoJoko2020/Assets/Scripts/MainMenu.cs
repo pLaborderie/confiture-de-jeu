@@ -93,5 +93,8 @@ public class MainMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(_time);
         StartGame();
+    public void test(Sprite _image)
+    {
+        Debug.Log(_image);
     }
 }
