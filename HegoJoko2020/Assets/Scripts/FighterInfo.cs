@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -26,13 +25,13 @@ public class FighterInfo : MonoBehaviour
     public AudioClip ReceiveUpCross;
     public AudioClip ReceiveDownCross;
     public AudioClip ReceiveUppercut;
-    public GameObject KO;
-    public String Scene;
+    public bool b_hasTakenHit;
 
     private Dictionary<AllKoStances, string> koStanceAnimation = new Dictionary<AllKoStances, string>();
 
     void Start()
     {
+        b_hasTakenHit = false;
         koStanceAnimation.Add(AllKoStances.UpKo, "upKo");
         koStanceAnimation.Add(AllKoStances.DownKo, "downKo");
         CreateRandomStats();
@@ -79,15 +78,13 @@ public class FighterInfo : MonoBehaviour
                     soundManager.PlaySingle(KnockOut);
                     break;
             }
-
-            KO.gameObject.SetActive(true);
-            StartCoroutine(MyCoroutine(3));
         }
         if (gameManager.p_currentPhase == GameManager.Phase.ApplyMoves)
         {
-            gameManager.NextPhase();
+            b_hasTakenHit = true;
         }
     }
+
     private void CreateRandomStats()
     {
         float newHealth = UnityEngine.Random.Range(MIN_HEALTH, MAX_HEALTH);
@@ -104,17 +101,6 @@ public class FighterInfo : MonoBehaviour
         healthIndicator.text = GetHealthText();
     }
 
-    public void loadEnd()
-    {
-        SceneManager.LoadScene(Scene);
-    }
-
-
-    IEnumerator MyCoroutine(float _time)
-    {
-        yield return new WaitForSeconds(_time);
-        loadEnd();
-    }
     private string GetHealthText()
     {
         return f_health + "/" + f_startHealth + "PV";

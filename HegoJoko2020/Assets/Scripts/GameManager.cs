@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public enum AllHits
 {
@@ -84,6 +85,18 @@ public class GameManager : MonoBehaviour
     public GameObject Light1;
     public GameObject Light2;
     public GameObject KO;
+    public int Time;
+
+    public void Update()
+    {
+        if(fighter1 != null && fighter2 != null) {
+            if(fighter1.GetComponent<FighterInfo>().b_hasTakenHit && fighter2.GetComponent<FighterInfo>().b_hasTakenHit) {
+                fighter1.GetComponent<FighterInfo>().b_hasTakenHit = false;
+                fighter2.GetComponent<FighterInfo>().b_hasTakenHit = false;
+                NextPhase();
+            }
+        }
+    }
 
     private void Awake()
     {
@@ -113,6 +126,7 @@ public class GameManager : MonoBehaviour
     {
         PhaseTriggers();
     }
+
     private static GameManager GetInstance()
     {
         return _instance;
@@ -143,17 +157,21 @@ public class GameManager : MonoBehaviour
         {
             float fighter1Health = fighter1.GetComponent<FighterInfo>().f_health;
             float fighter2Health = fighter2.GetComponent<FighterInfo>().f_health;
+
             if (fighter1Health <= 0 && fighter2Health <= 0)
             {
                 p_currentPhase = Phase.DoubleKnockOut;
+                StartCoroutine(loadEnd(Time, ""));
             }
             else if (fighter1Health <= 0)
             {
                 p_currentPhase = Phase.FirstBoxerKnockedOut;
+                StartCoroutine(loadEnd(Time, "J1"));
             }
             else if (fighter2Health <= 0)
             {
                 p_currentPhase = Phase.SecondBoxerKnockedOut;
+                StartCoroutine(loadEnd(Time, "J2"));
             }
             else
             {
@@ -163,12 +181,14 @@ public class GameManager : MonoBehaviour
 
         PhaseTriggers();
     }
+
     private void DisplayFighterButtons(GameObject _fighter)
     {
         UpdateFighterCommands(_fighter);
         _fighter.GetComponent<HitsButtonsManager>().SetVisibility(true);
         _fighter.GetComponent<DefenseButtonsManager>().SetVisibility(true);
     }
+
     private void HideFighterButtons(GameObject _fighter)
     {
         _fighter.GetComponent<HitsButtonsManager>().SetVisibility(false);
@@ -200,14 +220,17 @@ public class GameManager : MonoBehaviour
         _fighter.GetComponent<HitsButtonsManager>().GenerateHitsButtons(hits.ToArray());
         _fighter.GetComponent<DefenseButtonsManager>().GenerateDefenseButtons(stances.ToArray());
     }
+
     private void DisplayFighterLight(GameObject _light)
     {
         _light.gameObject.SetActive(true);
     }
+
     private void HideFighterLight(GameObject _light)
     {
         _light.gameObject.SetActive(false);
     }
+
     private void PhaseTriggers()
     {
         Phase currentPhase = p_currentPhase;
@@ -236,5 +259,12 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    IEnumerator loadEnd(float _time, string _name)
+    {
+        KO.gameObject.SetActive(true);
+        yield return new WaitForSeconds(_time);
+        SceneManager.LoadScene("Outro" + _name);
     }
 }

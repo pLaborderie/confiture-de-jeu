@@ -927,7 +927,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.59
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1460,7 +1460,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.2
+  m_Value: 0.15
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2358,8 +2358,7 @@ MonoBehaviour:
   ReceiveUpCross: {fileID: 8300000, guid: 36437fca363d60544b607fd0c76ef003, type: 3}
   ReceiveDownCross: {fileID: 8300000, guid: df280970641d3c14bb624872c14b7da3, type: 3}
   ReceiveUppercut: {fileID: 8300000, guid: 41532062dbdf0f94996e8e027f5d77c1, type: 3}
-  KO: {fileID: 304117660}
-  Scene: Outro
+  b_hasTakenHit: 0
 --- !u!114 &916450228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3747,8 +3746,7 @@ MonoBehaviour:
   ReceiveUpCross: {fileID: 8300000, guid: 36437fca363d60544b607fd0c76ef003, type: 3}
   ReceiveDownCross: {fileID: 8300000, guid: df280970641d3c14bb624872c14b7da3, type: 3}
   ReceiveUppercut: {fileID: 8300000, guid: 41532062dbdf0f94996e8e027f5d77c1, type: 3}
-  KO: {fileID: 304117660}
-  Scene: Outro
+  b_hasTakenHit: 0
 --- !u!4 &1343469500
 Transform:
   m_ObjectHideFlags: 0
@@ -4635,6 +4633,7 @@ MonoBehaviour:
   Light1: {fileID: 1842965321}
   Light2: {fileID: 739982776}
   KO: {fileID: 304117660}
+  Time: 3
 --- !u!4 &1617765495
 Transform:
   m_ObjectHideFlags: 0
@@ -4678,7 +4677,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 95e584d18171e1244b16768e0526ea75, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.415
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4861,7 +4860,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.415
+  m_Value: 0.2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -5488,7 +5487,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.59
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
