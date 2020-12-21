@@ -590,10 +590,10 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "L'\xE9quipe \"Confiture de jeu\"\ncompos\xE9e de :\n- Antoine Champault\n-
-    Alexandre Qu\xE9r\xE9\n- Enzo Moulian\n- Paul Laborderie\n\nVous pr\xE9sente
+    Paul Laborderie\n- Enzo Moulian\n- Alexandre Qu\xE9r\xE9\n\nVous pr\xE9sente
     son jeu : \n\"Double Knock Out\"\n\nR\xE9alis\xE9 lors de la GameJam \"Hego Joko\"\ndu
     19 au 21 D\xE9cembre 2020.\n\nNous remercions le BDE \"Hego Berria\" \nainsi
-    que les jur\xE9s !"
+    que les membres du jury !"
 --- !u!222 &150547424
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1715,7 +1715,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 230}
-  m_SizeDelta: {x: 300, y: 30}
+  m_SizeDelta: {x: 400, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &533756397
 MonoBehaviour:
@@ -1750,7 +1750,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Choose your Fighters
+  m_Text: Choose your two fighters!
 --- !u!222 &533756398
 CanvasRenderer:
   m_ObjectHideFlags: 0
