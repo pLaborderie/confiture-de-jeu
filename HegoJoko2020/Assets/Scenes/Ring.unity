@@ -1476,6 +1476,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 800747248}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: SaveVolumeValues
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 450318727}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &451802894
 GameObject:
   m_ObjectHideFlags: 0
@@ -2117,6 +2129,9 @@ MonoBehaviour:
   efxSource: {fileID: 273334912}
   musicSource: {fileID: 1159545182}
   ambianceSource: {fileID: 1619648393}
+  SliderVP: {fileID: 450318727}
+  SliderES: {fileID: 1937434612}
+  SliderA: {fileID: 1658383516}
   lowPitchRange: 0.94
   highPitchRange: 1.05
 --- !u!1 &816215655
@@ -4902,6 +4917,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 800747248}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: SaveVolumeValues
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1658383516}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1693009445
 GameObject:
   m_ObjectHideFlags: 0
@@ -5524,6 +5551,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 800747248}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: SaveVolumeValues
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1937434612}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
