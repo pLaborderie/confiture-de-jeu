@@ -1327,6 +1327,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7479295a25c384bb206b82c53e0cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  citations:
+  - "En boxe, vous cr\xE9ez une strat\xE9gie pour battre chaque nouvel adversaire,
+    c\u2019est comme les \xE9checs."
+  - Pour gagner, il faut accepter de perdre.
+  - "Il n'y a qu'une r\xE9ponse \xE0 la d\xE9faite, et c'est la victoire"
+  - "La d\xE9faite est un pont vers la victoire."
+  ZoneTexte: {fileID: 2119234208}
 --- !u!1 &1260747660
 GameObject:
   m_ObjectHideFlags: 0
