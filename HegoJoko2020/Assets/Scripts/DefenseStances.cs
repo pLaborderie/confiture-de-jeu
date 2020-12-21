@@ -71,6 +71,13 @@ public class DefenseStances : MonoBehaviour
         if (gameObject.GetComponent<FighterInfo>().playablePhase == gameManager.p_currentPhase)
         {
             currentDefenseStance = stance;
+            if(gameObject.GetComponent<FighterInfo>().n_nbTimeInARowToPerformDefensiveStance >= 2)
+            {
+                System.Random rnd = new System.Random();
+                int n_hpToRegenerate = rnd.Next(15);
+                gameObject.GetComponent<FighterInfo>().f_health += n_hpToRegenerate;
+                gameObject.GetComponent<FighterInfo>().healFX.GetComponent<Animator>().Play("healFX");
+            }
             GetComponent<CommandManager>().RefreshProbabilities(stance);
             gameManager.NextPhase();
         }
