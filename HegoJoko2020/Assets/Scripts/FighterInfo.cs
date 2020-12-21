@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class FighterInfo : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class FighterInfo : MonoBehaviour
     public bool b_hasTakenHit;
     public RuntimeAnimatorController[] fightersAnimations = new RuntimeAnimatorController[6];
     public int n_nbTimeInARowToPerformDefensiveStance;
+    public AllHits lastOpponenthit;
 
     private Dictionary<AllKoStances, string> koStanceAnimation = new Dictionary<AllKoStances, string>();
 
@@ -68,28 +70,9 @@ public class FighterInfo : MonoBehaviour
         f_health -= (damageDealt > f_health ? f_health : damageDealt);
         hitFX.GetComponent<Animator>().Play("hitFX");
 
-        if (f_health == 0)
+        if (f_health <= 0)
         {
-            switch (hit)
-            {
-                case AllHits.UpJab:
-                    gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
-                    break;
-                case AllHits.DownJab:
-                    gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.DownKo]);
-                    break;
-                case AllHits.UpCross:
-                    gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
-                    break;
-                case AllHits.DownCross:
-                    gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.DownKo]);
-                    break;
-                case AllHits.Uppercut:
-                    gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
-                    break;
-            }
-
-            soundManager.PlaySingle(KnockOut);
+            StartCoroutine(PlayKOanimation(hit));
         }
         if (gameManager.p_currentPhase == GameManager.Phase.ApplyMoves)
         {
@@ -116,5 +99,30 @@ public class FighterInfo : MonoBehaviour
     private string GetHealthText()
     {
         return f_health + "/" + f_startHealth + "PV";
+    }
+
+    private IEnumerator PlayKOanimation(AllHits hit)
+    {
+        switch (hit)
+        {
+            case AllHits.UpJab:
+                gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
+                break;
+            case AllHits.DownJab:
+                gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.DownKo]);
+                break;
+            case AllHits.UpCross:
+                gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
+                break;
+            case AllHits.DownCross:
+                gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.DownKo]);
+                break;
+            case AllHits.Uppercut:
+                gameObject.GetComponent<Animator>().Play(koStanceAnimation[AllKoStances.UpKo]);
+                break;
+        }
+
+        soundManager.PlaySingle(KnockOut);
+        yield return new WaitForSeconds(0.1f);
     }
 }
