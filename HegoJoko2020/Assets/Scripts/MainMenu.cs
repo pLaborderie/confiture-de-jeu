@@ -55,4 +55,9 @@ public class MainMenu : MonoBehaviour
     {
         _ui.SetActive(false);
     }
+
+    public void test(Sprite _image)
+    {
+        Debug.Log(_image);
+    }
 }
