@@ -2907,8 +2907,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3, y: 128.49976}
-  m_SizeDelta: {x: 800, y: 100}
+  m_AnchoredPosition: {x: -4, y: 150}
+  m_SizeDelta: {x: 800, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2119234208
 MonoBehaviour:
@@ -2943,8 +2943,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "En boxe, vous cr\xE9ez une strat\xE9gie pour battre chaque nouvel adversaire,
-    c\u2019est comme les \xE9checs."
+  m_Text: "Comme quoi pour certaines personnes peu scrupuleuses... des billets font
+    oublier l'honneur... \n\nVous avez gagn\xE9 !\n"
 --- !u!222 &2119234209
 CanvasRenderer:
   m_ObjectHideFlags: 0
