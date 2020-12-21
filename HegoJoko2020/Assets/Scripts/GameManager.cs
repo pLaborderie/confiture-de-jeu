@@ -35,36 +35,14 @@ public enum AllKoStances
 
 public class GameManager : MonoBehaviour
 {
-    public int HIT_UPJAB_MAXUSE;
-    public int HIT_DOWNJAB_MAXUSE;
-    public int HIT_UPCROSS_MAXUSE;
-    public int HIT_DOWNCROSS_MAXUSE;
-    public int HIT_UPPERCUT_MAXUSE;
-
     public float HIT_UPJAB_HITPOWER;
     public float HIT_DOWNJAB_HITPOWER;
     public float HIT_UPCROSS_HITPOWER;
     public float HIT_DOWNCROSS_HITPOWER;
     public float HIT_UPPERCUT_HITPOWER;
 
-    public int HIT_UPJAB_PERFORMFRAMEANIMATION;
-    public int HIT_DOWNJAB_PERFORMFRAMEANIMATION;
-    public int HIT_UPCROSS_PERFORMFRAMEANIMATION;
-    public int HIT_DOWNCROSS_PERFORMFRAMEANIMATION;
-    public int HIT_UPPERCUT_PERFORMFRAMEANIMATION;
-
     public float DEFENSESTANCE_UPBLOCK_DAMAGEREDUCTION;
     public float DEFENSESTANCE_DOWNBLOCK_DAMAGEREDUCTION;
-    public float DEFENSESTANCE_UPDODGE_DAMAGEREDUCTION;
-    public float DEFENSESTANCE_DOWNDODGE_DAMAGEREDUCTION;
-
-    public int DEFENSESTANCE_UPBLOCK_PERFORMFRAMEANIMATION;
-    public int DEFENSESTANCE_DOWNBLOCK_PERFORMFRAMEANIMATION;
-    public int DEFENSESTANCE_UPDODGE_PERFORMFRAMEANIMATION;
-    public int DEFENSESTANCE_DOWNDODGE_PERFORMFRAMEANIMATION;
-
-    public int HURTSTANCE_UPHURT_PERFORMFRAMEANIMATION;
-    public int HURTSTANCE_DOWNHURT_PERFORMFRAMEANIMATION;
 
     public enum Phase
     {
@@ -105,17 +83,6 @@ public class GameManager : MonoBehaviour
         CreateInstance();
         KO.gameObject.SetActive(false);
         HideFighterLight(Light2);
-
-        /*
-                if (_instance == null)
-                {
-                    CreateInstance(); 
-                }
-                else
-                {
-                    Destroy(this);
-                }
-        */
     }
 
     private void CreateInstance()

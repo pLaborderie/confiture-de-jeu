@@ -14,17 +14,11 @@ public class DefenseStances : MonoBehaviour
     private Dictionary<AllDefenseStances, AllHits[]> hitDodged = new Dictionary<AllDefenseStances, AllHits[]>();
     private Dictionary<AllDefenseStances, float> damageReduction = new Dictionary<AllDefenseStances, float>();
     private Dictionary<AllDefenseStances, string> defenseStanceAnimation = new Dictionary<AllDefenseStances, string>();
-    private Dictionary<AllDefenseStances, int> defenseInitialTimerAnimation = new Dictionary<AllDefenseStances, int>();
-    private Dictionary<AllDefenseStances, int> defenseCurrentTimerAnimation = new Dictionary<AllDefenseStances, int>();
 
     private Dictionary<AllHurtStances, string> hurtStanceAnimation = new Dictionary<AllHurtStances, string>();
-    private Dictionary<AllHurtStances, int> hurtInitialTimerAnimation = new Dictionary<AllHurtStances, int>();
-    private Dictionary<AllHurtStances, int> hurtCurrentTimerAnimation = new Dictionary<AllHurtStances, int>();
 
     private AllDefenseStances? currentDefenseStance;
-    private AllHits? currentHitReceived;
-    private bool b_isCurrentReceived;
-    private bool b_isBlockingDamage;
+
     public SoundManager soundManager;
     public AudioClip ReceiveDodge;
     public AudioClip ReceiveUpJab;
@@ -32,7 +26,6 @@ public class DefenseStances : MonoBehaviour
     public AudioClip ReceiveUpCross;
     public AudioClip ReceiveDownCross;
     public AudioClip ReceiveUppercut;
-    private AudioClip hit;
 
     void Start()
     {
@@ -45,83 +38,32 @@ public class DefenseStances : MonoBehaviour
                     hitDodged.Add(allDefenseStances[i], new AllHits[0]);
                     damageReduction.Add(allDefenseStances[i], gameManager.DEFENSESTANCE_UPBLOCK_DAMAGEREDUCTION);
                     defenseStanceAnimation.Add(allDefenseStances[i], "upBlock");
-                    defenseInitialTimerAnimation.Add(allDefenseStances[i], (int)Mathf.Ceil(gameManager.DEFENSESTANCE_UPBLOCK_PERFORMFRAMEANIMATION / gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).speed));
-                    defenseCurrentTimerAnimation.Add(allDefenseStances[i], 0);
                     break;
                 case AllDefenseStances.DownBlock:
                     hitBlocked.Add(allDefenseStances[i], new AllHits[] { AllHits.DownJab, AllHits.DownCross });
                     hitDodged.Add(allDefenseStances[i], new AllHits[0]);
                     damageReduction.Add(allDefenseStances[i], gameManager.DEFENSESTANCE_DOWNBLOCK_DAMAGEREDUCTION);
                     defenseStanceAnimation.Add(allDefenseStances[i], "downBlock");
-                    defenseInitialTimerAnimation.Add(allDefenseStances[i], (int)Mathf.Ceil(gameManager.DEFENSESTANCE_DOWNBLOCK_PERFORMFRAMEANIMATION / gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).speed));
-                    defenseCurrentTimerAnimation.Add(allDefenseStances[i], 0);
                     break;
                 case AllDefenseStances.UpDodge:
                     hitBlocked.Add(allDefenseStances[i], new AllHits[0]);
                     hitDodged.Add(allDefenseStances[i], new AllHits[] { AllHits.UpJab, AllHits.UpCross, AllHits.Uppercut });
-                    damageReduction.Add(allDefenseStances[i], gameManager.DEFENSESTANCE_UPDODGE_DAMAGEREDUCTION);
+                    damageReduction.Add(allDefenseStances[i], 0);
                     defenseStanceAnimation.Add(allDefenseStances[i], "upDodge");
-                    defenseInitialTimerAnimation.Add(allDefenseStances[i], (int)Mathf.Ceil(gameManager.DEFENSESTANCE_UPDODGE_PERFORMFRAMEANIMATION / gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).speed));
-                    defenseCurrentTimerAnimation.Add(allDefenseStances[i], 0);
                     break;
                 case AllDefenseStances.DownDodge:
                     hitBlocked.Add(allDefenseStances[i], new AllHits[0]);
                     hitDodged.Add(allDefenseStances[i], new AllHits[] { AllHits.DownJab, AllHits.DownCross });
-                    damageReduction.Add(allDefenseStances[i], gameManager.DEFENSESTANCE_DOWNDODGE_DAMAGEREDUCTION);
+                    damageReduction.Add(allDefenseStances[i], 0);
                     defenseStanceAnimation.Add(allDefenseStances[i], "downDodge");
-                    defenseInitialTimerAnimation.Add(allDefenseStances[i], (int)Mathf.Ceil(gameManager.DEFENSESTANCE_DOWNDODGE_PERFORMFRAMEANIMATION / gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).speed));
-                    defenseCurrentTimerAnimation.Add(allDefenseStances[i], 0);
                     break;
             }
         }
 
         hurtStanceAnimation.Add(AllHurtStances.UpHurt, "upHurt");
-        hurtInitialTimerAnimation.Add(AllHurtStances.UpHurt, (int)Mathf.Ceil(gameManager.HURTSTANCE_UPHURT_PERFORMFRAMEANIMATION / gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).speed));
-        hurtCurrentTimerAnimation.Add(AllHurtStances.UpHurt, 0);
-
         hurtStanceAnimation.Add(AllHurtStances.DownHurt, "downHurt");
-        hurtInitialTimerAnimation.Add(AllHurtStances.DownHurt, (int)Mathf.Ceil(gameManager.HURTSTANCE_DOWNHURT_PERFORMFRAMEANIMATION / gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).speed));
-        hurtCurrentTimerAnimation.Add(AllHurtStances.DownHurt, 0);
 
-        b_isCurrentReceived = false;
         gameObject.GetComponent<DefenseButtonsManager>().GenerateDefenseButtons(allDefenseStances);
-    }
-
-    private void Update()
-    {
-        GameObject opponent = gameManager.GetOpponentOf(gameObject);
-        for (int i = 0; i < allDefenseStances.Length; i++)
-        {
-            if (defenseCurrentTimerAnimation[allDefenseStances[i]] > 0)
-            {
-                defenseCurrentTimerAnimation[allDefenseStances[i]]--;
-            }
-            else if (b_isCurrentReceived)
-            {
-                if (b_isBlockingDamage)
-                {
-                    gameObject.GetComponent<FighterInfo>().TakeDamage(opponent.GetComponent<Hits>().GetHitPower(currentHitReceived.GetValueOrDefault()) - damageReduction[currentDefenseStance.GetValueOrDefault()], currentHitReceived.GetValueOrDefault());
-                    b_isBlockingDamage = false;
-                }
-                else
-                {
-                    gameObject.GetComponent<FighterInfo>().TakeDamage(opponent.GetComponent<Hits>().GetHitPower(currentHitReceived.GetValueOrDefault()), currentHitReceived.GetValueOrDefault());
-                }
-
-                b_isCurrentReceived = false;
-            }
-        }
-
-        if (hurtCurrentTimerAnimation[AllHurtStances.UpHurt] > 0)
-        {
-            hurtCurrentTimerAnimation[AllHurtStances.UpHurt]--;
-        }
-        else if (b_isCurrentReceived)
-        {
-            gameObject.GetComponent<FighterInfo>().TakeDamage(opponent.GetComponent<Hits>().GetHitPower(currentHitReceived.GetValueOrDefault()), currentHitReceived.GetValueOrDefault());
-            b_isCurrentReceived = false;
-        }
-
     }
 
     public void SelectStance(AllDefenseStances stance)
@@ -162,6 +104,8 @@ public class DefenseStances : MonoBehaviour
                         gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpDodge]);
                         break;
                 }
+
+                soundManager.PlaySingle(ReceiveDodge);
                 gameManager.NextPhase();
             }
             else if (currentDefenseStance.HasValue && Array.Exists(hitBlocked[currentDefenseStance.GetValueOrDefault()], hit => hit == hitReceived.GetValueOrDefault()))
@@ -170,29 +114,22 @@ public class DefenseStances : MonoBehaviour
                 {
                     case AllHits.UpJab:
                         gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpBlock]);
-                        defenseCurrentTimerAnimation[AllDefenseStances.UpBlock] = defenseInitialTimerAnimation[AllDefenseStances.UpBlock];
                         break;
                     case AllHits.DownJab:
                         gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.DownBlock]);
-                        defenseCurrentTimerAnimation[AllDefenseStances.DownBlock] = defenseInitialTimerAnimation[AllDefenseStances.DownBlock];
                         break;
                     case AllHits.UpCross:
                         gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpBlock]);
-                        defenseCurrentTimerAnimation[AllDefenseStances.UpBlock] = defenseInitialTimerAnimation[AllDefenseStances.UpBlock];
                         break;
                     case AllHits.DownCross:
                         gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.DownBlock]);
-                        defenseCurrentTimerAnimation[AllDefenseStances.DownBlock] = defenseInitialTimerAnimation[AllDefenseStances.DownBlock];
                         break;
                     case AllHits.Uppercut:
                         gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[AllDefenseStances.UpBlock]);
-                        defenseCurrentTimerAnimation[AllDefenseStances.UpBlock] = defenseInitialTimerAnimation[AllDefenseStances.UpBlock];
                         break;
                 }
-                soundManager.PlaySingle(ReceiveDodge);
-                b_isBlockingDamage = true;
-                currentHitReceived = hitReceived.GetValueOrDefault();
-                b_isCurrentReceived = true;
+
+                gameObject.GetComponent<FighterInfo>().TakeDamage(gameManager.GetOpponentOf(gameObject).GetComponent<Hits>().GetHitPower(hitReceived.GetValueOrDefault()) - damageReduction[currentDefenseStance.GetValueOrDefault()], hitReceived.GetValueOrDefault());
             }
             else
             {
@@ -202,58 +139,33 @@ public class DefenseStances : MonoBehaviour
                     {
                         case AllHits.UpJab:
                             gameObject.GetComponent<Animator>().Play(hurtStanceAnimation[AllHurtStances.UpHurt]);
-                            hurtCurrentTimerAnimation[AllHurtStances.UpHurt] = hurtInitialTimerAnimation[AllHurtStances.UpHurt];
                             soundManager.PlaySingle(ReceiveUpJab);
                             break;
                         case AllHits.DownJab:
                             gameObject.GetComponent<Animator>().Play(hurtStanceAnimation[AllHurtStances.DownHurt]);
-                            hurtCurrentTimerAnimation[AllHurtStances.DownHurt] = hurtInitialTimerAnimation[AllHurtStances.DownHurt];
                             soundManager.PlaySingle(ReceiveDownJab);
                             break;
                         case AllHits.UpCross:
                             gameObject.GetComponent<Animator>().Play(hurtStanceAnimation[AllHurtStances.UpHurt]);
-                            hurtCurrentTimerAnimation[AllHurtStances.UpHurt] = hurtInitialTimerAnimation[AllHurtStances.UpHurt];
                             soundManager.PlaySingle(ReceiveUpCross);
                             break;
                         case AllHits.DownCross:
                             gameObject.GetComponent<Animator>().Play(hurtStanceAnimation[AllHurtStances.DownHurt]);
-                            hurtCurrentTimerAnimation[AllHurtStances.DownHurt] = hurtInitialTimerAnimation[AllHurtStances.DownHurt];
                             soundManager.PlaySingle(ReceiveDownCross);
                             break;
                         case AllHits.Uppercut:
                             gameObject.GetComponent<Animator>().Play(hurtStanceAnimation[AllHurtStances.UpHurt]);
                             soundManager.PlaySingle(ReceiveUppercut);
-                            hurtCurrentTimerAnimation[AllHurtStances.UpHurt] = hurtInitialTimerAnimation[AllHurtStances.UpHurt];
-                            soundManager.PlaySingle(ReceiveUppercut);
                             break;
                     }
                 }
-                currentHitReceived = hitReceived.GetValueOrDefault();
-                b_isCurrentReceived = true;
-            }
 
-            currentDefenseStance = null;
+                gameObject.GetComponent<FighterInfo>().TakeDamage(gameManager.GetOpponentOf(gameObject).GetComponent<Hits>().GetHitPower(hitReceived.GetValueOrDefault()), hitReceived.GetValueOrDefault());
+            }
         }
         else if (currentDefenseStance.HasValue)
         {
-            switch (hitReceived)
-            {
-                case AllHits.UpJab:
-                    soundManager.PlaySingle(ReceiveUpJab);
-                    break;
-                case AllHits.DownJab:
-                    soundManager.PlaySingle(ReceiveDownJab);
-                    break;
-                case AllHits.UpCross:
-                    soundManager.PlaySingle(ReceiveUpCross);
-                    break;
-                case AllHits.DownCross:
-                    soundManager.PlaySingle(ReceiveDownCross);
-                    break;
-                case AllHits.Uppercut:
-                    soundManager.PlaySingle(ReceiveUppercut);
-                    break;
-            }
+            // Si aucun coup offensif n'est choisi, alors chaque fighter joue sa defense stance dans le vide
             gameObject.GetComponent<Animator>().Play(defenseStanceAnimation[currentDefenseStance.GetValueOrDefault()]);
 
             if (gameManager.p_currentPhase == GameManager.Phase.ApplyMoves)
@@ -261,5 +173,7 @@ public class DefenseStances : MonoBehaviour
                 gameManager.NextPhase();
             }
         }
+
+        currentDefenseStance = null;
     }
 }
