@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public enum AllHits
@@ -85,20 +87,20 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        CreateInstance(); 
+        CreateInstance();
         KO.gameObject.SetActive(false);
-        HideFighterLight(Light2);  
+        HideFighterLight(Light2);
 
-/*
-        if (_instance == null)
-        {
-            CreateInstance(); 
-        }
-        else
-        {
-            Destroy(this);
-        }
-*/
+        /*
+                if (_instance == null)
+                {
+                    CreateInstance(); 
+                }
+                else
+                {
+                    Destroy(this);
+                }
+        */
     }
 
     private void CreateInstance()
@@ -163,6 +165,7 @@ public class GameManager : MonoBehaviour
     }
     private void DisplayFighterButtons(GameObject _fighter)
     {
+        UpdateFighterCommands(_fighter);
         _fighter.GetComponent<HitsButtonsManager>().SetVisibility(true);
         _fighter.GetComponent<DefenseButtonsManager>().SetVisibility(true);
     }
@@ -170,6 +173,32 @@ public class GameManager : MonoBehaviour
     {
         _fighter.GetComponent<HitsButtonsManager>().SetVisibility(false);
         _fighter.GetComponent<DefenseButtonsManager>().SetVisibility(false);
+    }
+    private void UpdateFighterCommands(GameObject _fighter)
+    {
+        CommandManager.Commands[] commands = _fighter.GetComponent<CommandManager>().GetCommandsForCurrentRound();
+        CommandManager.Commands[] validHits = new CommandManager.Commands[] {
+            CommandManager.Commands.UpJab,
+            CommandManager.Commands.DownJab,
+            CommandManager.Commands.UpCross,
+            CommandManager.Commands.DownCross,
+            CommandManager.Commands.Uppercut,
+        };
+        List<AllHits> hits = new List<AllHits>();
+        List<AllDefenseStances> stances = new List<AllDefenseStances>();
+        foreach (CommandManager.Commands command in commands)
+        {
+            if (Array.Exists(validHits, hit => hit == command))
+            {
+                hits.Add((AllHits)command);
+            }
+            else
+            {
+                stances.Add((AllDefenseStances)command - 5);
+            }
+        }
+        _fighter.GetComponent<HitsButtonsManager>().GenerateHitsButtons(hits.ToArray());
+        _fighter.GetComponent<DefenseButtonsManager>().GenerateDefenseButtons(stances.ToArray());
     }
     private void DisplayFighterLight(GameObject _light)
     {
@@ -187,7 +216,7 @@ public class GameManager : MonoBehaviour
             case Phase.SelectFirstMove:
                 DisplayFighterButtons(fighter1);
                 Debug.Log("JOUEUR 1");
-                // Debug.Log(fighter1.GetComponent<CommandManager>().GetCommandsForCurrentRound()[0]);
+                Debug.Log(fighter1.GetComponent<CommandManager>().GetCommandsForCurrentRound()[0]);
                 HideFighterLight(Light2);
                 DisplayFighterLight(Light1);
                 break;
@@ -195,7 +224,7 @@ public class GameManager : MonoBehaviour
                 HideFighterButtons(fighter1);
                 DisplayFighterButtons(fighter2);
                 Debug.Log("JOUEUR 2");
-                // Debug.Log(fighter2.GetComponent<CommandManager>().GetCommandsForCurrentRound()[0]);
+                Debug.Log(fighter2.GetComponent<CommandManager>().GetCommandsForCurrentRound()[0]);
                 HideFighterLight(Light1);
                 DisplayFighterLight(Light2);
                 break;

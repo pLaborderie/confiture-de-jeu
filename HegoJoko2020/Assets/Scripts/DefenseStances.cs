@@ -129,7 +129,6 @@ public class DefenseStances : MonoBehaviour
         if (gameObject.GetComponent<FighterInfo>().playablePhase == gameManager.p_currentPhase)
         {
             currentDefenseStance = stance;
-            Debug.Log("Refresh stance");
             GetComponent<CommandManager>().RefreshProbabilities(stance);
             gameManager.NextPhase();
         }

@@ -6,6 +6,7 @@ public class DefenseButtonsManager : FightButtonsManager
 {
     public void GenerateDefenseButtons(AllDefenseStances[] allDefenseStances)
     {
+        ClearContent();
         foreach (AllDefenseStances stance in allDefenseStances)
         {
             // Create button from prefab and place it in vertical layout

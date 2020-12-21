@@ -8,6 +8,7 @@ public class HitsButtonsManager : FightButtonsManager
     // public GameObject fighter;
     public void GenerateHitsButtons(AllHits[] allHits)
     {
+        ClearContent();
         foreach (AllHits hit in allHits)
         {
             // Create button from prefab and place it in vertical layout
