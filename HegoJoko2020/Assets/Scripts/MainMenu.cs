@@ -13,10 +13,16 @@ public class MainMenu : MonoBehaviour
     private bool b_isAFighterAlreadySelected;
     private bool b_canChooseFighter;
 
+    public SoundManager soundManager;
+    public AudioClip startFight;
 
     public void Awake()
     {
         CloseAllPanels();
+    }
+
+    public void Start()
+    {
         b_canChooseFighter = true;
         b_isAFighterAlreadySelected = false;
     }
@@ -82,7 +88,8 @@ public class MainMenu : MonoBehaviour
             if (b_isAFighterAlreadySelected)
             {
                 b_canChooseFighter = false;
-                StartCoroutine(CallCoroutine(1));
+                soundManager.PlaySingle(startFight);
+                StartCoroutine(CallCoroutine(1.5f));
             }
             else
             {
@@ -102,6 +109,7 @@ public class MainMenu : MonoBehaviour
     IEnumerator CallCoroutine(float _time)
     {
         yield return new WaitForSeconds(_time);
+        CloseAllPanels();
         StartGame();
     }
 }
