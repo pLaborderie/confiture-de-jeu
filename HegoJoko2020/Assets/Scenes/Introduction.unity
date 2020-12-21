@@ -1029,7 +1029,8 @@ MonoBehaviour:
     les deux accept\xE9s de se coucher au m\xEAme moment !\r\n\r\nPour ce faire ?
     Rien de plus simple ! Il faut varier entre les attaques et les d\xE9fenses qui
     te sont propos\xE9es !\r Tout cela pour mettre KO les deux combattants en m\xEAme
-    temps ! Elle n'est pas belle la vie quand c'est toi qui d\xE9cide ?"
+    temps ! Elle n'est pas belle la vie quand c'est toi qui d\xE9cide ?\n\n[Cliquez
+    pour continuer]"
 --- !u!222 &2033107428
 CanvasRenderer:
   m_ObjectHideFlags: 0
