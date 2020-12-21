@@ -143,6 +143,7 @@ public class Hits : MonoBehaviour
                 b_isCurrentDealt = true;
                 currentTimerAnimation[selectedHit.GetValueOrDefault()] = initialTimerAnimation[selectedHit.GetValueOrDefault()];
             }
+            GetComponent<CommandManager>().RefreshProbabilities(selectedHit.GetValueOrDefault());
         }
         else
         {

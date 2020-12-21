@@ -13,4 +13,11 @@ public class FightButtonsManager : MonoBehaviour
     {
         SetVisibility(!buttonLayout.activeSelf);
     }
+    protected void ClearContent()
+    {
+        foreach (Transform child in buttonLayout.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
 }
