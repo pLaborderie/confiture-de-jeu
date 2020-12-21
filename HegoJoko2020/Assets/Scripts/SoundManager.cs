@@ -1,18 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
     public AudioSource efxSource;                    //Drag a reference to the audio source which will play the sound effects.
     public AudioSource musicSource;                    //Drag a reference to the audio source which will play the music.
     public AudioSource ambianceSource;
+    public Slider SliderVP;
+    public Slider SliderES;
+    public Slider SliderA;
     public static SoundManager instance = null;        //Allows other scripts to call functions from SoundManager.                
     public float lowPitchRange = .95f;                //The lowest a sound effect will be randomly pitched.
     public float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
 
     void Awake()
     {
+        SetVolumeValues();
+
         //Check if there is already an instance of SoundManager
         if (instance == null)
             //if not, set it to this.
@@ -24,6 +30,23 @@ public class SoundManager : MonoBehaviour
 
         //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void SaveVolumeValues(Slider _slider)
+    {
+        PlayerPrefs.SetFloat(_slider.name, _slider.value);
+        Debug.Log(_slider.name + " : " + PlayerPrefs.GetFloat(_slider.name));
+    }
+
+    public void SetVolumeValues()
+    {
+        musicSource.volume = PlayerPrefs.GetFloat("SliderVP");
+        efxSource.volume = PlayerPrefs.GetFloat("SliderES");
+        ambianceSource.volume = PlayerPrefs.GetFloat("SliderA");
+
+        SliderVP.value = PlayerPrefs.GetFloat("SliderVP");
+        SliderES.value = PlayerPrefs.GetFloat("SliderES");
+        SliderA.value = PlayerPrefs.GetFloat("SliderA");
     }
 
     //Used to play single sound clips.
