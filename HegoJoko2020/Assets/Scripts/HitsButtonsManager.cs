@@ -29,7 +29,7 @@ public class HitsButtonsManager : FightButtonsManager
         {
             hitDmg = gameObject.GetComponent<Hits>().GetHitPower(_hit);
             Text btnText = _button.GetComponentInChildren<Text>();
-            btnText.text = Enum.GetName(typeof(AllHits), _hit) + " - " + hitDmg + " PV";
+            btnText.text = CommandName(_hit) + " - " + hitDmg + " PV";
             btnText.color = Color.white;
             yield return new WaitForFixedUpdate();
         }
@@ -37,5 +37,23 @@ public class HitsButtonsManager : FightButtonsManager
     private void HandleHit(AllHits hit)
     {
         gameObject.GetComponent<Hits>().SelectHit(hit);
+    }
+
+    private string CommandName(AllHits command)
+    {
+        switch (command)
+        {
+            case AllHits.UpJab:
+                return "Jab Haut";
+            case AllHits.DownJab:
+                return "Jab Bas";
+            case AllHits.UpCross:
+                return "Direct Haut";
+            case AllHits.DownCross:
+                return "Direct Bas";
+            case AllHits.Uppercut:
+                return "Uppercut";
+            default: return "";
+        }
     }
 }
