@@ -33,9 +33,9 @@ public class DefenseButtonsManager : FightButtonsManager
         switch(command)
         {
             case AllDefenseStances.UpBlock:
-                return "Contre Coup Haut";
+                return "Bloquage Coup Haut";
             case AllDefenseStances.DownBlock:
-                return "Contre Coup Bas";
+                return "Bloquage Coup Bas";
             case AllDefenseStances.UpDodge:
                 return "Esquive Coup Haut";
             case AllDefenseStances.DownDodge:

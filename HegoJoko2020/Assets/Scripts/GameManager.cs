@@ -129,16 +129,20 @@ public class GameManager : MonoBehaviour
 
             if (fighter1Health <= 0 && fighter2Health <= 0)
             {
+                fighter1.GetComponent<FighterInfo>().TakeDamage(0, fighter1.GetComponent<FighterInfo>().lastOpponenthit);
+                fighter2.GetComponent<FighterInfo>().TakeDamage(0, fighter1.GetComponent<FighterInfo>().lastOpponenthit);
                 p_currentPhase = Phase.DoubleKnockOut;
                 StartCoroutine(loadEnd(Time, ""));
             }
             else if (fighter1Health <= 0)
             {
+                fighter1.GetComponent<FighterInfo>().TakeDamage(0, fighter1.GetComponent<FighterInfo>().lastOpponenthit);
                 p_currentPhase = Phase.FirstBoxerKnockedOut;
                 StartCoroutine(loadEnd(Time, "J1"));
             }
             else if (fighter2Health <= 0)
             {
+                fighter2.GetComponent<FighterInfo>().TakeDamage(0, fighter1.GetComponent<FighterInfo>().lastOpponenthit);
                 p_currentPhase = Phase.SecondBoxerKnockedOut;
                 StartCoroutine(loadEnd(Time, "J2"));
             }
