@@ -26,11 +26,28 @@ public class FighterInfo : MonoBehaviour
     public AudioClip ReceiveDownCross;
     public AudioClip ReceiveUppercut;
     public bool b_hasTakenHit;
+    public RuntimeAnimatorController[] fightersAnimations = new RuntimeAnimatorController[6];
 
     private Dictionary<AllKoStances, string> koStanceAnimation = new Dictionary<AllKoStances, string>();
 
     void Start()
     {
+        if(PlayerPrefs.GetInt("NbFighter1") > 0 && PlayerPrefs.GetInt("NbFighter1") <= 6)
+        {
+            if (gameManager.GetOpponentOf(gameManager.GetOpponentOf(gameObject)) == gameManager.fighter1)
+            {
+                GetComponent<Animator>().runtimeAnimatorController = fightersAnimations[PlayerPrefs.GetInt("NbFighter1")-1];
+            }
+            else
+            {
+                GetComponent<Animator>().runtimeAnimatorController = fightersAnimations[PlayerPrefs.GetInt("NbFighter2")-1];
+            }
+        }
+        else
+        {
+            GetComponent<Animator>().runtimeAnimatorController = fightersAnimations[1];
+        }
+        
         b_hasTakenHit = false;
         koStanceAnimation.Add(AllKoStances.UpKo, "upKo");
         koStanceAnimation.Add(AllKoStances.DownKo, "downKo");
