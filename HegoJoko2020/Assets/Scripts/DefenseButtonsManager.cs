@@ -25,5 +25,6 @@ public class DefenseButtonsManager : FightButtonsManager
     {
         gameObject.GetComponent<DefenseStances>().SelectStance(stance);
         gameObject.GetComponent<Hits>().selectedHit = null;
+        gameObject.GetComponent<FighterInfo>().n_nbTimeInARowToPerformDefensiveStance++;
     }
 }
