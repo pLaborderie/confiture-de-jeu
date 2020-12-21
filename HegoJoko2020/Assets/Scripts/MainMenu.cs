@@ -11,11 +11,13 @@ public class MainMenu : MonoBehaviour
     public GameObject FighterSelectionPanel;
 
     private bool b_isAFighterAlreadySelected;
+    private bool b_canChooseFighter;
 
 
     public void Awake()
     {
         CloseAllPanels();
+        b_canChooseFighter = true;
         b_isAFighterAlreadySelected = false;
     }
 
@@ -73,21 +75,28 @@ public class MainMenu : MonoBehaviour
 
     public void SelectFighter(int numFighter)
     {
-        PlayerPrefs.SetInt("NbFighter" + (b_isAFighterAlreadySelected ? 2.ToString() : 1.ToString()), numFighter);
+        if(b_canChooseFighter)
+        {
+            PlayerPrefs.SetInt("NbFighter" + (b_isAFighterAlreadySelected ? 2.ToString() : 1.ToString()), numFighter);
 
-        if (b_isAFighterAlreadySelected)
-        {
-            StartCoroutine(CallCoroutine(1));
-        }
-        else
-        {
-            b_isAFighterAlreadySelected = true;
+            if (b_isAFighterAlreadySelected)
+            {
+                b_canChooseFighter = false;
+                StartCoroutine(CallCoroutine(1));
+            }
+            else
+            {
+                b_isAFighterAlreadySelected = true;
+            }
         }
     }
 
     public void SetFighterSelected(GameObject text)
     {
-        text.GetComponent<Text>().color = new Color(255, 233, 0);
+        if(b_canChooseFighter)
+        {
+            text.GetComponent<Text>().color = new Color(255, 233, 0);
+        }
     }
 
     IEnumerator CallCoroutine(float _time)
