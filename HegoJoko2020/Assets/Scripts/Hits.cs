@@ -62,6 +62,8 @@ public class Hits : MonoBehaviour
         if (gameObject.GetComponent<FighterInfo>().playablePhase == gameManager.p_currentPhase)
         {
             selectedHit = hit;
+            gameObject.GetComponent<FighterInfo>().n_nbTimeInARowToPerformDefensiveStance = 0;
+            gameManager.GetOpponentOf(gameObject).GetComponent<FighterInfo>().lastOpponenthit = hit;
             gameManager.NextPhase();
         }
         else
