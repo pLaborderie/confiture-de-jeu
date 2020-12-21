@@ -824,6 +824,7 @@ MonoBehaviour:
   - {fileID: -8151833171391784630, guid: 690e8a98af7ad854a8830668d07bb428, type: 3}
   defaultSprite: {fileID: 21300000, guid: 4665d99b84c45db41a9341756a2fef99, type: 3}
   defaultKoSprite: {fileID: -8241683630289044089, guid: 06507f47255312e4eb8bb63d4567751b, type: 3}
+  numFighter: 1
   b_isKo: 1
 --- !u!1 &418188417
 GameObject:
@@ -936,6 +937,7 @@ MonoBehaviour:
   - {fileID: -8151833171391784630, guid: 690e8a98af7ad854a8830668d07bb428, type: 3}
   defaultSprite: {fileID: 21300000, guid: 10d351dd82097b04f851511c81acc2b5, type: 3}
   defaultKoSprite: {fileID: 6702578775529328975, guid: be861dddb4bcc8e4f95323e511145dd7, type: 3}
+  numFighter: 2
   b_isKo: 1
 --- !u!1 &798468636
 GameObject:

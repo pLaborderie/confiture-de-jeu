@@ -8,15 +8,16 @@ public class ChangeSpriteInOutro : MonoBehaviour
     public Sprite[] koSprites = new Sprite[6];
     public Sprite defaultSprite;
     public Sprite defaultKoSprite;
+    public int numFighter;
     public bool b_isKo;
 
     private int n_nbSpriteToUse;
 
     void Start()
     {
-        if (PlayerPrefs.GetInt("NbFighter1") > 0 && PlayerPrefs.GetInt("NbFighter1") <= 6)
+        if (PlayerPrefs.GetInt("NbFighter"+ numFighter.ToString()) > 0 && PlayerPrefs.GetInt("NbFighter" + numFighter.ToString()) <= 6)
         {
-            n_nbSpriteToUse = PlayerPrefs.GetInt("NbFighter1") - 1;
+            n_nbSpriteToUse = PlayerPrefs.GetInt("NbFighter" + numFighter.ToString()) - 1;
 
             if (b_isKo)
             {
@@ -25,14 +26,13 @@ public class ChangeSpriteInOutro : MonoBehaviour
             else
             {
                 GetComponent<SpriteRenderer>().sprite = fightersSprites[n_nbSpriteToUse];
-            }
-            
+            }      
         }
         else
         {
             if (b_isKo)
             {
-                GetComponent<SpriteRenderer>().sprite = defaultSprite;
+                GetComponent<SpriteRenderer>().sprite = defaultKoSprite;
             }
             else
             {
