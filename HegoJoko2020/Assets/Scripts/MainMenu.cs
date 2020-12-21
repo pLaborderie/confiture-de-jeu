@@ -5,12 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject HowToPlayUI;
-    public GameObject CreditsUI;
+    public GameObject HowToPlayPanel;
+    public GameObject CreditsPanel;
+    public GameObject OptionsPanel;
 
     public void Awake() {
-        HowToPlayUI.SetActive(false);
-        CreditsUI.SetActive(false);
+        CloseAllPanels();
+    }
+
+    public void Update() {
+        if(Input.GetKeyDown(KeyCode.Escape)) {
+            CloseAllPanels();
+        }
     }
 
     public void NewGame()
@@ -25,12 +31,24 @@ public class MainMenu : MonoBehaviour
 
     public void ShowHowToPlay()
     {
-        HowToPlayUI.SetActive(true);
+        HowToPlayPanel.SetActive(true);
     }
 
     public void ShowCredits()
     {
-        CreditsUI.SetActive(true);
+        CreditsPanel.SetActive(true);
+    }
+
+    public void ShowOptions()
+    {
+        OptionsPanel.SetActive(true);
+    }
+
+    public void CloseAllPanels()
+    {
+        CloseUI(HowToPlayPanel);
+        CloseUI(CreditsPanel);
+        CloseUI(OptionsPanel);
     }
 
     public void CloseUI(GameObject _ui)
