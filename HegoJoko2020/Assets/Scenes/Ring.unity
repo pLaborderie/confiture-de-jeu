@@ -1005,7 +1005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8599606150656675926, guid: 123568860dee0e149920859ca85535ed, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8599606150656675926, guid: 123568860dee0e149920859ca85535ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1092,6 +1092,10 @@ PrefabInstance:
       value: MENU
       objectReference: {fileID: 0}
     - target: {fileID: 8599606151206241655, guid: 123568860dee0e149920859ca85535ed, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 7c95cc26efbd21a47a64b543f0c52576, type: 3}
+    - target: {fileID: 8599606151206241655, guid: 123568860dee0e149920859ca85535ed, type: 3}
       propertyPath: m_FontData.m_MinSize
       value: 0
       objectReference: {fileID: 0}
@@ -1142,7 +1146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8599606150656675926, guid: 123568860dee0e149920859ca85535ed, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8599606150656675926, guid: 123568860dee0e149920859ca85535ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1228,6 +1232,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: QUITTER
       objectReference: {fileID: 0}
+    - target: {fileID: 8599606151206241655, guid: 123568860dee0e149920859ca85535ed, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 7c95cc26efbd21a47a64b543f0c52576, type: 3}
     - target: {fileID: 8599606151206241655, guid: 123568860dee0e149920859ca85535ed, type: 3}
       propertyPath: m_FontData.m_MinSize
       value: 2
@@ -3356,7 +3364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8599606150656675926, guid: 123568860dee0e149920859ca85535ed, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8599606150656675926, guid: 123568860dee0e149920859ca85535ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3442,6 +3450,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: REPRENDRE
       objectReference: {fileID: 0}
+    - target: {fileID: 8599606151206241655, guid: 123568860dee0e149920859ca85535ed, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 7c95cc26efbd21a47a64b543f0c52576, type: 3}
     - target: {fileID: 8599606151206241655, guid: 123568860dee0e149920859ca85535ed, type: 3}
       propertyPath: m_FontData.m_MinSize
       value: 0

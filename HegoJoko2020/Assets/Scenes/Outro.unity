@@ -838,7 +838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8599606150656675926, guid: 123568860dee0e149920859ca85535ed, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8599606150656675926, guid: 123568860dee0e149920859ca85535ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -924,6 +924,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: QUITTER
       objectReference: {fileID: 0}
+    - target: {fileID: 8599606151206241655, guid: 123568860dee0e149920859ca85535ed, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 7c95cc26efbd21a47a64b543f0c52576, type: 3}
     - target: {fileID: 8599606151206241655, guid: 123568860dee0e149920859ca85535ed, type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 40
@@ -1468,7 +1472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8599606150656675926, guid: 123568860dee0e149920859ca85535ed, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8599606150656675926, guid: 123568860dee0e149920859ca85535ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1554,6 +1558,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: NOUVELLE PARTIE
       objectReference: {fileID: 0}
+    - target: {fileID: 8599606151206241655, guid: 123568860dee0e149920859ca85535ed, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 7c95cc26efbd21a47a64b543f0c52576, type: 3}
     - target: {fileID: 8599606151206241655, guid: 123568860dee0e149920859ca85535ed, type: 3}
       propertyPath: m_FontData.m_MinSize
       value: 0
@@ -1969,7 +1977,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4, y: 80}
+  m_AnchoredPosition: {x: -4, y: 50}
   m_SizeDelta: {x: 800, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1088305199
@@ -3022,7 +3030,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4, y: 200}
+  m_AnchoredPosition: {x: -4, y: 150}
   m_SizeDelta: {x: 800, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2119234208
